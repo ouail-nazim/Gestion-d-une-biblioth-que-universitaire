@@ -1,0 +1,137 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+body:before{
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-image: url("bib.jpg");
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+.contact-form
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    height: 500px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+}
+.avatar {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: -250px;
+    margin-top: -90px;
+    top: calc(-80px/2);
+    left: calc(50% - 40px);
+}
+.contact-form h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.contact-form p
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+.contact-form input
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+.contact-form input[type="submit"] {
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    background: red;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-top: 15%;
+}
+.contact-form a
+{
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+input[type="checkbox"] {
+    width: 20%;
+}
+
+.C1{
+
+    width: 300px;
+    padding: 80px;
+    justify-content: center;
+}
+.C2{
+    width: 50%;
+    margin-left: 20%;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.b{
+    border: none;
+    width: 270px;
+    height: 30px;
+    background: linear-gradient(to right,#989A99,#5D5D5D);
+    border-radius: 6px;
+    box-shadow: 6px 6px 6px #4C1E1E;
+    opacity: 0.8;
+}
+.bt {
+    width: 270px;
+    height: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

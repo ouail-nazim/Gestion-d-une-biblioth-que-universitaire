@@ -1,0 +1,272 @@
+.cc{
+    margin: 10px;
+    height: 400px;
+}
+.ta{
+    margin-top: 0px;
+}
+.haut{
+    margin-left: 22%;
+
+}
+
+
+.ha{
+    background-color: #333	;
+    color: #fff3cd;
+}
+.res{
+    margin-top: -25px;
+    margin-bottom: -15px;
+    width: 1000px;
+}
+.searchaa{
+    background-color: 	#333;
+    border: none;
+    border-bottom:1px solid #fff ;
+    border-radius: 0px;
+}
+.vertical-nav {
+    margin-left: -23px;
+    margin-top: -90px;
+    width: 19rem;
+    height: 150vh;
+    top: 0px;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+
+}
+.navs{
+    margin-left: 20px;
+}
+.disabled{
+    margin-left: -30px;
+}
+.li{
+    margin-left: -20px;
+    padding-left: 20px;
+    width: 19rem;
+    font-size: small;
+    font-weight: normal;
+}
+.li:hover{
+   opacity: 1.7;
+    font-size: large;
+    font-weight:bolder;
+    transform: scaleX(1);
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+}
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+    margin-left: -17rem;
+}
+
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -17rem;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+        margin: 0;
+    }
+    #content.active {
+        margin-left: 17rem;
+        width: calc(100% - 17rem);
+    }
+
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+.card:hover{
+    box-shadow:#222 -3PX 5PX 20PX 5PX ;
+}
+
+.cont{
+    margin-top: 50px;
+}
+.categori{
+    text-align: center;
+    border: solid 1px black;
+    border-radius: 30%;
+    width: 10%;
+    cursor: pointer;
+    padding: 0.8%;
+}
+.categori:hover{
+    box-shadow: #7c7c7c 1px 5px 5px;
+}
+.res .alert-link a{
+   font-size: small;
+    text-decoration: none;
+}
+.content1{
+    margin-right: 50px;
+}
+body {
+    background: #9fc1f0;
+    background: -webkit-linear-gradient(to right, #c0c0c0, #dddddd);
+    background: linear-gradient(to right, #BBBBBB, #dddddd);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.separator {
+    margin: 3rem 0;
+    border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+    letter-spacing: 0.1em;
+}
+
+.text-gray {
+    color: #aaa;
+}
+/* hadi hana ta3e el profile ta3e el aboonner*/
+        .con{
+            border-radius: 16px;
+        }
+        .more{
+            text-align: center;
+        }
+        .gra{
+
+            text-align: center;
+        }
+        .liste{
+            margin-top: 10px;
+            padding-top: 5px;
+            height: 300px;
+        }
+        .point{
+           margin-top: 50px;
+            padding-left: 40px;
+            text-align: center;
+            justify-content: center;
+           height: 50px;
+        }
+        li{
+           list-style: none;
+        }
+        .boite{
+           background-color: #fff;
+            border-radius: 20px;
+        }
+        .boite-alert{
+
+            border-radius: 20px;
+        }
+        .pro{
+            padding-top: 10px;
+            margin-left: 30px;
+        }
+/*------------------------------------------------------*/
+
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+
+
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 27%; /* Could be more or less, depending on screen size */
+}
+.bb{
+    margin: 30px;
+    width: 300px;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+/*_____________________________________________________________________*/
+
+.in{
+    margin-right: 5%;
+}
+
+/*ajouter livre w mémoire*/
+.ajout{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    width: 30%;
+    height: 300px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10%;
+    padding: 10%;
+    border-radius: 20%;
+}
+.tete{
+    margin-top: -140%;
+    color: #111;;
+    text-shadow: #5f6d64  2px 2px 2px;
+}
+.t1 a{
+    text-decoration: none;
+}
+.aj1{
+    background-image: url("/addbook.png");
+    margin-left: 8%;
+}
+.aj2{
+    background-image: url("/addmemoire.png");
+    margin-left: 20%;
+}
