@@ -1,0 +1,202 @@
+/* top nav bar*/
+.navbar {
+    overflow: hidden;
+    top:0px;
+    padding-left: 23%;
+    background-color: #ddd;
+    border-bottom: 1px solid black;
+    width: 100%;
+    position: absolute;
+    position: fixed;
+    z-index: 1;
+}
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    border-radius: 0PX 15PX 15PX 0PX;
+    text-decoration: none;
+    font-color: black;
+}
+.searchaa{
+    background-color: 	#ddd;
+    border: none;
+    border-bottom:1px solid #000 ;
+    border-radius: 0px;
+}
+.ha{
+    position: relative;
+    z-index: 0;
+    top: 50%;
+    background-color: #333	;
+    color: #fff3cd;
+    width: 120%;
+    margin-top: -55px;
+    margin-left: -30px;
+    margin-bottom: -30px;
+}
+/*--------------------------------------------------------------------*/
+    /* Fixed sidenav, full height */
+    .sidenav {
+      height: 100%;
+      width: 19%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+      box-shadow: 15px 0px 17px #777;
+    }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid silver;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #888;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+    .sidenav a:hover{
+        opacity: 1.7;
+        background: #4fa4d9;
+        color: #1b1918;
+        text-align: center;
+        border-radius: 16px;
+        margin-left: 10%;
+        font-size: large;
+        font-weight:bolder;
+        text-shadow: 4px 4px 4px rgba(255,222,255,0.5);
+    }
+    .dropdown-btn:hover{
+        opacity: 1.7;
+        background: #4fa4d9;
+        color: #1b1918;
+        border-radius: 16px;
+        font-size: large;
+        font-weight:bolder;
+        text-shadow: 4px 4px 4px rgba(255,222,255,0.5);
+    }
+    .active {
+        background-color: #4fa4d9;
+        color: black;
+        margin:5px 0px 5px 0px;
+    }
+    .dropdown-btn1{
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #fff;
+        display: block;
+        border: 1px silver solid;
+        border-radius: 6px;
+        background: none;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+    }
+    .dropdown-btn1:hover{
+     opacity: 1.7;
+     background: chartreuse;
+     color: #1b1918;
+     border-radius: 16px;
+     font-size: large;
+     font-weight:bolder;
+     text-shadow: 4px 4px 4px rgba(255,222,255,0.5);
+ }
+    .btnactive {
+        background-color: chartreuse;
+        text-align: center;
+        color: black;
+        margin:5px 0px 5px 0px;
+    }
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+        display: none;
+        background-color: #363636;
+        padding-left: 8px;
+    }
+    .dropdown-container li a:hover{
+        opacity: 1.7;
+        background: #4fa4d9;
+        color: #1b1918;
+        text-align: left;
+        border-radius: 16px;
+        margin-left: 10%;
+        font-size: large;
+        font-weight:bolder;
+        text-shadow: 4px 4px 4px rgba(255,222,255,0.5);
+    }
+/*--------------------------------------------------------------------*/
+    /* Main content */
+    .main {
+      margin-top: 70px;
+      margin-left:20%; /* Same as the width of the sidenav */
+      font-size: 20px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+        //background: #ffffff;
+    }
+    .footer{
+        position: fixed;
+        width: 100%;
+        background-color: #111;
+        color: #888;
+        text-align: center;
+        height: 25px;
+        margin-left: -20%;
+        padding-top: 0px;
+        bottom: 0;
+
+    }
+.footer strong {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-left: -20PX;
+    text-align: center;
+    transform:translateX(100%);
+    animation: footer 10s linear infinite;
+}
+/* Move it (define the animation) */
+@keyframes footer {
+    0%   {
+        transform: translateX(90%);
+    }
+    100% {
+        transform: translateX(-150%);
+    }
+}
+/*--------------------------------------------------------------------*/
+    /* Some media queries for responsiveness */
+    @media screen and (max-height: 750px) {
+
+    }

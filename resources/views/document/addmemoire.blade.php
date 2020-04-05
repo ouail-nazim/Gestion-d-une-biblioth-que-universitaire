@@ -1,4 +1,4 @@
-@extends('home1')
+@extends('index.dropdown')
 @section('head')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -256,6 +256,7 @@
                 <button class="btn btn-success" type="submit">ajouter</button>
                 <button class="btn btn-danger ml-lg-5" type="RESET">annuler</button>
             </div>
+            <div style="height: 25px;"></div>
         </fieldset>
     </form>
     <!-- SCRIPT TAGS----------------------------------------------------------------- -->

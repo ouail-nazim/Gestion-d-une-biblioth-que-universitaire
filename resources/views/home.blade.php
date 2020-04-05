@@ -1,4 +1,4 @@
-@extends('home1')
+@extends('index.dropdown')
 
 @section('content1')
 
@@ -18,8 +18,6 @@
         <div class="container cont">
             <div class="row row-cols-3">
                 @foreach($doc as $doccument)
-
-
 
                     <div class="col">
                         <div class="card  cc" style="width: 18rem; height: 450px;">

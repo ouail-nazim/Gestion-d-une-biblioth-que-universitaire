@@ -106,6 +106,20 @@ class DocumentControler extends Controller
             'emplacment'=>'required|max:30',
             'annee'=>'required|date'
         ]);
+        if (request('type')=='livre'){
+            $this->validate($request,[
+                'isbn'=>'required|numeric',
+                'edition'=>'required|max:30',
+            ]);
+        }
+        if (request('type')=='memoire'){
+            $this->validate($request,[
+                'promotion'=>'required',
+                'prenom1'=>'required|max:30',
+                'nom1'=>'required|max:30'
+            ]);
+
+        }
         //ajouter le document
         $doc1=new Document();
         $doc1->code=request('code');
@@ -158,24 +172,14 @@ class DocumentControler extends Controller
         }
         return redirect('/indexdoc ');
     }
-    public function livre(Document $doc1,Request $request){
-        $this->validate($request,[
-            'isbn'=>'required|numeric',
-            'edition'=>'required|max:30',
-        ]);
+    public function livre(Document $doc1){
         $liv1=new Livre();
         $liv1->edition=request('edition');
         $liv1->isbn=request('isbn');
         $liv1->code_doc=$doc1->code;
         $liv1->save();
     }
-    public function memoire(Document $doc1,Request $request){
-        $this->validate($request,[
-            'promotion'=>'required',
-            'prenom1'=>'required|max:30',
-            'nom1'=>'required|max:30'
-        ]);
-
+    public function memoire(Document $doc1){
         $mem1=new Memoire();
         $mem1->promotion=request('promotion');
         $mem1->code_doc=$doc1->code;

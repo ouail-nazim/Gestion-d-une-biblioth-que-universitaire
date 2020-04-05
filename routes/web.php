@@ -16,6 +16,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('user.index');
 });
+
+Route::get('index', function () {
+    return view('index.dropdown');
+});
 Route::get('/ho','UserController@home');
 Route::get('/gest','UserController@gest');
 

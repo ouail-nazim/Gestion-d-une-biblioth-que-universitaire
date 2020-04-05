@@ -1,4 +1,4 @@
-@extends('home1')
+@extends('index.dropdown')
 
 @section('content1')
 
@@ -16,12 +16,12 @@
                     @if($abo->pen == false)
 
                         <div class="col">
-                            <div class="card cc " style=" width: 17rem; height:450px;margin: 10px;" >
+                            <div class="card abo "  >
                                 @if($abo->gender =='homme')
-                                    <img src="storage/gander/homme.jpg"  height="200px" class="card-img-top" alt="...">
+                                    <img src="storage/gander/homme.jpg"  height="150px"   alt="...">
 
                                 @else
-                                    <img src="storage/gander/femme.png"  height="200px" class="card-img-top" alt="...">
+                                    <img src="storage/gander/femme.png"  height="150px" alt="...">
 
                                 @endif
 
@@ -42,9 +42,9 @@
                                             <span class="badge badge-danger">Super fun</span>
                                         @endif
                                         <br><br>
-                                    <h5 class="card-title">nom  : {{$abo->nom}}</h5>
-                                    <h5 class="card-title">prénom  : {{$abo->prenom}}</h5>
-                                    <h6 class="card-title">numéro de cart : {{$abo->num}}</h6>
+                                    <div class="card-title">nom  : {{$abo->nom}}</div>
+                                    <div class="card-title">prénom  : {{$abo->prenom}}</div>
+                                    <div class="card-title">numéro de cart : {{$abo->num}}</div>
                                         <br>
                                     <a href="/more/{{$abo->id}}" class="btn btn-primary">Detaile</a>
 
@@ -56,12 +56,12 @@
                     @else
 
                         <div class="col">
-                            <div class="card cc alert-danger" style=" width: 17rem;height:450px;margin: 10px;">
+                            <div class="card abo alert-danger" >
                                 @if($abo->gender =='homme')
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTLn7EB9CPw0lbKB4sqY-1wMSYszzYwJgY4qbKncnDtY6JVZ2Fo"  height="200px" class="card-img-top" alt="...">
+                                    <img src="storage/gander/homme.jpg"  height="150px"   alt="...">
 
                                 @else
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWR44-rmbP9mccq7VRe19cL5v4NIrFI0jnIetdCqyCGTtE3fqe"  height="200px" class="card-img-top" alt="...">
+                                    <img src="storage/gander/femme.png"  height="150px" alt="...">
 
                                 @endif
                                 <div class="card-body">

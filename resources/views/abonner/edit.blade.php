@@ -1,4 +1,4 @@
-@extends('home1')
+@extends('index.dropdown')
 
 @section('content1')
 

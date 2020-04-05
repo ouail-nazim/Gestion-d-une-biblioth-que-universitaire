@@ -1,7 +1,3 @@
-.cc{
-    margin: 10px;
-    height: 400px;
-}
 .ta{
     margin-top: 0px;
 }
@@ -10,22 +6,27 @@
 
 }
 
+.main {
+    margin-top: 70px;
+    margin-left:19%; /* Same as the width of the sidenav */
+    font-size: 16px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    background: #ffffff;
+}
+.cc{
+    margin: 0px;
+    height: 400px;
+    margin-bottom: 10px;
+}
+.abo{
+    margin-top: 25px;
+    width: 80%;
+    font-size: 14px;
+    font-weight: bold;
+    height:100%;
 
-.ha{
-    background-color: #333	;
-    color: #fff3cd;
 }
-.res{
-    margin-top: -25px;
-    margin-bottom: -15px;
-    width: 1000px;
-}
-.searchaa{
-    background-color: 	#333;
-    border: none;
-    border-bottom:1px solid #fff ;
-    border-radius: 0px;
-}
+
 .vertical-nav {
     margin-left: -23px;
     margin-top: -90px;
@@ -122,12 +123,15 @@
     text-decoration: none;
 }
 .content1{
-    margin-right: 50px;
+    margin-top: 100px;
+    margin-left: 20%;
+
 }
 body {
+
     background: #9fc1f0;
-    background: -webkit-linear-gradient(to right, #c0c0c0, #dddddd);
-    background: linear-gradient(to right, #BBBBBB, #dddddd);
+    background: -webkit-linear-gradient(to right, #dddddd, silver);
+    background: linear-gradient(to right, #dddddd, silver);
     min-height: 100vh;
     overflow-x: hidden;
 }

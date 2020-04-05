@@ -1,8 +1,8 @@
-@extends('home1')
+@extends('index.dropdown')
 
 @section('content1')
 
-    <div class="row">
+    <div class="row tt">
         <div class="col-md-8  pro boite ">
 
             <div class="row ">

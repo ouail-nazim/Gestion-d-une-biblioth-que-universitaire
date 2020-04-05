@@ -1,4 +1,4 @@
-@extends('home1')
+@extends('index.dropdown')
 
 @section('content1')
     @if ($errors->any())
@@ -101,7 +101,7 @@
             <!------------------------------------------------------------------- -->
             <br>
             <div id="bt" >
-                <button class="btn btn-success" type="submit">Ajouter</button>
+                <button class="btn btn-success w-25 mr-4" type="submit">Ajouter</button>
                 <a href="/See_all"  class="btn btn-danger  " >annuler</a>
             </div>
             <!------------------------------------------------------------------- -->
