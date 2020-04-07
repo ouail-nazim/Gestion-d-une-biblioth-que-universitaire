@@ -23,6 +23,9 @@ class Document extends Model
     public function auteur(){
         return $this->hasMany('App\Auteur','code_doc');
     }
+    public function exemplaire(){
+        return $this->hasMany('App\Exemplaire','code_doc');
+    }
 
     public function categories(){
         return $this->belongsToMany(Categorie::class);

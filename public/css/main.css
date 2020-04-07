@@ -12,18 +12,24 @@
     font-size: 16px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     background: #ffffff;
+
 }
 .cc{
-    margin: 0px;
-    height: 400px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    height:90%;
+    border: 2px solid black;
+
 }
 .abo{
     margin-top: 25px;
-    width: 80%;
-    font-size: 14px;
+    width: 100%;
+    font-size: 12px;
     font-weight: bold;
-    height:100%;
+    height:90%;
+    border: 2px solid black;
 
 }
 
@@ -130,8 +136,8 @@
 body {
 
     background: #9fc1f0;
-    background: -webkit-linear-gradient(to right, #dddddd, silver);
-    background: linear-gradient(to right, #dddddd, silver);
+    background: -webkit-linear-gradient(to right, #dddddd, #aaaaaa);
+    background: linear-gradient(to right, #dddddd, #aaaaaa);
     min-height: 100vh;
     overflow-x: hidden;
 }

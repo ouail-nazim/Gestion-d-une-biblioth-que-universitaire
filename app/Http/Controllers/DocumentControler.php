@@ -7,6 +7,7 @@ use App\Categorie;
 use App\categorie_document;
 use App\Document;
 use App\Encadreure;
+use App\Exemplaire;
 use App\Livre;
 use App\Memoire;
 use Illuminate\Http\Request;
@@ -47,30 +48,43 @@ class DocumentControler extends Controller
     public function show($code)
     {
         $doc=Document::find($code);
-        return view('document.showdoc')->with(['doc'=>$doc]);
+        $nombre_ex=count($doc->exemplaire);
+        return view('document.showdoc')->with(['doc'=>$doc,'nombre_ex'=>$nombre_ex]);
 
     }
-    //nombre dexemplaire +1
+    //nombre dexemplaire +1 AJouter in exe
     public function explus($code)
     {
         $doc=Document::find($code);
-        $nmb_dex=$doc->nmb_dex;
-        $nmb_dex=$nmb_dex+1;
-        $doc->nmb_dex=$nmb_dex;
-        $doc->save();
+        $i=count($doc->exemplaire)+1;
+
+        $exem=new Exemplaire();
+        $exem->identif=$i;
+        $exem->code_doc=$doc->code;
+        $exem->save();
+
+        $doc->nmb_dex=$i;
+        $doc->update();
         return redirect("/detailebook/$doc->code");
     }
     //nombre dexemplaire -1 si il est plus de 0
-    public function exmoin($code)
+    public function exmoin($code,Request $request)
     {
-        $doc=Document::find($code);
-        $nmb_dex=$doc->nmb_dex;
-        if ($nmb_dex>0){
-            $nmb_dex=$nmb_dex-1;
+        $this->validate($request,[
+            'id'=>'required|numeric',
+        ]);
+        $identif=request('id');
+        $E1=Exemplaire::where([
+            ['identif', '=', $identif],
+            ['code_doc', '=', $code],
+        ])->first();
+        if (!empty($E1)){
+        $E1->delete();
+        $doc=Document::where('code','=',$code)->first();
+        $doc->nmb_dex=($doc->nmb_dex)-1;
+        $doc->update();
         }
-        $doc->nmb_dex=$nmb_dex;
-        $doc->save();
-        return redirect("/detailebook/$doc->code");
+        return redirect("/detailebook/$code");
     }
     //--------------------------------------------------------------
     //go to ajouter document soit livre ou mémoire
@@ -138,6 +152,13 @@ class DocumentControler extends Controller
             $doc1->img='';
         }
         $doc1->save();
+        //ajouter les exemplaire
+        for ($i=1;$i<=request('nmb_dex');$i++){
+            $exem=new Exemplaire();
+            $exem->identif=$i;
+            $exem->code_doc=$doc1->code;
+            $exem->save();
+        }
         //ajouter les categorie pour ce document
         $cat=$request->input('cat');
         if(!$cat==null){
@@ -307,6 +328,7 @@ class DocumentControler extends Controller
     {
         Auteur::where('code_doc','=',$code)->delete();
         categorie_document::where('document_code','=',$code)->delete();
+        Exemplaire::where('code_doc','=',$code)->delete();
         $doc=Document::find($code);
         if(($doc->livre)!= null){
             Livre::where('code_doc','=',$code)->delete();
@@ -318,10 +340,7 @@ class DocumentControler extends Controller
             }
         }
         $doc->delete();
-        return redirect("/home");
+        return redirect("/indexdoc");
     }
-
-
-
 
 }

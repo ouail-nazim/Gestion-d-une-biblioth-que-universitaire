@@ -37,10 +37,6 @@
                         </div>
                     </h3>
                 </div>
-                {{--grade--}}
-                <div class="col-md-1 gra">
-                        <i class="fa fa-book text-dark"></i><br>
-                </div>
             </div>
             <br><br>
             {{--info--}}
@@ -66,14 +62,44 @@
                     <strong> nombre d'exomplaire</strong>
                 </div>
                 <br>
-                <span class="btn badge-dark text-white ">{{($doc->nmb_dex)}}</span>
+                <span class="btn badge-dark text-white ">{{($nombre_ex)}}</span>
                 <a href="/explus/{{($doc->code)}}" class="btn badge-success"
                    style="border-radius: 50%;margin-left: 35%;"><i class="fa fa-plus"></i>
                 </a>
-                <a href="/exmoin/{{($doc->code)}}"   class="btn badge-danger
-                      @if($doc->nmb_dex ==0) disabled btn badge-dark @endif"
-                        style="border-radius: 50%;margin-left: 5%;"><i class="fa fa-minus"></i>
-                </a>
+                <div >
+                    <button type="button"
+                            @if($doc->nmb_dex >0) onclick="document.getElementById('id02').style.display='block'"@endif
+                            class="btn badge-danger @if($doc->nmb_dex ==0) disabled btn badge-dark @endif"
+                            style="border-radius: 50%;margin-left: 50%;"><i class="fa fa-minus"></i></button>
+                    <div id="id02" class="modal">
+                        <div class="modal-content animate" >
+                             <span class="" style="text-align: center ; font-size: 2em;">
+                                <div>suprime l'exomplaire num </div>
+                            </span>
+                            <form method="get" action="/exmoin/{{($doc->code)}}">
+                                <input type="text" name="id" class="bb form-control" required PLACEHOLDER="entré le numéro d'exomplaire">
+                                <input type="submit" class="bb btn btn-danger" value="delete it">
+                            </form>
+                            <button class="bb btn btn-success" id="can2">cancel</button>
+
+                        </div>
+                    </div>
+                    <script>
+                        // Get the modal
+                        var modal2 = document.getElementById('id02');
+                        var can2 = document.getElementById('can2');
+                        can2.onclick=function () {
+                            modal2.style.display = "none";
+                        }
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+
             </div>
             <br >
             <div class="row">
@@ -162,9 +188,12 @@
         <div class="col-md-3 ml-2 ">
             <div class="row-md-12  boite-alert alert alert-dark ">
                 <div class="row">
-                    <strong class="pl-lg-3"> Consulter exemplaire </strong>
+                    <strong class=""> Consulter exemplaire </strong>
                 </div>
-                <br>
+                <div class="row">
+                    <div class=""> entré le numéro d'exemplaire</div>
+                </div>
+
                 <div class="row">
                     <form  action="#" method="get" class="form-inline" role="search">
                         {{csrf_field()}}
@@ -191,7 +220,7 @@
                             <div class="row">
                                 <div class="col w-100">
                                     <a class="btn w-100 btn-outline-dark"
-                                       href="/home?cate={{$categorie->id}}">
+                                       href="/indexdoc?cate={{$categorie->id}}">
                                         {{$categorie->name}}
                                     </a>
                                 </div>

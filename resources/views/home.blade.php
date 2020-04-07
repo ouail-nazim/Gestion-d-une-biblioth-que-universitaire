@@ -6,8 +6,8 @@
        <span class="alert-link mb-lg-5">
            <span>TAGs :</span>
            @foreach($cat=\App\Categorie::all() as $cm)
-               <a class="categori mr-2 btn-outline-light"
-                  href="/home?cate={{$cm->id}}">
+               <a class="categori mr-2 btn-outline-dark"
+                  href="/indexdoc?cate={{$cm->id}}">
                    {{$cm->name}}
                </a>
            @endforeach
@@ -16,12 +16,12 @@
 
     <div class="col">
         <div class="container cont">
-            <div class="row row-cols-3">
+            <div class="row row-cols-4">
                 @foreach($doc as $doccument)
 
                     <div class="col">
-                        <div class="card  cc" style="width: 18rem; height: 450px;">
-                            <img src="{{'/storage/books/'.$doccument->img}}"  height="200px" class="card-img-top" alt="...">
+                        <div class="card  abo" style="width: 16rem;">
+                            <img src="{{'/storage/books/'.$doccument->img}}"  height="100px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 @if(($doccument->livre)!= null)
                                     <h5 class="card-title">code livre :{{$doccument->code}}</h5>
@@ -35,7 +35,7 @@
 
                                 <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 60px;" class="btn badge-info ">{{$doccument->nmb_dex}}</span></h6>
                                     @if($action == 'suprimer')
-                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 mt-3">Delet</button>
+                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 ">Delet</button>
                                             <div id="id01" class="modal">
 
                                                 <div class="modal-content animate" >
@@ -60,10 +60,10 @@
                                             </script>
                                     @endif
                                     @if($action == 'index')
-                                        <a href="/detailebook/{{$doccument->code}}" class="btn btn-primary w-100 mt-3 ">See More</a>
+                                        <a href="/detailebook/{{$doccument->code}}" class="btn btn-primary w-100  ">See More</a>
                                     @endif
                                     @if($action == 'edit')
-                                        <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100 mt-3 ">Edit this doc</a>
+                                        <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100  ">Edit this doc</a>
                                     @endif
                             </div>
                         </div></div>

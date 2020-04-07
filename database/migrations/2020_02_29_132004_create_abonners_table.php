@@ -15,7 +15,7 @@ class CreateAbonnersTable extends Migration
     {
         Schema::create('abonners', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('num')->unsigned()->unique();
+            $table->bigInteger('num')->unsigned()->unique();
             $table->string('nom',20);
             $table->string('prenom',20);
             $table->string('password',200);

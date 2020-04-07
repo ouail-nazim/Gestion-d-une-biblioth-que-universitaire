@@ -17,9 +17,6 @@ Route::get('/', function () {
     return view('user.index');
 });
 
-Route::get('index', function () {
-    return view('index.dropdown');
-});
 Route::get('/ho','UserController@home');
 Route::get('/gest','UserController@gest');
 
@@ -27,8 +24,9 @@ Route::get('/gest','UserController@gest');
 //    return view('welcome');
 //});
 
-Route::get('/indexdoc', 'DocumentControler@index');
-Route::get('/home', 'DocumentControler@index')->name('index.doc');
+Route::get('/home', 'HomeController@index');
+
+Route::get('/indexdoc', 'DocumentControler@index')->name('index.doc');
 Route::get('/create', 'DocumentControler@create');
 Route::post('/addlivre', 'DocumentControler@store');
 Route::get('/searchdoc','DocumentControler@searchdoc');

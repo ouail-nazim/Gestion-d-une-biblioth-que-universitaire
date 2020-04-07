@@ -61,36 +61,34 @@
 
 
 <div class="sidenav">
-    <img src="/storage/app/logo3.png" width="100%" height="80PX" class="mb-2 ">
+    <a href="/home" class="llogo"><img src="/storage/app/logo5.png" width="100%" class="mb-2 "></a>
     <button class="dropdown-btn1 ">
         <i class="fa fa-user-large mr-1 fa-user"></i>
         <span class="">{{"Admin" }}</span>
     </button>
     <div class="dropdown-container">
         <a class="dropdown-item" href="#">
-            <i class="fa fa-pencil-large mr-3 text-light fa fa-pencil"></i>
+            <i class="fa fa-pencil-large mr-3 text-dark fa fa-pencil"></i>
             settings
 
         </a>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-            <i class="fa mr-3 text-light fa-sign-out"></i> Logout
+            <i class="fa mr-3 text-dark fa-sign-out"></i> Logout
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>
-
-  <a href="/home"><i class="fa fa-home-large mr-3 fa fa-home "></i>Home</a>
-
-  <a href="/See_all" class="nav-link  font-italic ">
+    <a href="/home"><i class="fa fa-home-large mr-3 fa fa-home "></i>Home</a>
+    <a href="/indexdoc"><i class="fa fa-home-large mr-3 fa fa-book "></i>Document</a>
+    <a href="/See_all" class="nav-link  font-italic ">
           <i class="fa fa-eye-large mr-3 fa fa-eye "></i>
           Client
       </a>
-
-  <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer abonner</button>
-  <div class="dropdown-container">
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer abonner</button>
+    <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/addAbonner" class="nav-link font-italic ">
               <i class="fa fa-plus-large mr-1 fa-plus"></i>
@@ -122,8 +120,8 @@
           </a>
       </li>
   </div>
-  <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Document</button>
-  <div class="dropdown-container">
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Document</button>
+    <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/create" class="nav-link  font-italic ">
               <i class="fa fa-plus-large mr-1 fa-plus"></i>
@@ -143,6 +141,27 @@
           </a>
       </li>
   </div>
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer pret</button>
+    <div class="dropdown-container">
+        <li class="nav-item ">
+            <a href="#" class="nav-link  font-italic ">
+                <i class="fa fa-plus-large mr-1 fa-plus"></i>
+                nouveau pret
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a href="#" class="nav-link font-italic ">
+                <i class="fa fa-reply-large mr-1 fa-reply"></i>
+                retour le document
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a href="#" class="nav-link font-italic ">
+                <i class="fa fa-refresh-large mr-1 fa-refresh"></i>
+                renouveler le pret
+            </a>
+        </li>
+    </div>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
     <a href="#contact">About</a>
@@ -189,7 +208,6 @@ for (i = 0; i < dropdown1.length; i++) {
 }
 
 </script>
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
