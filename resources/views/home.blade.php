@@ -21,7 +21,7 @@
 
                     <div class="col">
                         <div class="card  abo" style="width: 16rem;">
-                            <img src="{{'/storage/books/'.$doccument->img}}"  height="100px" class="card-img-top" alt="...">
+                            <img src="{{'/storage/books/'.$doccument->img}}"  height="120px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 @if(($doccument->livre)!= null)
                                     <h5 class="card-title">code livre :{{$doccument->code}}</h5>
@@ -33,7 +33,7 @@
                                     <h6 class="card-title">promotion : {{$doccument->memoire->promotion}} </h6>
                                 @endif
 
-                                <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 60px;" class="btn badge-info ">{{$doccument->nmb_dex}}</span></h6>
+                                <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 50px;" class="btn badge-info ">{{$doccument->nmb_dex}}</span></h6>
                                     @if($action == 'suprimer')
                                             <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 ">Delet</button>
                                             <div id="id01" class="modal">

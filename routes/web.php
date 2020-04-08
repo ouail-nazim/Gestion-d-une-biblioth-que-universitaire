@@ -16,16 +16,19 @@ Auth::routes();
 Route::get('/', function () {
     return view('user.index');
 });
-
 Route::get('/ho','UserController@home');
 Route::get('/gest','UserController@gest');
+
+
 
 //Route::get('/register', function () {
 //    return view('welcome');
 //});
 
+//home
 Route::get('/home', 'HomeController@index');
 
+//document
 Route::get('/indexdoc', 'DocumentControler@index')->name('index.doc');
 Route::get('/create', 'DocumentControler@create');
 Route::post('/addlivre', 'DocumentControler@store');
@@ -42,33 +45,30 @@ Route::post('/updateMemoire/{code}','DocumentControler@updateMemoire');
 
 //Abonner
 Route::get('/See_all', 'AbonnerController@index');
-
 Route::get('/searchAbonner','AbonnerController@searchAbonner');
-
 Route::get('/addAbonner','AbonnerController@create');
 Route::post('/addAbonner','AbonnerController@store');
-
 Route::get('/gotoeditAbonner','AbonnerController@gotoeditAbonner');
 Route::get('/editAbonner', 'AbonnerController@editAbonner')->name('del');
 Route::get('/editAbonner2/{id}', 'AbonnerController@editAbonner2')->name('del');
 Route::post('/edit/{id}', 'AbonnerController@update')->name('edting');
-
 Route::get('/gotodeletAbonner','AbonnerController@gotodeletAbonner');
 Route::get('/deletAbonner', 'AbonnerController@deletAbonner')->name('del');
 Route::get('/delete/{id}', 'AbonnerController@delete')->name('edting');
-
-
 Route::get('/gotopinaliserAbonner','AbonnerController@gotopinaliserAbonner');
 Route::get('/pinaliserAbonner', 'AbonnerController@pinaliserAbonner');
 Route::get('/pinaliser/{id}', 'AbonnerController@pinaliser');
 Route::get('/Depinaliser/{id}', 'AbonnerController@Depinaliser');
-
 Route::get('/gotoprivligerAbonner','AbonnerController@gotoprivligerAbonner');
 Route::get('/privligerAbonner', 'AbonnerController@privligerAbonner');
-
 Route::get('/privliger/{id}', 'AbonnerController@privliger');
-
 Route::get('/more/{id}', 'AbonnerController@more');
+
+//preté
+Route::get('/creatadd','PretController@creat_add');
+Route::post('/savepret','PretController@savepret');
+Route::get('/topdf/{id}','PretController@pdf');
+
 
 use Carbon\Carbon;
 Route::get('/c', function () {

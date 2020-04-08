@@ -138,19 +138,23 @@
     <div class="col-md-4 ">
         <div class="row-md-12 liste boite ">
             <ul class="">
-                @for($i=0;$i<4;$i++)
+                @foreach( $Abonner->emprunt as $emp)
                     <li class="">
                         <div class="row">
-                            <div class="col-md-6 mr-3">
-                                livre name
+                            <div class="col-md-8 mr-3">
+                                Title :<strong>{{$doc=\App\Document::where('code','=',$emp->code_doc)->first()->titre}}</strong>
                                 <br>
-                                livre id
+                                numéro d'exemplaire :<strong>{{$emp->num_exem}}</strong>
+                                <br>
+                                date d'emprunt :<strong>{{$emp->date_emprunt}}</strong>
+                                <br>
+                                date de retour :<strong>{{$emp->date_retour}}</strong>
                             </div>
-                            <div class="col-md-3">7 days</div>
+                            {{--<div class="col-md-3">7 days</div>--}}
                         </div>
                     </li>
                     <hr>
-                @endfor
+                @endforeach
             </ul>
         </div>
         <div class="row-md-12 point  boite-alert alert alert-success ">

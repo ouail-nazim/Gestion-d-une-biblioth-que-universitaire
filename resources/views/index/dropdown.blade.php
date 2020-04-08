@@ -55,6 +55,14 @@
         </div>
     </div>
     <div class="navbar-nav ml-auto ">
+        <div class="row">
+
+            <a href="#1"><i class="fa fa-envelope  ml-1"></i><span class="badge badge1 badge-danger">9</span></a>
+            <a href="#2"><i class="fa fa-bell  ml-1"></i></i><span class="badge badge1 badge-danger">9</span></a>
+            <a href="#3"><i class="fa fa-comments  ml-1"></i></i><span class="badge badge1 badge-danger">100</span></a>
+            <a href="#4"><i class="fa fa-cogs ml-1"></i></a>
+
+        </div>
 
     </div>
 </div>
@@ -144,7 +152,7 @@
     <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer pret</button>
     <div class="dropdown-container">
         <li class="nav-item ">
-            <a href="#" class="nav-link  font-italic ">
+            <a href="/creatadd" class="nav-link  font-italic ">
                 <i class="fa fa-plus-large mr-1 fa-plus"></i>
                 nouveau pret
             </a>
