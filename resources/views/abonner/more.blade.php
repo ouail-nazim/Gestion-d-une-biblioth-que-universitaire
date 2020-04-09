@@ -136,12 +136,25 @@
         <br><br>
     </div>
     <div class="col-md-4 ">
+        <div class="row-md-12 point  boite-alert alert alert-success ">
+            <div class="row">
+                <strong> point : {{$Abonner->point}}</strong>
+            </div>
+        </div>
+        @if($Abonner->pen == true)
+            <div class="row-md-12 point boite-alert alert alert-danger ">
+                <div class="row">
+                    <strong>depanaliser en :2017-12-3</strong>
+
+                </div>
+            </div>
+        @endif
         <div class="row-md-12 liste boite ">
             <ul class="">
                 @foreach( $Abonner->emprunt as $emp)
                     <li class="">
                         <div class="row">
-                            <div class="col-md-8 mr-3">
+                            <div class="col-md-7 mr-2">
                                 Title :<strong>{{$doc=\App\Document::where('code','=',$emp->code_doc)->first()->titre}}</strong>
                                 <br>
                                 numéro d'exemplaire :<strong>{{$emp->num_exem}}</strong>
@@ -149,27 +162,50 @@
                                 date d'emprunt :<strong>{{$emp->date_emprunt}}</strong>
                                 <br>
                                 date de retour :<strong>{{$emp->date_retour}}</strong>
+                                <br>
                             </div>
-                            {{--<div class="col-md-3">7 days</div>--}}
+                            <div class="col-md-3">
+
+                                <div class="col-md-3 more">
+
+                                    @if(($emp->renouvler) ==false)
+                                        <a href="/renouvler/{{$emp->id}}"  class=" btn btn-dark " style="position:absolute; margin-left: -10px;">renouvler </a>
+                                    @else
+                                        <button onclick="document.getElementById('id03').style.display='block'" class=" btn btn-dark" style="position:absolute; margin-left: -10px;">renouvler</button>
+                                        <div id="id03" class="modal">
+                                            <div class="modal-content animate" >
+                                                <span class="" style="text-align: center ; font-size: 2em;"><strong>ce document deja renouvle</strong> </span>
+                                                <button class="bb btn btn-success" id="can2">OK</button>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            // Get the modal
+                                            var modal3 = document.getElementById('id03');
+                                            var can = document.getElementById('can2');
+                                            can.onclick=function () {
+                                                modal3.style.display = "none";
+                                            }
+                                        </script>
+                                    @endif
+
+
+
+
+
+
+
+                                </div>
+
+                            </div>
                         </div>
                     </li>
                     <hr>
                 @endforeach
+
+
             </ul>
         </div>
-        <div class="row-md-12 point  boite-alert alert alert-success ">
-            <div class="row">
-               <strong> point : {{$Abonner->point}}</strong>
-            </div>
-        </div>
-        @if($Abonner->pen == true)
-            <div class="row-md-12 point boite-alert alert alert-danger ">
-            <div class="row">
-                    <strong>depanaliser en :2017-12-3</strong>
 
-            </div>
-        </div>
-        @endif
     </div>
 </div>
 

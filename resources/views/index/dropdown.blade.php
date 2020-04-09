@@ -158,17 +158,12 @@
             </a>
         </li>
         <li class="nav-item ">
-            <a href="#" class="nav-link font-italic ">
+            <a href="/creatback" class="nav-link font-italic ">
                 <i class="fa fa-reply-large mr-1 fa-reply"></i>
                 retour le document
             </a>
         </li>
-        <li class="nav-item ">
-            <a href="#" class="nav-link font-italic ">
-                <i class="fa fa-refresh-large mr-1 fa-refresh"></i>
-                renouveler le pret
-            </a>
-        </li>
+
     </div>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>

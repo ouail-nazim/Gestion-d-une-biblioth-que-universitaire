@@ -44,8 +44,15 @@
 <body>
 <div>
     <div class="head">
-        <a class="btn btn-danger bn" href="/topdf/{{$emprunt->id}}"> convert to pdf <i class="fa fa-file-pdf-o" ></i></a>
-        <a class="btn btn-success bn1" href="/home"> go home <i class="fa fa-home"></i> </a>
+        <a class="btn btn-danger bn" id="pfd" href="/topdf/{{$emprunt->id}}"
+        > imprimer pdf <i class="fa fa-file-pdf-o" ></i></a>
+        <script>
+            var pfd = document.getElementById('pfd');
+            pfd.onclick=function () {
+                pfd.style.display = "none";
+            }
+        </script>
+        <a class="btn btn-success bn1" href="/home"> page d'accueil<i class="fa fa-home"></i> </a>
         <h5>الجمهورية الجزائرية الديمقراطية الشعبية </h5>
         <h6>La République Algérienne Démocratique et Populaire</h6>
         <br>

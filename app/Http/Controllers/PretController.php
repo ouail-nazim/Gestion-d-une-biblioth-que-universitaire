@@ -17,8 +17,16 @@ class PretController extends Controller
         $ar=array('vous avez inseré ');
         return view('pret.add')->with(['msg'=> null]);
     }
-    public function savepret(){
+    public function savepret(Request $request){
         //get inputs
+        $request->validate([
+            'numcart'=>'required|numeric|max:999999999999999',
+            'nom'=>'required|alpha|max:20',
+            'prenom'=>'required|alpha|max:20',
+            'codedoc'=>'required|max:10',
+            'numexem'=>'required|numeric',
+            'title'=>'required|max:30',
+        ]);
         $codedoc=request('codedoc');
         $numexem=request('numexem');
         $title=request('title');
@@ -37,6 +45,10 @@ class PretController extends Controller
         //get le nombre des document qui l'abonner est deja preter
         $nmbr=count(Emprunt::where('num','=',$numcart)->get());
         // specifier le nombre des livre otoriser a labonner et la duré d'après son privlige
+        if ($abo == null){
+            $ar=array("l'abonner nexist pas ");
+            return view('pret.add')->with(['msg'=> $ar]);
+        }
         if ($abo->privliger == 'superfan'){$otoris=4;$duré=10;}
         if ($abo->privliger == 'fan'){$otoris=3;$duré=10;}
         if ($abo->privliger == 'simple'){$otoris=3;$duré=7;}
@@ -76,8 +88,34 @@ class PretController extends Controller
                 );
             }
             else{
-                $ar=array('vous avez inseré des valeur incorrect');
-                return view('pret.add')->with(['msg'=> $ar]);
+                if(($E1 ==null)){
+                    $ar=array("l'exemplaire demender n'existe pas");
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if(($doc ==null)){
+                    $ar=array("le document demender n'existe pas");
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if(($abo->nom)!=$nom){
+                    $ar=array('le nom d\'abonner incorrect');
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if(($abo->prenom)!=$prenom){
+                    $ar=array('le prénom d\'abonner incorrect');
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if(($abo->pen)== true){
+                    $ar=array('ce abonner est penalisez ');
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if((($doc->titre)!=$title)){
+                    $ar=array('le titre de document incorrect');
+                    return view('pret.add')->with(['msg'=> $ar]);
+                }
+                if((($E1->disponibilite)== false)){
+                      $ar=array('ce exemplaire n\'est pas disponible' );
+                      return view('pret.add')->with(['msg'=> $ar]);
+                }
             }
         }
         else{
@@ -85,14 +123,69 @@ class PretController extends Controller
             return view('pret.add')->with(['msg'=> $ar]);
 
         }
+    }
+    public function renouvler($id){
+        $emprunt=Emprunt::find($id);
 
+        $now = Carbon::today();
+        $date_retour=$now->addDays(15)->toDateString();
+        $emprunt->date_retour=$date_retour;
+        $emprunt->renouvler=true;
+        $emprunt->save();
+        return redirect("/more/"."11" );
 
+    }
 
+    public function creat_back(){
+        return view('pret.retour_doc')->with(['msg'=> null]);
+    }
+    public function save_back(Request $request){
+        $request->validate([
+            'atest'=>'required|numeric',
+            'num'=>'required|numeric',
+            'code_doc'=>'required|numeric',
+            'num_exem'=>'required|numeric',
 
+        ]);
+        $codedoc=request('code_doc');
+        $numexem=request('num_exem');
+        $numcart=request('num');
+        $atest=request('atest');
 
+       $emprunt=Emprunt::find($atest);
 
+       if ((($emprunt->num)==$numcart)
+            &&(($emprunt->code_doc)==$codedoc)
+           &&(($emprunt->num_exem)==$numexem)
+       ){
+           $E1=Exemplaire::where([
+               ['identif', '=', $numexem],
+               ['code_doc', '=', $codedoc],
+           ])->first();
+           $E1->disponibilite=true;
+           $E1->update();
+           $abo=Abonner::where('num','=',$numcart)->first();
+           $abo->point=($abo->point)+1;
+           if (($abo->point)==50){$abo->privliger = 'fan';}
+           if (($abo->point)==100){$abo->privliger = 'superfan';}
+           $abo->update();
+           $emprunt->delete();
+           return redirect('/home');
+       }else{
+           dd('hhhhhhh');
+       }
 
-
+        //get l'exemplaire avec l'identif et le code de document
+        $E1=Exemplaire::where([
+            ['identif', '=', $numexem],
+            ['code_doc', '=', $codedoc],
+        ])->first();
+        //get document avec le code de document
+        $doc=Document::where('code','=',$codedoc)->first();
+        //get l'abonner avec némoro de carte
+        $abo=Abonner::where('num','=',$numcart)->first();
+        //get le nombre des document qui l'abonner est deja preter
+        $nmbr=count(Emprunt::where('num','=',$numcart)->get());
 
     }
 

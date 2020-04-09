@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Abonner;
 use App\Categorie;
 use App\Document;
+use App\Emprunt;
 use App\Exemplaire;
 use App\Livre;
 use App\Memoire;
@@ -39,7 +40,8 @@ class HomeController extends Controller
         $livre=count(Livre::all());
         $mem=count(Memoire::all());
         $exem=count(Exemplaire::all());
-        $exempret=count(Exemplaire::where('disponibilite','=',false)->get());
+        //Exemplaire::where('disponibilite','=',false)->get()
+        $exempret=count(Emprunt::all());
         $cat=count(Categorie::all());
         return view('index.index')->with(
            [

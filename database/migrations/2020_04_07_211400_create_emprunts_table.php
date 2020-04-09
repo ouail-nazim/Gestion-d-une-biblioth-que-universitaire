@@ -21,6 +21,7 @@ class CreateEmpruntsTable extends Migration
             $table->integer('num_exem');
             $table->date('date_emprunt');
             $table->date('date_retour');
+            $table->boolean('renouvler')->default(false);
 
             $table->foreign('id_abo')->references('id')->on('abonners')->onDelete('cascade');
 

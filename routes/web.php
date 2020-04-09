@@ -68,6 +68,9 @@ Route::get('/more/{id}', 'AbonnerController@more');
 Route::get('/creatadd','PretController@creat_add');
 Route::post('/savepret','PretController@savepret');
 Route::get('/topdf/{id}','PretController@pdf');
+Route::get('/renouvler/{id}','PretController@renouvler');
+Route::get('/creatback','PretController@creat_back');
+Route::post('/saveback','PretController@save_back');
 
 
 use Carbon\Carbon;
