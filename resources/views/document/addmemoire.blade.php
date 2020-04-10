@@ -82,7 +82,7 @@
             <br>
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control"  name="code" placeholder="le code de livre" required>
+                    <input type="text" class="form-control" maxlength="10" name="code" placeholder="le code de livre" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>

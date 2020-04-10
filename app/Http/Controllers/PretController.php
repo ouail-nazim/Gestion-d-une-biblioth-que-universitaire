@@ -12,7 +12,10 @@ use Barryvdh\DomPDF\PDF;
 
 class PretController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function creat_add(){
         $ar=array('vous avez inseré ');
         return view('pret.add')->with(['msg'=> null]);
@@ -121,7 +124,6 @@ class PretController extends Controller
         else{
             $ar=array('vous avez dépassé le nombre max de document autorisé');
             return view('pret.add')->with(['msg'=> $ar]);
-
         }
     }
     public function renouvler($id){
@@ -132,10 +134,9 @@ class PretController extends Controller
         $emprunt->date_retour=$date_retour;
         $emprunt->renouvler=true;
         $emprunt->save();
-        return redirect("/more/"."11" );
+        return redirect("/more/$emprunt->id_abo");
 
     }
-
     public function creat_back(){
         return view('pret.retour_doc')->with(['msg'=> null]);
     }
@@ -145,7 +146,6 @@ class PretController extends Controller
             'num'=>'required|numeric',
             'code_doc'=>'required|numeric',
             'num_exem'=>'required|numeric',
-
         ]);
         $codedoc=request('code_doc');
         $numexem=request('num_exem');
@@ -153,40 +153,55 @@ class PretController extends Controller
         $atest=request('atest');
 
        $emprunt=Emprunt::find($atest);
-
-       if ((($emprunt->num)==$numcart)
-            &&(($emprunt->code_doc)==$codedoc)
-           &&(($emprunt->num_exem)==$numexem)
-       ){
-           $E1=Exemplaire::where([
-               ['identif', '=', $numexem],
-               ['code_doc', '=', $codedoc],
-           ])->first();
-           $E1->disponibilite=true;
-           $E1->update();
-           $abo=Abonner::where('num','=',$numcart)->first();
-           $abo->point=($abo->point)+1;
-           if (($abo->point)==50){$abo->privliger = 'fan';}
-           if (($abo->point)==100){$abo->privliger = 'superfan';}
-           $abo->update();
-           $emprunt->delete();
-           return redirect('/home');
+       if($emprunt ==null){
+           $ar=array('l\'atestation demandé n\'exist pas' );
+           return view('pret.retour_doc')->with(['msg'=> $ar]);
        }else{
-           dd('hhhhhhh');
+           if ((($emprunt->num)==$numcart)
+               &&(($emprunt->code_doc)==$codedoc)
+               &&(($emprunt->num_exem)==$numexem)
+           )
+           {
+
+               $abo=Abonner::where('num','=',$numcart)->first();
+               if ($emprunt->date_retour < Carbon::today()->toDateString() )
+               {
+                   $abo->pen=true;
+                   if ($abo->privliger == 'superfan'){$abo->point=50;$abo->privliger = 'fan';}
+                   if ($abo->privliger == 'fan'){$abo->point=0;$abo->privliger = 'simple';}
+                   if ($abo->privliger == 'simple'){$abo->point=0;}
+               }else{
+                   $abo->point=($abo->point)+1;
+                   if (($abo->point)==50){$abo->privliger = 'fan';}
+                   if (($abo->point)==100){$abo->privliger = 'superfan';}
+               }
+
+               $E1=Exemplaire::where([
+                   ['identif', '=', $numexem],
+                   ['code_doc', '=', $codedoc],
+               ])->first();
+               $E1->disponibilite=true;
+               if ((request('etat'))!=null){
+                   $etat=(int)(request('etat'));
+                   if ($E1->etat >=$etat){
+                       $E1->etat =$etat;
+                       $abo->point=($abo->point)-10;
+                   }
+                   else{
+                       $ar=array('imposible de amilioré l\'etat de document' );
+                       return view('pret.retour_doc')->with(['msg'=> $ar]);
+                   }
+               }
+
+               $E1->update();
+               $abo->update();
+               $emprunt->delete();
+               return redirect('/home');
+           }else{
+               $ar=array('remplir le formulaire avec des valeur correct' );
+               return view('pret.retour_doc')->with(['msg'=> $ar]);
+           }
        }
-
-        //get l'exemplaire avec l'identif et le code de document
-        $E1=Exemplaire::where([
-            ['identif', '=', $numexem],
-            ['code_doc', '=', $codedoc],
-        ])->first();
-        //get document avec le code de document
-        $doc=Document::where('code','=',$codedoc)->first();
-        //get l'abonner avec némoro de carte
-        $abo=Abonner::where('num','=',$numcart)->first();
-        //get le nombre des document qui l'abonner est deja preter
-        $nmbr=count(Emprunt::where('num','=',$numcart)->get());
-
     }
 
     //convert to pdf

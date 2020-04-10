@@ -97,7 +97,7 @@
             <br><br>
             <strong>Titre :</strong>{{$doc->titre}}
             <br><strong>Code :</strong>{{$doc->code}}
-            <br><strong>l'exemplaire numéro :</strong>{{$E1->identif}}
+            <br><strong>l'exemplaire numéro :</strong>{{$E1->identif}} , dons l'etat : {{$E1->etat}}
             <br><br> en {{$emprunt->date_emprunt}} , et il doit le retourner en {{$emprunt->date_retour}}
         </p>
 

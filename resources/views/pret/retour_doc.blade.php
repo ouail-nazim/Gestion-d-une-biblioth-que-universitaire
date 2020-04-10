@@ -36,7 +36,7 @@
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">
                         <label for="validationCustom01">Numéro de l'attestation</label>
-                        <input type="text" class="form-control" name="atest" id="validationCustom01" required>
+                        <input type="number" min="0" class="form-control" name="atest" id="validationCustom01" required>
                         <div class="valid-feedback">
                             entré un numéro
                         </div>
@@ -45,30 +45,49 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-2 mb-3"></div>
-                    <div class="col-md-8 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="validationCustom01">Le matricule d'etudient</label>
-                        <input type="text" class="form-control" name="num" id="validationCustom01" required>
+                        <input type="text" class="form-control" maxlength="10" name="num" id="validationCustom01" required>
                         <div class="valid-feedback">
                             entré un nom
                         </div>
                     </div>
-                    <div class="col-md-2 mb-3"></div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-2 mb-3"></div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">LE code de document</label>
-                        <input type="text" class="form-control" name="code_doc" id="validationCustom01" required>
+                        <input type="text" class="form-control" maxlength="15" name="code_doc" id="validationCustom01" required>
                         <div class="valid-feedback">
                             entré un prenom
                         </div>
                     </div>
 
+                    <div class="col-md-2 mb-3"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-2 mb-3"></div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">LE numéro d'exemplaire </label>
-                        <input type="text" class="form-control" name="num_exem" id="validationCustom01" required>
+                        <input type="number" min="0"  class="form-control"  name="num_exem" id="validationCustom01" required>
                         <div class="valid-feedback">
                             entré un prenom
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip04">L'Etat de l'exemplaire</label>
+                        <select class="custom-select" name="etat" id="validationTooltip04" >
+                            <option selected disabled >changer l'état aux ......</option>
+                            <option value="100">Parfait</option>
+                            <option value="90">Tres bon</option>
+                            <option value="80 ">Bon état</option>
+                            <option value="70">Assez bon etat</option>
+                            <option value="60">etat satisfaisant</option>
+                            <option value="50">état passable</option>
+                            <option value="40">mauvais état </option>
+                            <option value="30">livre déchiré</option>
+
+
+                        </select>
+                        <div class="invalid-tooltip">
+                            Please select a valid state.
                         </div>
                     </div>
                     <div class="col-md-2 mb-3"></div>

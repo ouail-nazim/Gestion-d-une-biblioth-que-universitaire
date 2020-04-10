@@ -56,7 +56,7 @@
             <br>
             <div class="form-row">
                 <div class="col-md-6">
-                    <input type="text" class="form-control"  name="code" value="{{old('code')}}" placeholder="le code de livre" required>
+                    <input type="text" maxlength="10" class="form-control"  name="code" value="{{old('code')}}" placeholder="le code de livre" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>

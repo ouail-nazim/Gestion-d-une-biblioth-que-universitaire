@@ -36,7 +36,7 @@
                    <div class="col-md-2 mb-3"></div>
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Numéro de carte</label>
-                       <input type="text" class="form-control" name="numcart" id="validationCustom01" required>
+                       <input type="text" maxlength="15" class="form-control" name="numcart" id="validationCustom01" required>
                        <div class="valid-feedback">
                            entré un numéro
                        </div>
@@ -47,7 +47,7 @@
                    <div class="col-md-2 mb-3"></div>
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Le nom</label>
-                       <input type="text" class="form-control" name="nom" id="validationCustom01" required>
+                       <input type="text" class="form-control"  maxlength="20" name="nom" id="validationCustom01" required>
                        <div class="valid-feedback">
                            entré un nom
                        </div>
@@ -57,8 +57,8 @@
                <div class="form-row">
                    <div class="col-md-2 mb-3"></div>
                    <div class="col-md-8 mb-3">
-                       <label for="validationCustom01">LE prénom</label>
-                       <input type="text" class="form-control" name="prenom" id="validationCustom01" required>
+                       <label for="validationCustom01" >LE prénom</label>
+                       <input type="text" class="form-control" maxlength="20" name="prenom" id="validationCustom01" required>
                        <div class="valid-feedback">
                            entré un prenom
                        </div>
@@ -80,7 +80,7 @@
                    <div class="col-md-2 mb-3"></div>
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Code de document</label>
-                       <input type="text" class="form-control" name="codedoc" id="validationCustom01" required>
+                       <input type="text" class="form-control" maxlength="10" name="codedoc" id="validationCustom01" required>
                        <div class="valid-feedback">
                            Looks good!
                        </div>
@@ -91,7 +91,7 @@
                    <div class="col-md-2 mb-3"></div>
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Numéro d'exemplair</label>
-                       <input type="text" class="form-control" name="numexem" id="validationCustom01"  required>
+                       <input type="number" min="0" class="form-control" name="numexem" id="validationCustom01"  required>
                        <div class="valid-feedback">
                            Looks good!
                        </div>
