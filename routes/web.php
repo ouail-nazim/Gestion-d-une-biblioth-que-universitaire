@@ -43,6 +43,7 @@ Route::get('/edit/{code}','DocumentControler@edit');
 Route::post('/updateLivre/{code}','DocumentControler@updateLivre');
 Route::post('/updateMemoire/{code}','DocumentControler@updateMemoire');
 
+
 //Abonner
 Route::get('/See_all', 'AbonnerController@index');
 Route::get('/searchAbonner','AbonnerController@searchAbonner');
@@ -63,6 +64,13 @@ Route::get('/gotoprivligerAbonner','AbonnerController@gotoprivligerAbonner');
 Route::get('/privligerAbonner', 'AbonnerController@privligerAbonner');
 Route::get('/privliger/{id}', 'AbonnerController@privliger');
 Route::get('/more/{id}', 'AbonnerController@more');
+
+
+Route::get('/getpenliser', 'AbonnerController@getpenliser');
+
+
+
+
 
 //preté
 Route::get('/creatadd','PretController@creat_add');

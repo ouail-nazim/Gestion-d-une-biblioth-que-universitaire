@@ -58,7 +58,7 @@
         <div class="row">
 
             <a href="#1"><i class="fa fa-envelope  ml-1"></i><span class="badge badge1 badge-danger">9</span></a>
-            <a href="#2"><i class="fa fa-bell  ml-1"></i></i><span class="badge badge1 badge-danger">9</span></a>
+            <a href="/getpenliser"><i class="fa fa-bell  ml-1"></i></i><span class="badge badge1 badge-danger">@yield('bell')</span></a>
             <a href="#3"><i class="fa fa-comments  ml-1"></i></i><span class="badge badge1 badge-danger">100</span></a>
             <a href="#4"><i class="fa fa-cogs ml-1"></i></a>
 

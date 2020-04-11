@@ -187,5 +187,11 @@ class AbonnerController extends Controller
 
     }
 
+    //--------------------------------------------------------------
+    public function getpenliser(){
+        $abonner=Abonner::all();
+        return view('liste_pret')->with(['abonner'=>$abonner]);
+    }
+
 
 }

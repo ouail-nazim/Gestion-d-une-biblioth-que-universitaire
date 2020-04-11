@@ -15,7 +15,7 @@
     </div>
 
     <div class="col">
-        <div class="container cont">
+        <div class="container cont ">
             <div class="row row-cols-4">
                 @foreach($doc as $doccument)
 

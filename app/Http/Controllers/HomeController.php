@@ -9,6 +9,7 @@ use App\Emprunt;
 use App\Exemplaire;
 use App\Livre;
 use App\Memoire;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -41,8 +42,15 @@ class HomeController extends Controller
         $mem=count(Memoire::all());
         $exem=count(Exemplaire::all());
         //Exemplaire::where('disponibilite','=',false)->get()
-        $exempret=count(Emprunt::all());
+        $total=Emprunt::all();
+        $exempret=count($total);
         $cat=count(Categorie::all());
+        $retarde=0;
+        foreach ($total as $emprunt){
+            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
+                $retarde++;
+            }
+        }
         return view('index.index')->with(
            [
                "abonner"=>$abonner,
@@ -55,7 +63,8 @@ class HomeController extends Controller
                "mem"=> $mem,
                "exem"=>$exem,
                "exempret"=>$exempret,
-               "cat"=>$cat
+               "cat"=>$cat,
+               "retarde"=>$retarde,
            ]
         );
     }

@@ -343,4 +343,6 @@ class DocumentControler extends Controller
         return redirect("/indexdoc");
     }
 
+
+
 }

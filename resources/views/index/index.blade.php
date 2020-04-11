@@ -26,6 +26,7 @@
 </style>
 @endsection
 
+@section('bell') {{$retarde}}@endsection
 @section('content1')
     <div class="row row-cols-1 row-cols-md-5">
         <div class="col mb-3">

@@ -72,11 +72,12 @@ class PretController extends Controller
                 $date_retour=$now->addDays($duré)->toDateString();
                 $emprunt=new Emprunt();
                 $emprunt->num=$numcart;
-                $emprunt->id_abo=$abo->id;
                 $emprunt->code_doc=$codedoc;
                 $emprunt->num_exem=$numexem;
                 $emprunt->date_emprunt=$date_emprunt;
                 $emprunt->date_retour=$date_retour;
+                $emprunt->id_abo=$abo->id;
+                $emprunt->id_exm=$E1->id;
                 $emprunt->save();
 
                 $E1->disponibilite=false;
@@ -280,7 +281,7 @@ class PretController extends Controller
                                 <br><br>
                                 <strong>Titre :</strong>'.$titre.'
                                 <br><strong>Code :</strong>'.$code.'
-                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$etat.'
+                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$num_exem.'
                                 <br><br> en '.$date_emprunt.'  ,et il doit le retourner en '.$date_retour.'
                             </p>
                     
