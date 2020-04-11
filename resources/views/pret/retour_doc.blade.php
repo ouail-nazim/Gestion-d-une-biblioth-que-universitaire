@@ -75,14 +75,14 @@
                         <label for="validationTooltip04">L'Etat de l'exemplaire</label>
                         <select class="custom-select" name="etat" id="validationTooltip04" >
                             <option selected disabled >changer l'état aux ......</option>
-                            <option value="100">Parfait</option>
-                            <option value="90">Tres bon</option>
-                            <option value="80 ">Bon état</option>
-                            <option value="70">Assez bon etat</option>
-                            <option value="60">etat satisfaisant</option>
-                            <option value="50">état passable</option>
-                            <option value="40">mauvais état </option>
-                            <option value="30">livre déchiré</option>
+                            <option value="90">Parfait</option>
+                            <option value="80">Tres bon état</option>
+                            <option value="70 ">Bon état</option>
+                            <option value="60">Assez bon etat</option>
+                            <option value="50">etat satisfaisant</option>
+                            <option value="40">état passable</option>
+                            <option value="30">mauvais état </option>
+                            <option value="20">déchiré</option>
 
 
                         </select>

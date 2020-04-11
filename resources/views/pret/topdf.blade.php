@@ -97,7 +97,21 @@
             <br><br>
             <strong>Titre :</strong>{{$doc->titre}}
             <br><strong>Code :</strong>{{$doc->code}}
-            <br><strong>l'exemplaire numéro :</strong>{{$E1->identif}} , dons l'etat : {{$E1->etat}}
+            <br><strong>l'exemplaire numéro :</strong>{{$E1->identif}} , dons l'etat :
+            <?php
+            switch ($E1->etat) {
+                case 100 :  echo 'NEUF';  break;
+                case 90 :  echo 'Parfait';  break;
+                case 80 :  echo 'Tres bon état';  break;
+                case 70 :  echo 'Bon état';  break;
+                case 60 :  echo 'Assez bon etat';  break;
+                case 50 :  echo 'etat satisfaisant';  break;
+                case 40 :  echo 'état passable';  break;
+                case 30 :  echo 'mauvais état ';  break;
+                case 20 :  echo 'déchiré';  break;
+
+            }
+            ?>
             <br><br> en {{$emprunt->date_emprunt}} , et il doit le retourner en {{$emprunt->date_retour}}
         </p>
 

@@ -185,7 +185,9 @@ class PretController extends Controller
                    $etat=(int)(request('etat'));
                    if ($E1->etat >=$etat){
                        $E1->etat =$etat;
-                       $abo->point=($abo->point)-10;
+                       if (($abo->point)>0){
+                       $abo->point=($abo->point)-1;
+                       }
                    }
                    else{
                        $ar=array('imposible de amilioré l\'etat de document' );
@@ -209,7 +211,22 @@ class PretController extends Controller
         $emprent=Emprunt::find($id);
         $abonner=Abonner::where('num','=',$emprent->num)->first();
         $doc=Document::where('code','=',$emprent->code_doc)->first();
+        $E1=Exemplaire::where([
+            ['identif', '=', $emprent->num_exem],
+            ['code_doc', '=', $emprent->code_doc],
+        ])->first();
+        switch ($E1->etat) {
+            case 100 :  $etat= 'NEUF';  break;
+            case 90 :  $etat= 'Parfait';  break;
+            case 80 :  $etat= 'Tres bon état';  break;
+            case 70 :  $etat= 'Bon état';  break;
+            case 60 :  $etat= 'Assez bon etat';  break;
+            case 50 :  $etat= 'etat satisfaisant';  break;
+            case 40 :  $etat= 'état passable';  break;
+            case 30 :  $etat= 'mauvais état ';  break;
+            case 20 :  $etat= 'déchiré';  break;
 
+        }
 
         $nom=$abonner->nom;
         $prenom=$abonner->prenom;
@@ -222,10 +239,10 @@ class PretController extends Controller
 
 
         $pdf=\App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->data_to_html($id,$nom,$prenom,$num,$titre,$code,$num_exem,$date_emprunt,$date_retour));
+        $pdf->loadHTML($this->data_to_html($id,$nom,$prenom,$num,$titre,$code,$num_exem,$etat,$date_emprunt,$date_retour));
         return $pdf->stream();
     }
-    public function data_to_html($id,$nom,$prenom,$num,$titre,$code,$num_exem,$date_emprunt,$date_retour){
+    public function data_to_html($id,$nom,$prenom,$num,$titre,$code,$num_exem,$etat,$date_emprunt,$date_retour){
 
         $output='
                     <div>
@@ -263,7 +280,7 @@ class PretController extends Controller
                                 <br><br>
                                 <strong>Titre :</strong>'.$titre.'
                                 <br><strong>Code :</strong>'.$code.'
-                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.'
+                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$etat.'
                                 <br><br> en '.$date_emprunt.'  ,et il doit le retourner en '.$date_retour.'
                             </p>
                     
