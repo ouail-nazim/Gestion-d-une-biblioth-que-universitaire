@@ -75,14 +75,14 @@
                 <strong>Ajouter une mémoire </strong>
                 @if ($errors->any())
                     <div class="alert alert-danger">
-                        <h1 align="center">abonner not added</h1>
+                        <h1 align="center">added filed</h1>
                     </div>
                 @endif
             </legend>
             <br>
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control" maxlength="10" name="code" placeholder="le code de livre" required>
+                    <input type="text" class="form-control" maxlength="10" name="code" value="{{old('code')}}" placeholder="le code de livre" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
@@ -93,7 +93,7 @@
             <br>
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control" name="titre" placeholder="le titre de livre" required>
+                    <input type="text" class="form-control" name="titre" value="{{old('titre')}}" placeholder="le titre de livre" required>
                     <SCRIPT LANGUAGE="JavaScript">
                         document.forms.frm.nom.focus();
                     </SCRIPT>
@@ -103,7 +103,7 @@
                     @enderror
                 </div>
                 <div class="col-md-3">
-                    <input type="number"   class="form-control" name="nmb_dex" placeholder="nombre d'exomplair" required>
+                    <input type="number"   class="form-control" name="nmb_dex" value="{{old('nmb_dex')}}" placeholder="nombre dexomplair" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                      @error('nmb_dex')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
@@ -194,7 +194,7 @@
             <br>
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control"  name="promotion" placeholder="Promotion" required>
+                    <input type="text" class="form-control"  name="promotion" value="{{old('promotion')}}" placeholder="Promotion" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                     @error('promotion')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
@@ -204,7 +204,7 @@
             <br>
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control"  name="emplacment" placeholder="emplacement" required>
+                    <input type="text" class="form-control"  name="emplacment" value="{{old('emplacment')}}" placeholder="emplacement" required>
                     <div class="invalid-feedback">Please provide a valid value </div>
                      @error('emplacment')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
@@ -217,8 +217,8 @@
                     <strong> le date d'edition </strong>
                 </div>
                 <div class="col-md-9">
-                    <input type="date" name="annee" class="form-control"  required>
-                    <div class="invalid-feedback">Please select one of those langages</div>
+                    <input type="date" name="annee" class="form-control" value="{{old('annee')}}" required>
+                    <div class="invalid-feedback"> Please select one of those langages</div>
                     @error('annee')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror

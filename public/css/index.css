@@ -11,7 +11,7 @@ body:before{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    -webkit-background-image: url("bib.jpg");
+    -webkit-background-image: url("images/bg.jpg");
     -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
@@ -24,7 +24,7 @@ body:before{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 70%;
+    width: 50%;
     height: 500px;
     padding: 80px 40px;
     box-sizing: border-box;
@@ -36,7 +36,6 @@ body:before{
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    margin-left: -250px;
     margin-top: -90px;
     top: calc(-80px/2);
     left: calc(50% - 40px);
@@ -61,7 +60,8 @@ body:before{
     margin-bottom: 20px;
 }
 .contact-form input[type="text"],
-.contact-form input[type="password"]
+.contact-form input[type="password"],
+.contact-form input[type="email"]
 {
     border: none;
     border-bottom: 1px solid #fff;
@@ -73,54 +73,39 @@ body:before{
 }
 .contact-form input[type="submit"] {
     height: 30px;
-    color: #fff;
+    color: black;
     font-size: 15px;
-    background: red;
+    background: #7be400;
     cursor: pointer;
     border-radius: 25px;
     border: none;
     outline: none;
     margin-top: 15%;
 }
-.contact-form a
+
+.cancel
 {
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
+    position: absolute;
+    text-align: center;
+    height: 30px;
+    font-size: 15px;
+    background: #ff3408;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-top: 6.5%;
 }
-input[type="checkbox"] {
-    width: 20%;
-}
-
 .C1{
-
     width: 300px;
     padding: 80px;
     justify-content: center;
 }
 .C2{
     width: 50%;
-    margin-left: 20%;
+    margin:auto;
 }
-.row{
-    display: flex;
-    flex-direction: row;
-}
-.b{
-    border: none;
-    width: 270px;
-    height: 30px;
-    background: linear-gradient(to right,#989A99,#5D5D5D);
-    border-radius: 6px;
-    box-shadow: 6px 6px 6px #4C1E1E;
-    opacity: 0.8;
-}
-.bt {
-    width: 270px;
-    height: 30px;
 
-}
 
 
 

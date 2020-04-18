@@ -12,12 +12,13 @@
 */
 Auth::routes();
 
-//simple user
-Route::get('/', function () {
-    return view('user.index');
-});
-Route::get('/ho','UserController@home');
-Route::get('/gest','UserController@gest');
+//user
+Route::get('/', 'UserController@UserHome');
+Route::get('/UserLogin', 'UserController@UserLogin');
+Route::get('/about', 'UserController@About');
+Route::get('/getlivre', 'UserController@getlivre');
+Route::get('/filtre', 'UserController@filtre');
+
 
 
 
@@ -25,9 +26,8 @@ Route::get('/gest','UserController@gest');
 //    return view('welcome');
 //});
 
-//home
+//homeadmin
 Route::get('/home', 'HomeController@index');
-
 //document
 Route::get('/indexdoc', 'DocumentControler@index')->name('index.doc');
 Route::get('/create', 'DocumentControler@create');
@@ -42,7 +42,8 @@ Route::post('/sercheedit', 'DocumentControler@beforEdit')->name('serche.for.edit
 Route::get('/edit/{code}','DocumentControler@edit');
 Route::post('/updateLivre/{code}','DocumentControler@updateLivre');
 Route::post('/updateMemoire/{code}','DocumentControler@updateMemoire');
-
+Route::get('/Catégori','DocumentControler@Catégori');
+Route::post('/addcategori','DocumentControler@addcategori');
 
 //Abonner
 Route::get('/See_all', 'AbonnerController@index');
@@ -64,13 +65,7 @@ Route::get('/gotoprivligerAbonner','AbonnerController@gotoprivligerAbonner');
 Route::get('/privligerAbonner', 'AbonnerController@privligerAbonner');
 Route::get('/privliger/{id}', 'AbonnerController@privliger');
 Route::get('/more/{id}', 'AbonnerController@more');
-
-
 Route::get('/getpenliser', 'AbonnerController@getpenliser');
-
-
-
-
 
 //preté
 Route::get('/creatadd','PretController@creat_add');
@@ -79,41 +74,5 @@ Route::get('/topdf/{id}','PretController@pdf');
 Route::get('/renouvler/{id}','PretController@renouvler');
 Route::get('/creatback','PretController@creat_back');
 Route::post('/saveback','PretController@save_back');
-
-
-use Carbon\Carbon;
-Route::get('/c', function () {
-
-    //$now = Carbon::now();
-    //$now = new Carbon();
-    //dd($now);
-
-    //$today = Carbon::today();
-    //dd($today);
-
-    //$newYear = new Carbon('first day of January 2016');
-    //dd($newYear);
-
-    //$now = Carbon::now();
-    //$trialExpires = $now->addDays(7);
-    //dd($trialExpires);
-
-
-//    $dt = Carbon::create(2012, 1, 31, 0);
-//    echo $dt->toDateTimeString();
-
-
-    $current = Carbon::now();
-    $dt      = Carbon::now();
-
-    $dt = $dt->subHours(6);
-    echo $dt->diffInHours($current);         // -6
-    echo $current->diffInHours($dt);         // 6
-
-    $future = $current->addMonth();
-    $past   = $current->subMonths(2);
-    echo $current->diffInDays($future);      // 31
-    echo $current->diffInDays($past);        // -62
-});
 
 

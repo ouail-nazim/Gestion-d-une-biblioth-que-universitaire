@@ -343,6 +343,18 @@ class DocumentControler extends Controller
         return redirect("/indexdoc");
     }
 
-
+    public function Catégori(){
+        $cat=Categorie::all();
+        return view('Catégori')->with(['cat'=>$cat]);
+    }
+    public function addcategori(Request $request){
+        $this->validate($request,[
+            'name_cat'=>'required|max:20'
+        ]);
+        $cat=new Categorie();
+        $cat->name=request('name_cat');
+        $cat->save();
+        return redirect('/Catégori');
+    }
 
 }

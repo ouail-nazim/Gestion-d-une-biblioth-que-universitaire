@@ -50,7 +50,10 @@
             </legend>
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <h1 align="center">abonner not added</h1>
+                    <h1 align="center">added filed</h1>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
                 </div>
             @endif
             <br>

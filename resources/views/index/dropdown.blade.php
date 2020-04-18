@@ -165,9 +165,8 @@
         </li>
 
     </div>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact">About</a>
+    <a href="/Catégori">Catégori</a>
+    <a href="/about">About</a>
 </div>
 
 <div class=" p-2 flex-grow-1 bd-highlight content1">
