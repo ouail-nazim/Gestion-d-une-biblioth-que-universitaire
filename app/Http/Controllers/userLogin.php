@@ -2,26 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Abonner;
 use App\Categorie;
 use App\Document;
 use App\Livre;
-use Illuminate\Http\Request;
 use Auth;
 
-class UserController extends Controller
+class userLogin extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth:abonner');
-
-//        //messages number
-//        $messages_number = count(Contact::all());
-//        Config::set('messages_number',$messages_number);
+    public function UserLogin(){
+        return view('user.login');
     }
-    public function UserHome(){
-            $doc=Document::all();
-            $cat=Categorie::all();
-            return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
+    public function Login(){
+        if(Auth::guard('abonner')->attempt(
+            [   'num' => request('num'),
+                'email' => request('email'),
+                'password' => request('password')
+            ]
+        )
+        )
+        {
+
+            return redirect()->intended('/userhome');
+        }
+        return redirect()->back();
+    }
+    public function About(){
+        return view('user.generic');
     }
     public function getlivre(Request $request){
         $request->validate([
@@ -69,12 +77,4 @@ class UserController extends Controller
         return view('user.index')->with(['doc'=>$docum,'cat'=>$cat]);
 
     }
-    public function profile($id){
-        $Abonner=Abonner::findorfail($id);
-        return view('user.profile')->with(['Abonner'=>$Abonner]);
-    }
-
-
-
-
 }

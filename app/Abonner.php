@@ -2,14 +2,18 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Abonner extends Model
+class Abonner extends Authenticatable
 {
-   protected $fillable=['num','nom','prenom','password','gender','telephone','email'];
+    use Notifiable;
+
+    protected $fillable=['num','nom','prenom','password','gender','telephone','email'];
 
     public function emprunt(){
         return $this->hasMany('App\Emprunt','id_abo');
     }
-
 }
+

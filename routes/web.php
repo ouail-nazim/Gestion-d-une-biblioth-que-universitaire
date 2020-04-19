@@ -13,13 +13,23 @@
 Auth::routes();
 
 //user
-Route::get('/', 'UserController@UserHome');
-Route::get('/UserLogin', 'UserController@UserLogin');
-Route::get('/about', 'UserController@About');
-Route::get('/getlivre', 'UserController@getlivre');
-Route::get('/filtre', 'UserController@filtre');
+Route::get('/', function (){
+    $doc=\App\Document::all();
+    $cat=\App\Categorie::all();
+    return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
+});
+Route::get('/userhome', 'UserController@UserHome'); //home auth
+Route::get('/UserLogin', 'userLogin@UserLogin');// get login
+Route::post('/abonner','userLogin@Login');//post login
+Route::get('/logoutuser', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('/about', 'userLogin@About');
+Route::get('/getlivre', 'userLogin@getlivre');
+Route::get('/filtre', 'userLogin@filtre');
 
+Route::get('/USERgetlivre', 'UserController@getlivre');
+Route::get('/USERfiltre', 'UserController@filtre');
+Route::get('/profile/{id}', 'UserController@profile');
 
 
 //Route::get('/register', function () {

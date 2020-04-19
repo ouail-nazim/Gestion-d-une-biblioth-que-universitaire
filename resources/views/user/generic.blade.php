@@ -18,7 +18,7 @@
 			<nav id="menu">
 				<ul class="links">
 
-					@auth
+					@auth("abonner')
 					<li><a href="/home">admin</a></li>
 					@else
 						<li><a href="/">Home</a></li>

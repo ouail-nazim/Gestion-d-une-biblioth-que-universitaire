@@ -9,23 +9,41 @@
 	</head>
 	<body>
 
-		<!-- Header -->
+	<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="/">IQRA <span>by nazim</span></a></div>
+				@auth()
+				<div class="logo"><a href="/userhome">IQRA <span>by nazim</span></a></div>
+				@else
+					<div class="logo"><a href="/">IQRA <span>by nazim</span></a></div>
+					@endauth
+
+
 				<a href="#one">books</a>
 				<a href="#fil">filtré</a>
-				<a href="/UserLogin">log in</a>
-				<a href="#menu">Menu</a>
+					@auth()
+					<a href="/logoutuser">logout</a>
+					@else
+						<a href="/UserLogin">log in</a>
+					@endauth
+					<a href="#menu">Menu</a>
+
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li style="text-align: center;"><a href="#"><img src="images/pic02.jpg" style="border-radius: 50%;" alt="" width="150px" height="150px" /></a>
-						<h5>ouail nazim</h5>
+					@auth()
+					<li style="text-align: center;"><a href="profile/{{ Auth::guard('abonner')->user()->id}}"><img src="images/pic02.jpg" style="border-radius: 50%;" alt="" width="150px" height="150px" /></a>
+						<br>
+						<h5>{{ Auth::guard('abonner')->user()->nom}}_{{Auth::guard('abonner')->user()->prenom}} </h5>
+						<h5>{{ Auth::guard('abonner')->user()->email}} </h5>
 					</li>
 					<br>
-					<li><a href="/UserLogin">log in</a></li>
+					<li><a href="/logoutuser">logout</a></li>
+					@else
+						<li><a href="/UserLogin">log in</a></li>
+						@endauth
+
 					<li><a href="/about">About</a></li>
 				</ul>
 			</nav>
@@ -39,23 +57,37 @@
 							<p>Get your book now and for free <a href="#">here</a></p>
 							<h2>IQRA</h2>
 							<h5>spreading knowledge</h5>
-							<form action="/getlivre" method="Get">
+							@auth()
+							<form action="/USERgetlivre" method="Get">
 								<input type="text" name="serch" placeholder="serch for book" maxlength="20" required>
-							<button type="submit" name="" id="bt_ser">
-								<strong id="tet"> go</strong>
-							</button>
+								<button type="submit" name="" id="bt_ser">
+									<strong id="tet"> go</strong>
+								</button>
 							</form>
+							@else
+								<form action="/getlivre" method="Get">
+									<input type="text" name="serch" placeholder="serch for book" maxlength="20" required>
+									<button type="submit" name="" id="bt_ser">
+										<strong id="tet"> go</strong>
+									</button>
+								</form>
+								@endauth
+
+
 						</header>
 					</div>
 				</article>
 			</section>
 		{{--filtre--}}
 		<section id="fil" class="mb-1 " style="width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%">
-			<form class=" row" action="/filtre" method="get">
+
+
+			@auth()
+				<form class=" row" action="/USERfiltre" method="get">
 				<div class="col-md-5">
 					<div class=" row">
-						<div class="col-md-3"><label for="inputState" >Type >></label></div>
-						<div class="col-md-6">
+						<div class="col-md-2"><label for="inputState" style="font-size: 1em;font-family: 'Courier New', 'monospace'" >Type :</label></div>
+						<div class="col-md-10">
 							<select id="inputState" name="type" class="form-control w-100">
 								<option  value="all">ALL</option>
 								<option value="livre">Livre</option>
@@ -67,9 +99,9 @@
 				<div class="col-md-5">
 					<div class=" row">
 						<div class="col-md-3">
-							<label for="inputState">Categorie >> </label>
+							<label for="inputState" style="font-size: 16px;font-family: 'Courier New', 'monospace'">Categorie:</label>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-9">
 							<select id="inputState"  name="cat" class="form-control">
 								<option  value="{{0}}">ALL</option>
 								@foreach($cat as $categori)
@@ -84,7 +116,41 @@
 
 				</div>
 			</form>
+			@else
+				<form class=" row" action="/filtre" method="get">
+					<div class="col-md-5">
+						<div class=" row">
+							<div class="col-md-2"><label for="inputState" style="font-size: 1em;font-family: 'Courier New', 'monospace'" >Type :</label></div>
+							<div class="col-md-10">
+								<select id="inputState" name="type" class="form-control w-100">
+									<option  value="all">ALL</option>
+									<option value="livre">Livre</option>
+									<option  value="memoire">mémoire</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class=" row">
+							<div class="col-md-3">
+								<label for="inputState" style="font-size: 16px;font-family: 'Courier New', 'monospace'">Categorie:</label>
+							</div>
+							<div class="col-md-9">
+								<select id="inputState"  name="cat" class="form-control">
+									<option  value="{{0}}">ALL</option>
+									@foreach($cat as $categori)
+										<option  value="{{$categori->id}}">{{$categori->name}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<input type="submit" name=""  class="form-control  bg-dark text-info " value="filtré">
 
+					</div>
+				</form>
+				@endauth
 
 		</section>
 		<!-- body -->
@@ -114,7 +180,12 @@
 								</div>
 							</div>
 							<footer class="align-center">
-								<a href="#" class="btn w-75 btn-secondary text-light text-bold ">Réserver</a>
+								@auth()
+									<a href="#" class="btn w-75 btn-secondary text-light text-bold ">Réserver</a>
+								@else
+									<a href="/UserLogin" class="btn w-75 btn-secondary text-light text-bold ">Réserver</a>
+									@endauth
+
 							</footer>
 
 						</div></div>

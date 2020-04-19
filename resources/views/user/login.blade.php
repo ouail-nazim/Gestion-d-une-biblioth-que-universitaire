@@ -31,14 +31,14 @@
             <div class="col-md-8 C2 ">
                 <img src="2.jpg" class="avatar">
                 <h2>Sign In</h2>
-                <form  autocomplete="off" action="/ho" method="get">
+                <form  autocomplete="on" action="/abonner" method="post">
                     {{csrf_field()}}
                     <p>Numéro</p>
                     <input type="text" name="num"  placeholder="Enter your id" required>
                     <p>Email</p>
-                    <input type="email" name="nom" placeholder="Enter your email" required>
+                    <input type="email" name="email" placeholder="Enter your email" required>
                     <p>password</p>
-                    <input type="password" name="nom" placeholder="Enter your password" required>
+                    <input type="password" name="password" placeholder="Enter your password" required>
                     <div class="row">
                         <div class="col-md-6"><input type="submit"  value="Sign In"></div>
                         <div class="col-md-6 cancel " > <a href="/" class="btn text-white "style="margin-top: -5px;">Cancel</a></div>
