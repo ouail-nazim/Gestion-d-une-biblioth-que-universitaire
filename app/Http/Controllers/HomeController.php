@@ -11,6 +11,7 @@ use App\Livre;
 use App\Memoire;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Config;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,14 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $total=Emprunt::all();
+        $retarde=0;
+        foreach ($total as $emprunt){
+            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
+                $retarde++;
+            }
+        }
+        Config::set('retarde',$retarde);
     }
 
     /**
@@ -45,12 +54,7 @@ class HomeController extends Controller
         $total=Emprunt::all();
         $exempret=count($total);
         $cat=count(Categorie::all());
-        $retarde=0;
-        foreach ($total as $emprunt){
-            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
-                $retarde++;
-            }
-        }
+
         return view('index.index')->with(
            [
                "abonner"=>$abonner,
@@ -64,7 +68,6 @@ class HomeController extends Controller
                "exem"=>$exem,
                "exempret"=>$exempret,
                "cat"=>$cat,
-               "retarde"=>$retarde,
            ]
         );
     }

@@ -8,6 +8,7 @@ use App\Emprunt;
 use App\Exemplaire;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Config;
 use Barryvdh\DomPDF\PDF;
 
 class PretController extends Controller
@@ -15,6 +16,14 @@ class PretController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $total=Emprunt::all();
+        $retarde=0;
+        foreach ($total as $emprunt){
+            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
+                $retarde++;
+            }
+        }
+        Config::set('retarde',$retarde);
     }
     public function creat_add(){
         $ar=array('vous avez inseré ');

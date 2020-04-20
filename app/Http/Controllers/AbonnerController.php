@@ -3,13 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Abonner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Emprunt;
+use Config;
 
 class AbonnerController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $total=Emprunt::all();
+        $retarde=0;
+        foreach ($total as $emprunt){
+            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
+                $retarde++;
+            }
+        }
+        Config::set('retarde',$retarde);
     }
     //see all abonner in bib
     public function index(){

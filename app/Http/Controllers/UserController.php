@@ -14,9 +14,6 @@ class UserController extends Controller
     public function __construct(){
         $this->middleware('auth:abonner');
 
-//        //messages number
-//        $messages_number = count(Contact::all());
-//        Config::set('messages_number',$messages_number);
     }
     public function UserHome(){
             $doc=Document::all();

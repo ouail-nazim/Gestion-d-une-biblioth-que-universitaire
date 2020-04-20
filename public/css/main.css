@@ -229,6 +229,10 @@ button:hover {
     margin: 30px;
     width: 300px;
 }
+.tt{
+    margin: 5px;
+    width: 300px;
+}
 
 /* Add Zoom Animation */
 .animate {

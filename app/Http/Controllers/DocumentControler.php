@@ -6,17 +6,30 @@ use App\Auteur;
 use App\Categorie;
 use App\categorie_document;
 use App\Document;
+use App\Emprunt;
 use App\Encadreure;
 use App\Exemplaire;
 use App\Livre;
 use App\Memoire;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Config;
 
 class DocumentControler extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $total=Emprunt::all();
+        $retarde=0;
+        foreach ($total as $emprunt){
+            if ($emprunt->date_retour < Carbon::today()->toDateString() ){
+                $retarde++;
+            }
+        }
+        Config::set('retarde',$retarde);
+
+
     }
     //--------------------------------------------------------------
     // see all document or the documents of a categorie

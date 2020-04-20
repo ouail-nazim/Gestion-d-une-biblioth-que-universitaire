@@ -7,6 +7,18 @@
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
+	<style>
+		.costum,.costum a{
+			background: #9fc1f0;
+			background: -webkit-linear-gradient(to right, #dddddd, #aaaaaa);
+			background: linear-gradient(to right, #dddddd, #aaaaaa);
+			font-size: medium;
+			height: auto;
+			color: black;
+			font-family: "Lucida Console", monospace, sans-serif;
+			font-weight: bold;
+		}
+	</style>
 	<body>
 
 	<!-- Header -->
@@ -21,6 +33,9 @@
 				<a href="#one">books</a>
 				<a href="#fil">filtré</a>
 					@auth()
+					{{--<a href="profile/{{ Auth::guard('abonner')->user()->id}}">--}}
+						{{--<img src="lo.png" style="border-radius: 50%;" alt="" width="30px" height="35px" />--}}
+					{{--</a>--}}
 					<a href="/logoutuser">logout</a>
 					@else
 						<a href="/UserLogin">log in</a>
@@ -33,12 +48,13 @@
 			<nav id="menu">
 				<ul class="links">
 					@auth()
-					<li style="text-align: center;"><a href="profile/{{ Auth::guard('abonner')->user()->id}}"><img src="images/pic02.jpg" style="border-radius: 50%;" alt="" width="150px" height="150px" /></a>
+					<li style="text-align: center;"><img src="lo.png" style="border-radius: 50%;" alt="" width="150px" height="150px" />
 						<br>
-						<h5>{{ Auth::guard('abonner')->user()->nom}}_{{Auth::guard('abonner')->user()->prenom}} </h5>
-						<h5>{{ Auth::guard('abonner')->user()->email}} </h5>
+						<h5 style="color: white;">{{ Auth::guard('abonner')->user()->nom}}_{{Auth::guard('abonner')->user()->prenom}} </h5>
+						<h5 style="color: white;">{{ Auth::guard('abonner')->user()->email}} </h5>
 					</li>
 					<br>
+					<li><a href="profile/{{ Auth::guard('abonner')->user()->id}}">my profile</a></li>
 					<li><a href="/logoutuser">logout</a></li>
 					@else
 						<li><a href="/UserLogin">log in</a></li>
@@ -112,7 +128,7 @@
 					</div>
 				</div>
 				<div class="col-md-2">
-					<input type="submit" name=""  class="form-control  bg-dark text-info " value="filtré">
+					<input type="submit" name=""  class="form-control  btn costum " value="filtré">
 
 				</div>
 			</form>
@@ -146,7 +162,7 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<input type="submit" name=""  class="form-control  bg-dark text-info " value="filtré">
+						<input type="submit" name=""  class="form-control  costum " value="filtré">
 
 					</div>
 				</form>
@@ -181,9 +197,11 @@
 							</div>
 							<footer class="align-center">
 								@auth()
-									<a href="#" class="btn w-75 btn-secondary text-light text-bold ">Réserver</a>
+									<a href="#" class="btn w-75 costum ">Réserver</a>
 								@else
-									<a href="/UserLogin" class="btn w-75 btn-secondary text-light text-bold ">Réserver</a>
+									<span class="text-danger text-bold"> pour réserver un livre vous devez etre identifié </span>
+									<br>
+									{{--<a href="/UserLogin" class="btn w-75 costum ">Réserver</a>--}}
 									@endauth
 
 							</footer>
