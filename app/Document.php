@@ -26,6 +26,9 @@ class Document extends Model
     public function exemplaire(){
         return $this->hasMany('App\Exemplaire','code_doc');
     }
+    public function reservation(){
+        return $this->hasMany('App\Reservation','code_doc');
+    }
 
     public function categories(){
         return $this->belongsToMany(Categorie::class);

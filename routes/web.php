@@ -10,33 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//----------------------------------------------------------------------
 Auth::routes();
-
-//user
-Route::get('/', function (){
-    $doc=\App\Document::all();
-    $cat=\App\Categorie::all();
-    return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
-});
-Route::get('/userhome', 'UserController@UserHome'); //home auth
-Route::get('/logoutuser', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::post('/changepassword','UserController@changepassword');
-
-Route::get('/UserLogin', 'userLogin@UserLogin');// get login
+//Route::get('/register', function () {
+//    return view('welcome');
+//});
+//----------------------------------------------------------------------
+//les route sons autantification
+Route::get('/', 'userLogin@index');
+Route::get('/UserLogin', 'userLogin@UserLogin');
 Route::post('/abonner','userLogin@Login');
 Route::get('/about', 'userLogin@About');
 Route::get('/getlivre', 'userLogin@getlivre');
 Route::get('/filtre', 'userLogin@filtre');
-
+//----------------------------------------------------------------------
+//user auth
+Route::get('/userhome', 'UserController@UserHome');
+Route::get('/logoutuser', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/changepassword','UserController@changepassword');
 Route::get('/USERgetlivre', 'UserController@getlivre');
 Route::get('/USERfiltre', 'UserController@filtre');
 Route::get('/profile/{id}', 'UserController@profile');
-
-
-//Route::get('/register', function () {
-//    return view('welcome');
-//});
-
+Route::get('/reserve_livre/{code}', 'UserController@reserve_livre');
+Route::get('/anuller_reserve/{id}', 'UserController@anuller_reserve');
+//----------------------------------------------------------------------
+//admin routes
+//----------------------------------------------------------------------
 //homeadmin
 Route::get('/home', 'HomeController@index');
 //document
@@ -55,7 +54,6 @@ Route::post('/updateLivre/{code}','DocumentControler@updateLivre');
 Route::post('/updateMemoire/{code}','DocumentControler@updateMemoire');
 Route::get('/Catégori','DocumentControler@Catégori');
 Route::post('/addcategori','DocumentControler@addcategori');
-
 //Abonner
 Route::get('/See_all', 'AbonnerController@index');
 Route::get('/searchAbonner','AbonnerController@searchAbonner');
@@ -77,7 +75,6 @@ Route::get('/privligerAbonner', 'AbonnerController@privligerAbonner');
 Route::get('/privliger/{id}', 'AbonnerController@privliger');
 Route::get('/more/{id}', 'AbonnerController@more');
 Route::get('/getpenliser', 'AbonnerController@getpenliser');
-
 //preté
 Route::get('/creatadd','PretController@creat_add');
 Route::post('/savepret','PretController@savepret');

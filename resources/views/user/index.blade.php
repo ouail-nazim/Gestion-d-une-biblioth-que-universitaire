@@ -197,11 +197,14 @@
 							</div>
 							<footer class="align-center">
 								@auth()
-									<a href="#" class="btn w-75 costum ">Réserver</a>
+									@if((count($abonner->reservation))==0)
+										<a href="/reserve_livre/{{$doccument->code}}" class="btn w-75 costum ">Réserver</a>
+									@else
+										<span class="text-danger  text-bold"> vous aver réserver un livre</span>
+									@endif
 								@else
 									<span class="text-danger text-bold"> pour réserver un livre vous devez etre identifié </span>
 									<br>
-									{{--<a href="/UserLogin" class="btn w-75 costum ">Réserver</a>--}}
 									@endauth
 
 							</footer>

@@ -174,7 +174,7 @@
                 @if((Auth::guard('abonner')->user()->id)==($Abonner->id))
                 <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
                 <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">liste des livres preté</button>
-                    <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-warning">liste des livres réserver</button>
+                    <button  @if((count($Abonner->reservation))!=0) onclick="document.getElementById('id03').style.display='block'" @endif class="@if((count($Abonner->reservation))==0)ml-0 btn btn-dark disabled  @else btn btn-warning @endif">liste des livres réserver</button>
                 @endif
                 <div id="id01" class="modal">
                     <div class="modal-content animate" >
@@ -231,7 +231,7 @@
                            @foreach( $Abonner->emprunt as $emp)
 
                                        <div class="col-md-3">
-                                           Title :<strong>{{$doc=\App\Document::where('code','=',$emp->code_doc)->first()->titre}}</strong>
+                                           Title :<strong>{{$emp->exemplaire->document->titre}}</strong>
                                            <br>
                                            numéro d'exemplaire :<strong>{{$emp->num_exem}}</strong>
                                            <br>
@@ -246,6 +246,24 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-4"> <button class="bb btn btn-success" id="can1">ok</button></div>
                         </div>
+                    </div>
+                </div>
+                <div id="id03" class="modal">
+                    <div class="modal-content animate" >
+                        <h3>le livre réserver</h3>
+                        @foreach( $Abonner->reservation as $reservation)
+                                Title :<strong>{{$reservation->document->titre}}</strong>
+                                <br>
+                                date de reservations :<strong>{{$reservation->date_reservations}}</strong>
+                                <br>
+                                la finde reservations :<strong>{{$reservation->date_fin_reservations}}</strong>
+                                <br>
+
+                        <a class="btn btn-danger" href="/anuller_reserve/{{$reservation->id}}" style="width:60%;align-self: center;">anuller la résarvation</a>
+                        <br>
+                        @endforeach
+                        <button class=" btn btn-success" id="can3" style="width:60%;align-self: center;margin-bottom: 10%;">ok</button>
+
                     </div>
                 </div>
                 <script>
@@ -273,6 +291,20 @@
                     window.onclick = function(event) {
                         if (event.target == modal) {
                             modal.style.display = "none";
+                        }
+                    }
+                </script>
+                <script>
+                    // Get the modal
+                    var modal3 = document.getElementById('id03');
+                    var can3 = document.getElementById('can3');
+                    can3.onclick=function () {
+                        modal3.style.display = "none";
+                    }
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal3) {
+                            modal3.style.display = "none";
                         }
                     }
                 </script>

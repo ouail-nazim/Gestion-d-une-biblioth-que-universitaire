@@ -6,7 +6,7 @@
     <meta name="msapplication-TileImage" content="/2.jpg">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ 'Bibliothéque | pour tous ' }}</title>
+    <title>IQRA</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

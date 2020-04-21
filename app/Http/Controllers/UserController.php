@@ -6,21 +6,34 @@ use App\Abonner;
 use App\Categorie;
 use App\Document;
 use App\Livre;
+use App\Reservation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
 use Config;
 
 class UserController extends Controller
 {
+
     public function __construct(){
         $this->middleware('auth:abonner');
         Config::set('msg',request('msg'));
     }
+    //get home as auth
     public function UserHome(){
             $doc=Document::all();
             $cat=Categorie::all();
-            return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
+            $abonner=Abonner::findorfail(Auth::guard('abonner')->user()->id);
+            $res=\App\Reservation::all();
+            foreach ($res as $reservation){
+                if ($reservation->date_fin_reservations < \Carbon\Carbon::today()->toDateString() )
+                {
+                    $reservation->delete();
+                }
+            }
+            return view('user.index')->with(['doc'=>$doc,'cat'=>$cat,'abonner'=>$abonner]);
     }
+    // search for a book as auth
     public function getlivre(Request $request){
         $request->validate([
             'serch'=>'required|max:20'
@@ -28,8 +41,10 @@ class UserController extends Controller
         $input=\Request::get('serch');
         $doc=Document::where('titre','like','%'.$input.'%')->get();
         $cat=Categorie::all();
-        return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
+        $abonner=Abonner::findorfail(Auth::guard('abonner')->user()->id);
+        return view('user.index')->with(['doc'=>$doc,'cat'=>$cat,'abonner'=>$abonner]);
     }
+    //filtre the books as auth
     public function filtre (){
 
         if ((request('cat'))!=0){
@@ -64,13 +79,17 @@ class UserController extends Controller
         }
 
         $cat=Categorie::all();
-        return view('user.index')->with(['doc'=>$docum,'cat'=>$cat]);
+
+        $abonner=Abonner::findorfail(Auth::guard('abonner')->user()->id);
+        return view('user.index')->with(['doc'=>$docum,'cat'=>$cat,'abonner'=>$abonner]);
 
     }
+    // get the prfile page
     public function profile($id){
         $Abonner=Abonner::findorfail($id);
         return view('user.profile')->with(['Abonner'=>$Abonner]);
     }
+    //change the password
     public function changepassword(Request $request){
         $request->validate([
             'old'=>'required',
@@ -107,6 +126,34 @@ class UserController extends Controller
             $msg="ooops!!! impossible de changer le mot de pass d'un auter user";
             return redirect("/profile/$id?msg=$msg");
         }
+    }
+    //reserver livre
+    public function  reserve_livre($code){
+        $id_auth=Auth::guard('abonner')->user()->id;
+        $doc=Document::where('code','=',$code)->first();
+        $now = Carbon::today();
+        $date_reservations=$now->toDateString();
+        $date_fin_reservations=$now->addDays(7)->toDateString();
+
+        $abonner=Abonner::findorfail($id_auth);
+        if((count($abonner->reservation))==0){
+            $reservation= new Reservation();
+            $reservation->id_abo=$id_auth;
+            $reservation->code_doc=$doc->code;
+            $reservation->date_reservations=$date_reservations;
+            $reservation->date_fin_reservations=$date_fin_reservations;
+            $reservation->save();
+        }
+        return redirect('/userhome');
+
+
+    }
+    //anuller la reservation
+    public function anuller_reserve($id){
+        $id_abo=Reservation::findorfail($id)->id_abo;
+        Reservation::findorfail($id)->delete();
+        return redirect("/profile/$id_abo");
+
     }
 
 }

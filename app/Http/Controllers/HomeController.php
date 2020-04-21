@@ -30,6 +30,14 @@ class HomeController extends Controller
                 $retarde++;
             }
         }
+        $res=\App\Reservation::all();
+        //suprimé les réesrvation qanud la date de fin arivver
+        foreach ($res as $reservation){
+            if ($reservation->date_fin_reservations < \Carbon\Carbon::today()->toDateString() )
+            {
+                $reservation->delete();
+            }
+        }
         Config::set('retarde',$retarde);
     }
 

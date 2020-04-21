@@ -15,5 +15,8 @@ class Abonner extends Authenticatable
     public function emprunt(){
         return $this->hasMany('App\Emprunt','id_abo');
     }
+    public function reservation(){
+        return $this->hasMany('App\Reservation','id_abo');
+    }
 }
 

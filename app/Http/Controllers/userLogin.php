@@ -14,6 +14,24 @@ class userLogin extends Controller
     public function UserLogin(){
         return view('user.login');
     }
+    public function index(){
+        if( (Auth::guard('web')->user()) != null){
+            return redirect('/home');
+        }
+        if( (Auth::guard('abonner')->user()) != null){
+            return redirect('/userhome');
+        }
+        $doc=\App\Document::all();
+        $cat=\App\Categorie::all();
+        $res=\App\Reservation::all();
+        foreach ($res as $reservation){
+            if ($reservation->date_fin_reservations < \Carbon\Carbon::today()->toDateString() )
+            {
+                $reservation->delete();
+            }
+        }
+        return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
+    }
     public function Login(){
         if(Auth::guard('abonner')->attempt(
             [   'num' => request('num'),

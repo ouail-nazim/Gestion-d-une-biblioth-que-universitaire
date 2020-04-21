@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Emprunt extends Model
+class Reservation extends Model
 {
-    protected $table="emprunts";
+    public $table="reservations";
     public function abonner(){
         return $this->belongsTo('App\Abonner','id_abo');
     }
-    public function exemplaire(){
-        return $this->belongsTo('App\Exemplaire','id_exm');
+    public function document(){
+        return $this->belongsTo('App\Document','code_doc');
     }
 }

@@ -8,7 +8,7 @@ class Livre extends Model
 {
     public $table='livres';
     public function document(){
-        return $this->belongsTo('App\Document','id_abo');
+        return $this->belongsTo('App\Document','code_doc');
     }
 
 }
