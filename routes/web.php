@@ -19,10 +19,11 @@ Route::get('/', function (){
     return view('user.index')->with(['doc'=>$doc,'cat'=>$cat]);
 });
 Route::get('/userhome', 'UserController@UserHome'); //home auth
-Route::get('/UserLogin', 'userLogin@UserLogin');// get login
-Route::post('/abonner','userLogin@Login');//post login
 Route::get('/logoutuser', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/changepassword','UserController@changepassword');
 
+Route::get('/UserLogin', 'userLogin@UserLogin');// get login
+Route::post('/abonner','userLogin@Login');
 Route::get('/about', 'userLogin@About');
 Route::get('/getlivre', 'userLogin@getlivre');
 Route::get('/filtre', 'userLogin@filtre');

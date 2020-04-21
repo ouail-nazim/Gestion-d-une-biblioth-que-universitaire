@@ -30,15 +30,15 @@
 					@endauth
 
 
-				<a href="#one">books</a>
-				<a href="#fil">filtré</a>
+				<a href="#one">Mes livre</a>
+				<a href="#fil">Filtré</a>
 					@auth()
 					{{--<a href="profile/{{ Auth::guard('abonner')->user()->id}}">--}}
 						{{--<img src="lo.png" style="border-radius: 50%;" alt="" width="30px" height="35px" />--}}
 					{{--</a>--}}
-					<a href="/logoutuser">logout</a>
+					<a href="/logoutuser">Logout</a>
 					@else
-						<a href="/UserLogin">log in</a>
+						<a href="/UserLogin">Log in</a>
 					@endauth
 					<a href="#menu">Menu</a>
 

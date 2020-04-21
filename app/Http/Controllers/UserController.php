@@ -8,12 +8,13 @@ use App\Document;
 use App\Livre;
 use Illuminate\Http\Request;
 use Auth;
+use Config;
 
 class UserController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:abonner');
-
+        Config::set('msg',request('msg'));
     }
     public function UserHome(){
             $doc=Document::all();
@@ -70,8 +71,42 @@ class UserController extends Controller
         $Abonner=Abonner::findorfail($id);
         return view('user.profile')->with(['Abonner'=>$Abonner]);
     }
-
-
-
+    public function changepassword(Request $request){
+        $request->validate([
+            'old'=>'required',
+            'password'=>'required|min:3',
+            'confirm_password'=>'required|min:3'
+        ]);
+        $id_auth=Auth::guard('abonner')->user()->id;
+        $id=request('id');
+        if ($id == $id_auth){
+            if(Auth::guard('abonner')->attempt(
+                [   'id' => request('id'),
+                    'password' => request('old')
+                ]))
+            {
+                if ((request('password'))==(request('confirm_password')))
+                {
+                        $abonner=Abonner::findorfail($id_auth);
+                        $abonner->password=bcrypt(request('password'));
+                        $abonner->update();
+                        $msg=" mot de pass a etait changer ";
+                        return redirect("/profile/$id?msg=$msg");
+                }else{
+                    //maché nafse el password
+                    $msg="ooops!!!inseré le meme nv mot de pass";
+                    return redirect("/profile/$id?msg=$msg");
+                }
+            }else{
+                //l'encien incorect
+                $msg="ooops!!!lencien mot de pass incorect";
+                return redirect("/profile/$id?msg=$msg");
+            }
+        }else{
+            //maché nafse el user
+            $msg="ooops!!! impossible de changer le mot de pass d'un auter user";
+            return redirect("/profile/$id?msg=$msg");
+        }
+    }
 
 }

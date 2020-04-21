@@ -38,10 +38,11 @@
 
 
         .content2{
+            text-align: center;
             border-radius: 5%;
             padding-top: 3%;
-            padding-left: 30%;
             padding-bottom: 2%;
+            margin-bottom: 5%;
             background: white;
             width: 100%;
             height: auto;
@@ -72,13 +73,15 @@
             border: 1px solid #888;
             width: 90%; /* Could be more or less, depending on screen size */
         }
+        hr{
+            width: 50%;
+        }
         @media (max-width: 1200px) {
             .content2{
                 padding-top: 3%;
-                padding-left: 25%;
             }
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             .modal-content {
                 background-color: #fefefe;
                 margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
@@ -87,10 +90,9 @@
             }
             .content2{
                 padding-top: 3%;
-                padding-left: 15%;
             }
             body{
-                padding: 2% 10% 2% 10%;
+                padding: 2% 20% 2% 20%;
             }
         }
         @media (max-height:98vh) {
@@ -123,20 +125,23 @@
 
 </head>
 <body>
-
+@if((Config::get('msg'))!=null)
+    <script>
+        window.alert("{{Config::get('msg')}}");
+    </script>
+@endif
 
 <div class="content2">
-<div class="row  ">
-    <div class="md-4 ">
-    </div>
-    <div class="md-8 ">
+    <div >
+
         @if($Abonner->gender =='homme')
-            <img class="rounded-circle ml-5 " width="150px" height="150px" src="/storage/gander/homme.jpg"  height="200px" class="card-img-top" alt="...">
+            <img class="rounded-circle " width="150px" height="150px" src="/storage/gander/homme.jpg"  height="200px" class="card-img-top" alt="...">
 
         @else
-            <img class="rounded-circle ml-5" width="150px" height="150px" src="/storage/gander/femme.png"  height="200px" class="card-img-top" alt="...">
+            <img class="rounded-circle " width="150px" height="150px" src="/storage/gander/femme.png"  height="200px" class="card-img-top" alt="...">
 
         @endif
+            <a class="btn btn-dark"href="/userhome" style="margin-top: 20%"><i class="fa fa-home"></i> </a>
             <hr>
         <div style="text-align: center;">
             @if($Abonner->privliger == 'simple')
@@ -158,7 +163,6 @@
                             <strong>depanaliser en :2017-12-3</strong>
                     </div>
                  @else
-                    <br><br>
                 @endif
             <h2>{{$Abonner->nom}}</h2>
             <h3>{{$Abonner->prenom}}</h3>
@@ -167,11 +171,16 @@
                 <hr><strong>numéro de telephone : </strong>0{{$Abonner->telephone}}
                 <hr><strong>email  : </strong>{{$Abonner->email}}
                 <hr>
+                @if((Auth::guard('abonner')->user()->id)==($Abonner->id))
                 <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
                 <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">liste des livres preté</button>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-warning">liste des livres réserver</button>
+                @endif
                 <div id="id01" class="modal">
                     <div class="modal-content animate" >
-                        <form name="test" method="post" action="">
+                        <form name="test" method="post" action="/changepassword">
+                            {{csrf_field()}}
+                            <input type="hidden" name="id" value="{{$Abonner->id}}">
                             <label class="tt">ancien mot de pass :<br>
                                 <input name="old" type="password" class="form-control " width="80%" />
                             </label>
@@ -190,17 +199,19 @@
                         <script type="text/javascript">
                             var check = function() {
                                 if (
-                                    (document.getElementById('password').value ==
-                                    document.getElementById('confirm_password').value)&&
-                                    (document.getElementById('password').value.length ==
-                                    document.getElementById('confirm_password').value.length)&&
-                                    (document.getElementById('password').value.length > 0)
+                                    (document.getElementById('password').value == document.getElementById('confirm_password').value)&&
+                                    (document.getElementById('password').value.length == document.getElementById('confirm_password').value.length)
                                 )
                                 {
+                                    if((document.getElementById('password').value.length < 4)){
+                                        document.getElementById('message').style.color = 'red';
+                                        document.getElementById('message').innerHTML = '| min 4 charactair';
+                                    }else{
                                     document.getElementById('message').style.color = 'green';
                                     document.getElementById('message').innerHTML = '| mot de pass correct';
                                     document.getElementById('submit').disabled = false;
                                     document.getElementById('submit').className = 'tt btn btn-success';
+                                    }
                                 } else {
                                     document.getElementById('message').style.color = 'red';
                                     document.getElementById('message').innerHTML = '| mot de pass incorrect';
@@ -237,8 +248,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-                <a class="btn btn-dark"href="/userhome">accueil<i class="fa fa-home"></i> </a>
                 <script>
                     // Get the modal
                     var modal1 = document.getElementById('id02');
@@ -269,10 +278,6 @@
                 </script>
 
         </div>
-    </div>
-</div>
-    <div class="row bg-info">
-
     </div>
 </div>
 

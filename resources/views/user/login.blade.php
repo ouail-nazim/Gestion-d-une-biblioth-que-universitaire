@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-8 C2 ">
                 <img src="2.jpg" class="avatar">
-                <h2>Sign In</h2>
+                <h2>Log In</h2>
                 <form  autocomplete="on" action="/abonner" method="post">
                     {{csrf_field()}}
                     <p>Numéro</p>
