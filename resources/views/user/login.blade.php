@@ -30,18 +30,18 @@
         <div class="row">
             <div class="col-md-8 C2 ">
                 <img src="2.jpg" class="avatar">
-                <h2>Log In</h2>
+                <h2>Connecter</h2>
                 <form  autocomplete="on" action="/abonner" method="post">
                     {{csrf_field()}}
                     <p>Numéro</p>
-                    <input type="text" name="num"  placeholder="Enter your id" required>
+                    <input type="text" name="num"  placeholder="Entrer votre identifiant" required>
                     <p>Email</p>
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                    <p>password</p>
-                    <input type="password" name="password" placeholder="Enter your password" required>
+                    <input type="email" name="email" placeholder="Entrer votre email" required>
+                    <p>Mot de pass</p>
+                    <input type="password" name="password" placeholder="Entrer votre mot de pass" required>
                     <div class="row">
-                        <div class="col-md-6"><input type="submit"  value="Sign In"></div>
-                        <div class="col-md-6 cancel " > <a href="/" class="btn text-white "style="margin-top: -5px;">Cancel</a></div>
+                        <div class="col-md-6"><input type="submit"  value="Connecter"></div>
+                        <div class="col-md-6 cancel " > <a href="/" class="btn text-white "style="margin-top: -5px;">Anuller</a></div>
                     </div>
 
 

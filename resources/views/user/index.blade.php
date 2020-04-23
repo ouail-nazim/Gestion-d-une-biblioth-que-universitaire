@@ -23,22 +23,14 @@
 
 	<!-- Header -->
 			<header id="header" class="alt">
-				@auth()
-				<div class="logo"><a href="/userhome">IQRA <span>by nazim</span></a></div>
-				@else
-					<div class="logo"><a href="/">IQRA <span>by nazim</span></a></div>
-					@endauth
-
-
-				<a href="#one">Mes livre</a>
+				<div class="logo"><a href="/">IQRA <span>spreading knowledge</span></a></div>
+				<a href="#one">Mes Document</a>
 				<a href="#fil">Filtré</a>
 					@auth()
-					{{--<a href="profile/{{ Auth::guard('abonner')->user()->id}}">--}}
-						{{--<img src="lo.png" style="border-radius: 50%;" alt="" width="30px" height="35px" />--}}
-					{{--</a>--}}
-					<a href="/logoutuser">Logout</a>
+
+					<a href="/logoutuser">Déconnecter</a>
 					@else
-						<a href="/UserLogin">Log in</a>
+						<a href="/UserLogin">Connecter</a>
 					@endauth
 					<a href="#menu">Menu</a>
 
@@ -54,10 +46,10 @@
 						<h5 style="color: white;">{{ Auth::guard('abonner')->user()->email}} </h5>
 					</li>
 					<br>
-					<li><a href="profile/{{ Auth::guard('abonner')->user()->id}}">my profile</a></li>
-					<li><a href="/logoutuser">logout</a></li>
+					<li><a href="profile/{{ Auth::guard('abonner')->user()->id}}">Mon profil</a></li>
+					<li><a href="/logoutuser">Déconnecter</a></li>
 					@else
-						<li><a href="/UserLogin">log in</a></li>
+						<li><a href="/UserLogin">Connecter</a></li>
 						@endauth
 
 					<li><a href="/about">About</a></li>
@@ -70,22 +62,30 @@
 					<img src="images/bg.jpg" alt="" />
 					<div class="inner">
 						<header>
-							<p>Get your book now and for free <a href="#">here</a></p>
+							<p>Réservé votre livre maintenant et gratuitement<a href="#one"> ici</a></p>
 							<h2>IQRA</h2>
 							<h5>spreading knowledge</h5>
 							@auth()
 							<form action="/USERgetlivre" method="Get">
-								<input type="text" name="serch" placeholder="serch for book" maxlength="20" required>
-								<button type="submit" name="" id="bt_ser">
-									<strong id="tet"> go</strong>
-								</button>
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" name="serch" placeholder="Rechercher un Document" maxlength="20" required aria-label="Recipient's username" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-secondary text-light" type="submit">
+											<i class="fa fa-search text-outline-light "></i>
+										</button>
+									</div>
+								</div>
 							</form>
 							@else
 								<form action="/getlivre" method="Get">
-									<input type="text" name="serch" placeholder="serch for book" maxlength="20" required>
-									<button type="submit" name="" id="bt_ser">
-										<strong id="tet"> go</strong>
-									</button>
+									<div class="input-group mb-3">
+										<input type="text" class="form-control" name="serch" placeholder="Rechercher un Document" maxlength="20" required aria-label="Recipient's username" aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button class="btn btn-secondary text-light" type="submit">
+												<i class="fa fa-search text-outline-light "></i>
+											</button>
+										</div>
+									</div>
 								</form>
 								@endauth
 
@@ -105,7 +105,7 @@
 						<div class="col-md-2"><label for="inputState" style="font-size: 1em;font-family: 'Courier New', 'monospace'" >Type :</label></div>
 						<div class="col-md-10">
 							<select id="inputState" name="type" class="form-control w-100">
-								<option  value="all">ALL</option>
+								<option  value="all">Tout les Documents</option>
 								<option value="livre">Livre</option>
 								<option  value="memoire">mémoire</option>
 							</select>
@@ -139,7 +139,7 @@
 							<div class="col-md-2"><label for="inputState" style="font-size: 1em;font-family: 'Courier New', 'monospace'" >Type :</label></div>
 							<div class="col-md-10">
 								<select id="inputState" name="type" class="form-control w-100">
-									<option  value="all">ALL</option>
+									<option  value="all">Tout les Documents</option>
 									<option value="livre">Livre</option>
 									<option  value="memoire">mémoire</option>
 								</select>
@@ -185,10 +185,10 @@
 								</header>
 								<div >
 									<p>@if(($doccument->livre)!= null)
-										<p>livre</p>
+										<p>type : livre</p>
 										<h6 class="card-title">ISBN : {{$doccument->livre->isbn}} </h6>
 									@else
-										<p>mémoire</p>
+										<p>type : mémoire</p>
 										<h6 class="card-title">promotion : {{$doccument->memoire->promotion}} </h6>
 										@endif
 										</p>
@@ -227,7 +227,7 @@
 					</ul>
 				</div>
 				<div class="copyright">
-					Copyright &copy; 2020-2021 .All rights reserved.by nazim
+					Copyright &copy; 2020-2021 .Tous les droits sont réservés. Pour "IQRA_spreading knowledge"
 				</div>
 			</footer>
 		<!-- Scripts -->

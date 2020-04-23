@@ -10,20 +10,13 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="/">Hielo <span>by TEMPLATED</span></a></div>
-				<a href="#menu">Menu</a>
+				<div class="logo"><a href="/">IQRA <span>spreading knowledge</span></a></div>
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-
-					@auth("abonner')
-					<li><a href="/home">admin</a></li>
-					@else
 						<li><a href="/">Home</a></li>
-						@endauth
-
 				</ul>
 			</nav>
 
@@ -68,7 +61,7 @@
 					</ul>
 				</div>
 				<div class="copyright">
-					Copyright &copy; 2020-2021 .All rights reserved.by nazim
+					Copyright &copy; 2020-2021 .Tous les droits sont réservés. Pour "IQRA_spreading knowledge"
 				</div>
 			</footer>
 

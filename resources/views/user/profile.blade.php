@@ -172,9 +172,12 @@
                 <hr><strong>email  : </strong>{{$Abonner->email}}
                 <hr>
                 @if((Auth::guard('abonner')->user()->id)==($Abonner->id))
-                <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
-                <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">liste des livres preté</button>
-                    <button  @if((count($Abonner->reservation))!=0) onclick="document.getElementById('id03').style.display='block'" @endif class="@if((count($Abonner->reservation))==0)ml-0 btn btn-dark disabled  @else btn btn-warning @endif">liste des livres réserver</button>
+                    <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">liste des livres preté</button>
+                    <button  @if((count($Abonner->reservation))!=0) onclick="document.getElementById('id03').style.display='block'" @endif
+                        class="@if((count($Abonner->reservation))==0)ml-0 btn btn-dark disabled  @else btn btn-warning @endif">
+                            le livre réserver
+                    </button>
                 @endif
                 <div id="id01" class="modal">
                     <div class="modal-content animate" >

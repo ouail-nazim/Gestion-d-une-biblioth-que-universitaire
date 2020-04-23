@@ -2,7 +2,7 @@
 
 @section('content1')
 
-    <div class="row tt">
+    <div class="row">
         <div class="col-md-8  pro boite ">
 
             <div class="row ">

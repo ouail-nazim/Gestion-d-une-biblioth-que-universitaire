@@ -21,8 +21,8 @@
 
 
 </head>
-<body>
-    <div id="app">
+<body >
+    <div id="app" >
         @guest
         @else
             <nav class="navbar navbar-expand-md navbar-light ha shadow-sm haut">
@@ -91,7 +91,7 @@
 
             @endguest
 
-        <main class="py-4">
+        <main class="py-4 ">
             @yield('content')
         </main>
     </div>
