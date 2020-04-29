@@ -17,6 +17,14 @@ class UserController extends Controller
 
     public function __construct(){
         $this->middleware('auth:abonner');
+        $res=\App\Reservation::all();
+        //suprimé les réesrvation qanud la date de fin arivver
+        foreach ($res as $reservation){
+            if ($reservation->date_fin_reservations < \Carbon\Carbon::today()->toDateString() )
+            {
+                $reservation->delete();
+            }
+        }
         Config::set('msg',request('msg'));
     }
     //get home as auth

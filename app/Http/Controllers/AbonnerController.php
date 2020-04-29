@@ -98,7 +98,7 @@ class AbonnerController extends Controller
     public function delete($id ){
         $l=Abonner::findorfail($id);
         $l->delete();
-        return redirect('/See_all');
+        return redirect('/home');
     }
     //--------------------------------------------------------------
     //serche to abonner for edit his info
