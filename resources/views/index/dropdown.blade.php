@@ -29,7 +29,7 @@
 
 </head>
 <body>
-  
+
 <div class="navbar">
     <div class="navbar-nav  ">
         <div class="row">
@@ -55,13 +55,10 @@
         </div>
     </div>
     <div class="navbar-nav ml-auto ">
-        <div class="row">
-
+        <div class="row mr-3">
+            <a href="/getpenliser"><i class="fa fa-bell  ml-1"></i></i><span class="badge badge1 badge-danger">@if((Config::get('retarde'))!=0){{Config::get('retarde')}} @endif</span></a>
+            <a href="/liste_reservation"><i class="fa fa-calendar  ml-1"></i></i><span class="badge badge1 badge-danger">@if((Config::get('death'))!=0){{Config::get('death')}} @endif</span></a>
             <a href="#1"><i class="fa fa-envelope  ml-1"></i><span class="badge badge1 badge-danger">9</span></a>
-            <a href="/getpenliser"><i class="fa fa-bell  ml-1"></i></i><span class="badge badge1 badge-danger">{{Config::get('retarde')}}</span></a>
-            <a href="#3"><i class="fa fa-calendar  ml-1"></i></i><span class="badge badge1 badge-danger">100</span></a>
-            <a href="#4"><i class="fa fa-cogs ml-1"></i></a>
-
         </div>
 
     </div>
@@ -71,110 +68,102 @@
 <div class="sidenav">
     <a href="/home" class="llogo"><img src="/storage/app/logo5.png" width="100%" class="mb-2 "></a>
     <button class="dropdown-btn1 ">
-        <i class="fa fa-user-large mr-1 fa-user"></i>
-        <span class="">{{"Admin" }}</span>
+        <i class="fa fa-cogs mr-1"></i>
+        <span class="">{{ Auth::guard('web')->user()->name}}</span>
     </button>
     <div class="dropdown-container">
-        <a class="dropdown-item" href="#">
-            <i class="fa fa-pencil-large mr-3 text-dark fa fa-pencil"></i>
-            settings
-
-        </a>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-            <i class="fa mr-3 text-dark fa-sign-out"></i> Logout
+            <i class="fa mr-3 text-dark fa-sign-out"></i> Déconnecter
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>
-    <a href="/home"><i class="fa fa-home-large mr-3 fa fa-home "></i>Home</a>
+    <a href="/home"><i class="fa fa-home-large mr-3 fa fa-home "></i>Accueil</a>
     <a href="/indexdoc"><i class="fa fa-home-large mr-3 fa fa-book "></i>Document</a>
-    <a href="/See_all" class="nav-link  font-italic ">
-          <i class="fa fa-eye-large mr-3 fa fa-eye "></i>
-          Client
-      </a>
-    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer abonner</button>
+    <a href="/See_all" ><i class="fa fa-user-large mr-3 fa fa-user "></i>Client</a>
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Abonnés</button>
     <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/addAbonner" class="nav-link font-italic ">
               <i class="fa fa-plus-large mr-1 fa-plus"></i>
-              ajouter un abonner
+                Ajouter abonné
           </a>
       </li>
       <li class="nav-item ">
           <a href="/gotoeditAbonner" class="nav-link font-italic ">
               <i class="fa fa-pencil-large mr-1 fa fa-pencil"></i>
-              modifier un abonner
+              Modifier abonné
           </a>
       </li>
       <li class="nav-item ">
           <a href="/gotodeletAbonner" class="nav-link font-italic ">
               <i class="fa fa-bitbucket-large mr-1 fa fa-bitbucket"></i>
-              suprimer un abonner
+              Suprimer un abonné
           </a>
       </li>
-      <li class="nav-item ">
-          <a href="/gotopinaliserAbonner" class="nav-link font-italic ">
-              <i class="fa fa-minus-circle-large mr-1 fa fa-minus-circle"></i>
-              pinaliser un abonner
-          </a>
-      </li>
-      <li class="nav-item ">
-          <a href="/gotoprivligerAbonner" class="nav-link font-italic ">
-              <i class="fa fa-star-large mr-1 fa fa-star"></i>
-              privliger un abonner
-          </a>
-      </li>
+      {{--<li class="nav-item ">--}}
+          {{--<a href="/gotopinaliserAbonner" class="nav-link font-italic ">--}}
+              {{--<i class="fa fa-minus-circle-large mr-1 fa fa-minus-circle"></i>--}}
+              {{--pinaliser un abonner--}}
+          {{--</a>--}}
+      {{--</li>--}}
+      {{--<li class="nav-item ">--}}
+          {{--<a href="/gotoprivligerAbonner" class="nav-link font-italic ">--}}
+              {{--<i class="fa fa-star-large mr-1 fa fa-star"></i>--}}
+              {{--privliger un abonner--}}
+          {{--</a>--}}
+      {{--</li>--}}
   </div>
     <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Document</button>
     <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/create" class="nav-link  font-italic ">
               <i class="fa fa-plus-large mr-1 fa-plus"></i>
-              ajouter un Document
+              Ajouter un Document
           </a>
       </li>
       <li class="nav-item ">
           <a href="/create?action=suprimer" class="nav-link font-italic ">
               <i class="fa fa-bitbucket-large mr-1 fa-bitbucket"></i>
-              suprimer un Document
+              Suprimer un Document
           </a>
       </li>
       <li class="nav-item ">
           <a href="/create?action=edit" class="nav-link font-italic ">
               <i class="fa fa-pencil-large mr-1 fa-pencil"></i>
-              modifier un Document
+              Modifier un Document
           </a>
       </li>
   </div>
-    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer pret</button>
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer prêt</button>
     <div class="dropdown-container">
         <li class="nav-item ">
             <a href="/creatadd" class="nav-link  font-italic ">
                 <i class="fa fa-plus-large mr-1 fa-plus"></i>
-                nouveau pret
+                Nouveau prêt
             </a>
         </li>
         <li class="nav-item ">
             <a href="/creatback" class="nav-link font-italic ">
                 <i class="fa fa-reply-large mr-1 fa-reply"></i>
-                retour le document
+                Retourner le document
             </a>
         </li>
 
     </div>
-    <a href="/Catégori">Catégori</a>
-    <a href="/about">About</a>
+    <a href="/Catégori"><i class="fa fa-tags-large mr-1 fa-tags"></i>Catégori</a>
+    <a href="/about"><i class="fa fa-info-circle-large mr-1 fa-info-circle"></i> À propos de nous</a>
 </div>
 
 <div class=" p-2 flex-grow-1 bd-highlight content1">
     @yield('content1')
-    <div style="height: 25px;"></div>
-    <div class="footer">
-        <strong>Copyright &copy; 2020-2021 .All rights reserved.by nazim </strong>
-    </div>
+    {{--<div style="height: 25px;"></div>--}}
+    {{--<div class="footer">--}}
+        {{--<strong>Copyright &copy; 2020-2021 .All rights reserved.by nazim </strong>--}}
+    {{--</div>--}}
 </div>
 </div>
 

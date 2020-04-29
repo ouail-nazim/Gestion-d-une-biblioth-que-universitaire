@@ -30,11 +30,10 @@ class PretController extends Controller
         return view('pret.add')->with(['msg'=> null]);
     }
     public function savepret(Request $request){
-        //get inputs
         $request->validate([
             'numcart'=>'required|numeric|max:999999999999999',
-            'nom'=>'required|alpha|max:20',
-            'prenom'=>'required|alpha|max:20',
+            'nom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
+            'prenom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
             'codedoc'=>'required|max:10',
             'numexem'=>'required|numeric',
             'title'=>'required|max:30',
@@ -61,6 +60,7 @@ class PretController extends Controller
             $ar=array("l'abonner nexist pas ");
             return view('pret.add')->with(['msg'=> $ar]);
         }
+
         if ($abo->privliger == 'superfan'){$otoris=4;$duré=10;}
         if ($abo->privliger == 'fan'){$otoris=3;$duré=10;}
         if ($abo->privliger == 'simple'){$otoris=3;$duré=7;}
@@ -88,7 +88,6 @@ class PretController extends Controller
                 $emprunt->id_abo=$abo->id;
                 $emprunt->id_exm=$E1->id;
                 $emprunt->save();
-
                 $E1->disponibilite=false;
                 $E1->save();
                 return view('pret.topdf')->with(
@@ -138,7 +137,6 @@ class PretController extends Controller
     }
     public function renouvler($id){
         $emprunt=Emprunt::find($id);
-
         $now = Carbon::today();
         $date_retour=$now->addDays(15)->toDateString();
         $emprunt->date_retour=$date_retour;
@@ -154,7 +152,7 @@ class PretController extends Controller
         $request->validate([
             'atest'=>'required|numeric',
             'num'=>'required|numeric',
-            'code_doc'=>'required|numeric',
+            'code_doc'=>'required',
             'num_exem'=>'required|numeric',
         ]);
         $codedoc=request('code_doc');
@@ -177,13 +175,13 @@ class PretController extends Controller
                if ($emprunt->date_retour < Carbon::today()->toDateString() )
                {
                    $abo->pen=true;
-                   if ($abo->privliger == 'superfan'){$abo->point=50;$abo->privliger = 'fan';}
-                   if ($abo->privliger == 'fan'){$abo->point=0;$abo->privliger = 'simple';}
+                   if ($abo->privliger == 'superfan'){$abo->point=20;$abo->privliger = 'fan';}
+                   if ($abo->privliger == 'fan'){$abo->point=10;$abo->privliger = 'simple';}
                    if ($abo->privliger == 'simple'){$abo->point=0;}
                }else{
                    $abo->point=($abo->point)+1;
-                   if (($abo->point)==50){$abo->privliger = 'fan';}
-                   if (($abo->point)==100){$abo->privliger = 'superfan';}
+                   if (($abo->point)==20){$abo->privliger = 'fan';}
+                   if (($abo->point)==30){$abo->privliger = 'superfan';}
                }
 
                $E1=Exemplaire::where([
@@ -195,9 +193,10 @@ class PretController extends Controller
                    $etat=(int)(request('etat'));
                    if ($E1->etat >=$etat){
                        $E1->etat =$etat;
-                       if (($abo->point)>0){
-                       $abo->point=($abo->point)-1;
-                       }
+                       $abo->pen=true;
+                       if ($abo->privliger == 'superfan'){$abo->point=20;$abo->privliger = 'fan';}
+                       if ($abo->privliger == 'fan'){$abo->point=10;$abo->privliger = 'simple';}
+                       if ($abo->privliger == 'simple'){$abo->point=0;}
                    }
                    else{
                        $ar=array('imposible de amilioré l\'etat de document' );
@@ -290,7 +289,7 @@ class PretController extends Controller
                                 <br><br>
                                 <strong>Titre :</strong>'.$titre.'
                                 <br><strong>Code :</strong>'.$code.'
-                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$num_exem.'
+                                <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$etat.'
                                 <br><br> en '.$date_emprunt.'  ,et il doit le retourner en '.$date_retour.'
                             </p>
                     

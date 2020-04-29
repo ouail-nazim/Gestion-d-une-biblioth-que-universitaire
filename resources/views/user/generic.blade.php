@@ -14,12 +14,11 @@
 			</header>
 
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-						<li><a href="/">Home</a></li>
-				</ul>
-			</nav>
-
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">Home</a></li>
+			</ul>
+		</nav>
 		<!-- One -->
 			<section id="One" class="wrapper style3">
 				<div class="inner">

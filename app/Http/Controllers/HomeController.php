@@ -25,6 +25,7 @@ class HomeController extends Controller
         $this->middleware('auth');
         $total=Emprunt::all();
         $retarde=0;
+        $death=0;
         foreach ($total as $emprunt){
             if ($emprunt->date_retour < Carbon::today()->toDateString() ){
                 $retarde++;
@@ -35,10 +36,12 @@ class HomeController extends Controller
         foreach ($res as $reservation){
             if ($reservation->date_fin_reservations < \Carbon\Carbon::today()->toDateString() )
             {
-                $reservation->delete();
+                $death++;
+                //$reservation->delete();
             }
         }
         Config::set('retarde',$retarde);
+        Config::set('death',$death);
     }
 
     /**

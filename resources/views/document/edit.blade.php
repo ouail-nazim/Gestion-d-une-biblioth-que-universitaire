@@ -18,8 +18,8 @@
                 '</a>' +
                 '<br>'+
                 '<div class="form-row" style="margin-left: 14.5%">' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct  </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>' +
                 '</div>' +
                 '</div>' +
                 '</div>'; //New input field html
@@ -31,8 +31,8 @@
                 '</a>' +
                 '<br>'+
                 '<div class="form-row" style="margin-left: 16%">' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" placeholder="nom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" placeholder="prenom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" placeholder="nom de lencadreure de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" placeholder="prenom de lencadreure de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
@@ -76,7 +76,7 @@
     <!-- BODY TAGS----------------------------------------------------------------- -->
     @if ($errors->any())
         <div class="alert alert-danger">
-            <h1 align="center">edit filed</h1>
+            <h3 align="center">formulaire est mal rempli</h3>
         </div>
     @endif
     @if(($doc->livre)!= null)
@@ -97,7 +97,7 @@
                         <SCRIPT LANGUAGE="JavaScript">
                             document.forms.frm.nom.focus();
                         </SCRIPT>
-                        <div class="invalid-feedback">Please provide a valid title</div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('titre')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -110,7 +110,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control"  value="{{$doc->livre->isbn}}" name="isbn" placeholder="le ISBN de livre" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('isbn')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -140,9 +140,9 @@
                                                     </a>
                                                 <br>
                                                 <div class="form-row " style="margin-top: -4%;margin-bottom: 3%">
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom[]" value="{{$auteurs->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom[]" value="{{$auteurs->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                     <br>
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" value="{{$auteurs->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" value="{{$auteurs->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +160,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control" value="{{$doc->livre->edition}}" name="edition" placeholder="Edition" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('edition')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -173,7 +173,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="number"   class="form-control" name="nmb_dex" value="{{($doc->nmb_dex)}}"  min="0" placeholder="nombre d'exomplair" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('nmb_dex')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -186,7 +186,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control" value="{{($doc->emplacment)}}"  name="emplacment" placeholder="emplacement" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct   </div>
                         @error('emplacment')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -199,7 +199,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="date" name="annee" value="{{($doc->annee)}}" class="form-control"  required>
-                        <div class="invalid-feedback">Please select one of those langages</div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('annee')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -235,7 +235,7 @@
                         <SCRIPT LANGUAGE="JavaScript">
                             document.forms.frm.nom.focus();
                         </SCRIPT>
-                        <div class="invalid-feedback">Please provide a valid title</div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('titre')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -249,7 +249,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control"  value="{{$doc->memoire->promotion}}" name="promotion" placeholder="le ISBN de livre" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct   </div>
                         @error('promotion')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -281,9 +281,9 @@
                                                 </a>
                                                 <br>
                                                 <div class="form-row " style="margin-top: -4%;margin-bottom: 3%">
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom[]" value="{{$auteurs->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom[]" value="{{$auteurs->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                     <br>
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" value="{{$auteurs->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" value="{{$auteurs->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,9 +319,9 @@
                                                 </a>
                                                 <br>
                                                 <div class="form-row " style="margin-top: -4%;margin-bottom: 3%">
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" value="{{$encadreures->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" value="{{$encadreures->nom}}" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                     <br>
-                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" value="{{$encadreures->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>
+                                                    <div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" value="{{$encadreures->prenom}}" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct   </div></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -340,7 +340,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="number"   class="form-control" name="nmb_dex" value="{{($doc->nmb_dex)}}" min="0" placeholder="nombre d'exomplair" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('nmb_dex')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -354,7 +354,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control" value="{{($doc->emplacment)}}"  name="emplacment" placeholder="emplacement" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
+                        <div class="invalid-feedback">entrer une valeur correct   </div>
                         @error('emplacment')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror
@@ -368,7 +368,7 @@
                     </div>
                     <div class="col-md-9">
                         <input type="date" name="annee" value="{{($doc->annee)}}" class="form-control"  required>
-                        <div class="invalid-feedback">Please select one of those langages</div>
+                        <div class="invalid-feedback">entrer une valeur correct  </div>
                         @error('annee')
                         <div class="text-danger">{{ '!!!'. $message }}</div>
                         @enderror

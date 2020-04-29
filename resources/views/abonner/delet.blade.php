@@ -8,8 +8,9 @@
         <div class="container">
             <div class="row row-cols-3">
                 @if(count($abonner)==0)
-                   <strong> abonner n'exist pas</strong> <a href="/gotodeletAbonner" class="btn btn-secondary ml-lg-5 " >
-                        <i class="fa fa-share-square text-white mr-2"></i>go back</a>
+                   <strong> abonner n'exist pas</strong> <a href="/gotodeletAbonner"
+                                                            class="btn btn-secondary ml-lg-5 " >
+                        <i class="fa fa-share-square text-white mr-2"></i>retourner</a>
                     <br>
                 @else
                     @foreach($abonner as $abo)
@@ -23,18 +24,19 @@
 
                                 @endif
                                 <div class="card-body">
-                                    <h5 class="card-title">Name:{{$abo->nom}}</h5>
-                                    <h5 class="card-title">last name:{{$abo->prenom}}</h5>
-                                    <h6 class="card-title">id: {{$abo->num}}</h6>
+                                    <h5 class="card-title">nom:{{$abo->nom}}</h5>
+                                    <h5 class="card-title">prénom:{{$abo->prenom}}</h5>
+                                    <h6 class="card-title">numéro de carte: {{$abo->num}}</h6>
                                     <div class="d-inline-flex " style="width:100%;">
                                         <div class=" ">
-                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger mt-3 ">Delet</button>
+                                            <button onclick="document.getElementById('id01').style.display='block'"
+                                                    class="btn btn-danger mt-3 ">supprimer</button>
                                             <div id="id01" class="modal">
 
                                                 <div class="modal-content animate" >
-                                                    <span class="" style="text-align: center ; font-size: 2em;"><strong>are you sure ??</strong> </span>
-                                                    <a href="/delete/{{$abo->id}}"  class="bb btn btn-danger">yes delete it </a>
-                                                    <a href="/See_all" class="btn btn-success bb " >cancel</a>
+                                                    <span class="" style="text-align: center ; font-size: 2em;"><strong>vous voulez supprimer cet abonneé ?</strong> </span>
+                                                    <a href="/delete/{{$abo->id}}"  class="bb btn btn-danger">oui supprimer le  </a>
+                                                    <a href="/See_all" class="btn btn-success bb " >annuler</a>
                                                 </div>
                                             </div>
 

@@ -16,7 +16,7 @@
                     <strong> le numéro de cart </strong>
                 </div>
                 <div class="col-md-9">
-                    <input class="form-control" type="text" name="search" maxlength="14"
+                    <input class="form-control" type="text" name="search" maxlength="15"
                            placeholder="rechercher un abonner" aria-label="Search" required>
                     @error('search')
                     <div class="text-danger">{{ '!!!'. $message }}</div>

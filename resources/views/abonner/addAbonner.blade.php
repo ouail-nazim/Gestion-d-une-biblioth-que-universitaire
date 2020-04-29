@@ -3,12 +3,7 @@
 @section('content1')
     @if ($errors->any())
         <div class="alert alert-danger">
-            <h1 align="center">abonner not added</h1>
-            <ul>
-                {{--@foreach ($errors->all() as $error)--}}
-                    {{--<li>{{ $error }}</li>--}}
-                {{--@endforeach--}}
-            </ul>
+            <h3 align="center">formulaire est mal rempli</h3>
         </div>
     @endif
     <!-- BODY TAGS----------------------------------------------------------------- -->
@@ -24,11 +19,11 @@
             <div class="form-row">
                 <div class="col">
                        <input type="text" class="form-control "
-                              maxlength="20" value="{{old('nom')}}" name="nom" placeholder="le Nom" required>
+                              maxlength="20" value="{{old('nom')}}" name="nom" pattern="([^\s][A-z\s]+)" placeholder="le Nom" required>
                        <SCRIPT LANGUAGE="JavaScript">
                            document.forms.frm.nom.focus();
                        </SCRIPT>
-                       <div class="invalid-feedback">Please provide a valid first name</div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                     @error('nom')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -37,8 +32,8 @@
                 </div>
                 <div class="col" >
                     <input type="text" class="form-control" maxlength="20"
-                           value="{{old('prenom')}}" name="prenom" placeholder="le prénom" required>
-                    <div class="invalid-feedback">Please provide a valid last name</div>
+                           value="{{old('prenom')}}" name="prenom" pattern="([^\s][A-z\s]+)" placeholder="le prénom" required>
+                    <div class="invalid-feedback">entrer une valeur correct</div>
                     @error('prenom')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -51,7 +46,7 @@
                 <div class="col">
                     <input type="text" class="form-control"  value="{{old('num')}}"
                            name="num" placeholder="Entre le numéro d'Abonneé" required maxlength="15">
-                    <div class="invalid-feedback"> Entre le numéro d'Abonneé coorect  </div>
+                    <div class="invalid-feedback"> entrer une valeur correct</div>
                     @error('num')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -63,7 +58,7 @@
                 <div class="col">
                     <input type="email" class="form-control" value="{{old('email')}}"
                            name="email" placeholder="EMAIL" required>
-                    <div class="invalid-feedback">Please provide a valid email </div>
+                    <div class="invalid-feedback">entrer une valeur correct</div>
                     @error('email')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -91,7 +86,7 @@
                 <div class="col">
                     <input type="text" maxlength="10" min="0" class="form-control" value="{{old('telephone')}}"
                            name="telephone" placeholder="Entre le numéro telephone" required>
-                    <div class="invalid-feedback"> Entre le numéro de telephone coorect  </div>
+                    <div class="invalid-feedback"> entrer une valeur correct </div>
                     @error('telephone')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror

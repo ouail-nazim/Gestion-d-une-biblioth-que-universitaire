@@ -14,8 +14,8 @@
                                             '</a>' +
                                             '<br>'+
                                             '<div class="form-row" style="margin-left: 16%">' +
-                                                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
-                                                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                                                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct </div></div>' +
+                                                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct  </div></div>' +
                                             '</div>' +
                                 '</div>' +
 
@@ -50,24 +50,24 @@
             </legend>
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <h1 align="center">added filed</h1>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
+                    <h3 align="center">formulaire est mal rempli</h3>
+                    {{--@foreach ($errors->all() as $error)--}}
+                    {{--<li>{{ $error }}</li>--}}
+                    {{--@endforeach--}}
                 </div>
             @endif
             <br>
             <div class="form-row">
                 <div class="col-md-6">
                     <input type="text" maxlength="10" class="form-control"  name="code" value="{{old('code')}}" placeholder="le code de livre" required>
-                    <div class="invalid-feedback">Please provide a valid value </div>
+                    <div class="invalid-feedback">entrer une valeur correct</div>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
                 </div>
                 <div class="col-md-6">
                     <input type="text" class="form-control"  name="isbn" value="{{old('isbn')}}" placeholder="le ISBN de livre" required>
-                    <div class="invalid-feedback">Please provide a valid value </div>
+                    <div class="invalid-feedback">entrer une valeur correct </div>
                     @error('isbn')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -83,31 +83,12 @@
                     @error('titre')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
-                    <div class="invalid-feedback">Please provide a valid title</div>
+                    <div class="invalid-feedback">entrer une valeur correct</div>
                 </div>
                 <div class="col-md-3">
                     <input type="number"   class="form-control" name="nmb_dex" min="0" value="{{old('nmb_dex')}}" placeholder="nombre d'exomplair" required>
-                    <div class="invalid-feedback">Please provide a valid value </div>
+                    <div class="invalid-feedback">entrer une valeur correct </div>
                     @error('nmb_dex')
-                    <div class="text-danger">{{ '!!!'. $message }}</div>
-                    @enderror
-                </div>
-            </div>
-            <br>
-            <div class="form-row">
-                <div class="col-md-3">
-                    <strong> sélectionner une image </strong>
-                    @if ($errors->any())
-                        <br> <div class="text-danger">inseré une auter foit </div>
-                    @endif
-                </div>
-                <div class="col-md-9">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="img" required>
-                        <label class="custom-file-label" for="validatedCustomFile"></label>
-                        <div class="invalid-feedback">Example invalid custom file feedback</div>
-                    </div>
-                    @error('img')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
                 </div>
@@ -131,7 +112,7 @@
                             <div class="col-md-5 ">
                                 <input type="text" class="form-control"name="nom[]"
                                        placeholder="nom de lauteaur de livre" required>
-                                <div class="invalid-feedback">Please provide a valid value </div>
+                                <div class="invalid-feedback">entrer une valeur correct </div>
                                 @error('nom')
                                 <div class="text-danger">{{ '!!!'. $message }}</div>
                                 @enderror
@@ -139,7 +120,7 @@
                             <div class="col-md-5 ">
                                 <input type="text" class="form-control"name="prenom[]"
                                        placeholder="prenom de lauteaur de livre" required>
-                            <div class="invalid-feedback">Please provide a valid value </div>
+                            <div class="invalid-feedback">entrer une valeur correct</div>
                                 @error('prenom')
                                 <div class="text-danger">{{ '!!!'. $message }}</div>
                                 @enderror
@@ -154,7 +135,7 @@
             <div class="form-row">
                 <div class="col">
                     <input type="text" class="form-control"  name="edition" value="{{old('edition')}}" placeholder="Edition" required>
-                    <div class="invalid-feedback">Please provide a valid value </div>
+                    <div class="invalid-feedback">entrer une valeur correct </div>
                     @error('edition')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -164,7 +145,7 @@
             <div class="form-row">
                 <div class="col">
                     <input type="text" class="form-control"  name="emplacment" value="{{old('emplacment')}}" placeholder="emplacement" required>
-                    <div class="invalid-feedback">Please provide a valid value </div>
+                    <div class="invalid-feedback">entrer une valeur correct </div>
                     @error('emplacment')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
@@ -177,8 +158,27 @@
                 </div>
                 <div class="col-md-9">
                     <input type="date" name="annee" value="{{old('annee')}}" class="form-control"  required>
-                    <div class="invalid-feedback">Please select one of those langages</div>
+                    <div class="invalid-feedback">entrer une valeur correct</div>
                     @error('annee')
+                    <div class="text-danger">{{ '!!!'. $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <strong> sélectionner une image </strong>
+                    @if ($errors->any())
+                        <br> <div class="text-danger">inseré une auter foit </div>
+                    @endif
+                </div>
+                <div class="col-md-9">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="img" required>
+                        <label class="custom-file-label" for="validatedCustomFile"></label>
+                        <div class="invalid-feedback">entrer une valeur correct</div>
+                    </div>
+                    @error('img')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
                     @enderror
                 </div>

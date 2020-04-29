@@ -16,7 +16,14 @@
           <h4>{{$msg[0]}}</h4>
         </div>
         <br>
-
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <h3 align="center">formulaire est mal rempli</h3>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
     @endif
 
 
@@ -37,9 +44,7 @@
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Numéro de carte</label>
                        <input type="text" maxlength="15" class="form-control" name="numcart" id="validationCustom01" required>
-                       <div class="valid-feedback">
-                           entré un numéro
-                       </div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                    </div>
                    <div class="col-md-2 mb-3"></div>
                </div>
@@ -48,9 +53,7 @@
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Le nom</label>
                        <input type="text" class="form-control"  maxlength="20" name="nom" id="validationCustom01" required>
-                       <div class="valid-feedback">
-                           entré un nom
-                       </div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                    </div>
                    <div class="col-md-2 mb-3"></div>
                </div>
@@ -59,9 +62,7 @@
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01" >LE prénom</label>
                        <input type="text" class="form-control" maxlength="20" name="prenom" id="validationCustom01" required>
-                       <div class="valid-feedback">
-                           entré un prenom
-                       </div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                    </div>
                    <div class="col-md-2 mb-3"></div>
                </div>
@@ -81,9 +82,7 @@
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Code de document</label>
                        <input type="text" class="form-control" maxlength="10" name="codedoc" id="validationCustom01" required>
-                       <div class="valid-feedback">
-                           Looks good!
-                       </div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                    </div>
                    <div class="col-md-2 mb-3"></div>
                </div>
@@ -92,9 +91,7 @@
                    <div class="col-md-8 mb-3">
                        <label for="validationCustom01">Numéro d'exemplair</label>
                        <input type="number" min="0" class="form-control" name="numexem" id="validationCustom01"  required>
-                       <div class="valid-feedback">
-                           Looks good!
-                       </div>
+                       <div class="invalid-feedback">entrer une valeur correct</div>
                    </div>
                    <div class="col-md-2 mb-3"></div>
                </div>
@@ -113,7 +110,7 @@
        </div>
         <div class="row">
            <div class="col-md-5"></div>
-            <div class="col-md-2 "><button class="btn btn-success w-100" type="submit">Step 2 </button></div>
+            <div class="col-md-2 "><button class="btn btn-success w-100" type="submit">prêté le document </button></div>
             <div class="col-md-5"></div>
         </div>
 

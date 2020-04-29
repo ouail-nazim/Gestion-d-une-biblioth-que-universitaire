@@ -353,7 +353,7 @@ class DocumentControler extends Controller
             }
         }
         $doc->delete();
-        return redirect("/indexdoc");
+        return redirect("/home");
     }
 
     public function Catégori(){
@@ -362,12 +362,17 @@ class DocumentControler extends Controller
     }
     public function addcategori(Request $request){
         $this->validate($request,[
-            'name_cat'=>'required|max:20'
+            'name_cat' => [
+                    'required',
+                    'max:20',
+                    'regex:/^[a-zA-ZÀ-ž_\s]*$/'
+                ]
         ]);
         $cat=new Categorie();
         $cat->name=request('name_cat');
         $cat->save();
         return redirect('/Catégori');
     }
+
 
 }

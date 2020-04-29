@@ -74,13 +74,13 @@
                     <div id="id02" class="modal">
                         <div class="modal-content animate" >
                              <span class="" style="text-align: center ; font-size: 2em;">
-                                <div>suprime l'exomplaire num </div>
+                                <div>supprimer l'exomplaire num </div>
                             </span>
                             <form method="get" action="/exmoin/{{($doc->code)}}">
-                                <input type="text" name="id" class="bb form-control" required PLACEHOLDER="entré le numéro d'exomplaire">
-                                <input type="submit" class="bb btn btn-danger" value="delete it">
+                                <input type="number"  name="id" class="bb form-control" required PLACEHOLDER="entré le numéro d'exomplaire">
+                                <input type="submit" class="bb btn btn-danger" value="supprimer">
                             </form>
-                            <button class="bb btn btn-success" id="can2">cancel</button>
+                            <button class="bb btn btn-success" id="can2">anuller</button>
 
                         </div>
                     </div>
@@ -153,14 +153,14 @@
 
                 <div class="col-md-3 more">
                     <button onclick="document.getElementById('id01').style.display='block'"
-                            class="btn btn-danger">Delet</button>
+                            class="btn btn-danger">supprimer</button>
                     <div id="id01" class="modal">
                         <div class="modal-content animate" >
                             <span class="" style="text-align: center ; font-size: 2em;">
-                                <strong>are you sure ??</strong>
+                                <strong>supprimer ce document</strong>
                             </span>
-                            <a href="/destroy/{{$doc->code}}"  class="bb btn btn-danger">yes delete it </a>
-                            <button class="bb btn btn-success" id="can">cancel</button>
+                            <a href="/destroy/{{$doc->code}}"  class="bb btn btn-danger">oui supprimer</a>
+                            <button class="bb btn btn-success" id="can">anuller</button>
 
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                     </script>
                 </div>
                 <div class="col-md-3 more " >
-                    <a href="/edit/{{$doc->code}}" class="btn btn-info">Edit Profile </a>
+                    <a href="/edit/{{$doc->code}}" class="btn btn-info">Modifier le document</a>
                 </div>
             </div>
             <br><br>
@@ -212,7 +212,7 @@
             </div>
             <div class="row-md-12  boite ">
                 <div class="row">
-                    <strong class="ml-lg-5 mb-3"><em>more books like this in :</em></strong>
+                    <strong class="ml-lg-5 mb-3"><em>plus de livres comme celui-ci dans :</em></strong>
                 </div>
                 <ul class="">
                     @foreach($doc->categories as $categorie)

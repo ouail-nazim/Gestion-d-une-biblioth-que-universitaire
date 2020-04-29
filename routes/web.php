@@ -54,6 +54,7 @@ Route::post('/updateLivre/{code}','DocumentControler@updateLivre');
 Route::post('/updateMemoire/{code}','DocumentControler@updateMemoire');
 Route::get('/Catégori','DocumentControler@Catégori');
 Route::post('/addcategori','DocumentControler@addcategori');
+
 //Abonner
 Route::get('/See_all', 'AbonnerController@index');
 Route::get('/searchAbonner','AbonnerController@searchAbonner');
@@ -75,6 +76,8 @@ Route::get('/privligerAbonner', 'AbonnerController@privligerAbonner');
 Route::get('/privliger/{id}', 'AbonnerController@privliger');
 Route::get('/more/{id}', 'AbonnerController@more');
 Route::get('/getpenliser', 'AbonnerController@getpenliser');
+Route::get('/liste_reservation','AbonnerController@liste_reservation');
+Route::get('/supprimer_res/{id}','AbonnerController@supprimer_res');
 //preté
 Route::get('/creatadd','PretController@creat_add');
 Route::post('/savepret','PretController@savepret');

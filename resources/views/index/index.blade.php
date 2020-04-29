@@ -53,7 +53,7 @@
                     <i class="fa fa-plus-large mr-1 fa-star-half"></i>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés super fan</h6>
+                    <h6 class="card-title">le nombre des abonneés fan</h6>
                     <p class="card-text "> {{$abonnerfan}}</p>
                 </div>
             </div>

@@ -96,9 +96,9 @@
             <div class="col-md-2"></div>
         </div>
         <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-2 "><button class="btn btn-success w-100" type="submit">Step 2 </button></div>
-            <div class="col-md-5"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 "><button class="btn btn-success w-100" type="submit">retournée le document  </button></div>
+            <div class="col-md-4"></div>
         </div>
 
 

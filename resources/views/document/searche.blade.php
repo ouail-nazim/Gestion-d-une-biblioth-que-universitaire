@@ -16,7 +16,7 @@
                     <strong> Code de livre </strong>
                 </div>
                 <div class="col-md-9">
-                    <input class="form-control" type="text" name="code" maxlength="11"
+                    <input class="form-control" type="text" name="code" maxlength="10"
                            placeholder="Le code le livre" aria-label="Search" required>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>
@@ -51,7 +51,7 @@
                     <strong> Code de livre </strong>
                 </div>
                 <div class="col-md-9">
-                    <input class="form-control" type="text" name="code"  maxlength="11"
+                    <input class="form-control" type="text" name="code"  maxlength="10"
                            placeholder="Le code le livre" aria-label="Search" required>
                     @error('code')
                     <div class="text-danger">{{ '!!!'. $message }}</div>

@@ -4,7 +4,7 @@
 
     <div class="alert ha res "  role="alert">
        <span class="alert-link mb-lg-5">
-           <span>TAGs :</span>
+           <span><i class="fa fa-tags-large mr-1 fa-tags"></i>Catégori</span>
            @foreach($cat=\App\Categorie::all() as $cm)
                <a class="categori mr-2 btn-outline-dark"
                   href="/indexdoc?cate={{$cm->id}}">
@@ -24,24 +24,24 @@
                             <img src="{{'/storage/books/'.$doccument->img}}"  height="120px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 @if(($doccument->livre)!= null)
-                                    <h5 class="card-title">code livre :{{$doccument->code}}</h5>
-                                    <h5 class="card-title">titre livre :{{$doccument->titre}}</h5>
+                                    <h5 class="card-title">Code de livre :{{$doccument->code}}</h5>
+                                    <h5 class="card-title">Titre :{{$doccument->titre}}</h5>
                                     <h6 class="card-title">ISBN : {{$doccument->livre->isbn}} </h6>
                                 @else
-                                    <h5 class="card-title">code Mémoire :{{$doccument->code}}</h5>
-                                    <h5 class="card-title">titre Mémoire :{{$doccument->titre}}</h5>
-                                    <h6 class="card-title">promotion : {{$doccument->memoire->promotion}} </h6>
+                                    <h5 class="card-title">Code de Mémoire :{{$doccument->code}}</h5>
+                                    <h5 class="card-title">titre :{{$doccument->titre}}</h5>
+                                    <h6 class="card-title">Promotion : {{$doccument->memoire->promotion}} </h6>
                                 @endif
 
                                 <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 50px;" class="btn badge-info ">{{$doccument->nmb_dex}}</span></h6>
-                                    @if($action == 'suprimer')
-                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 ">Delet</button>
+                                    @if($action == 'supprimer')
+                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 ">supprimer</button>
                                             <div id="id01" class="modal">
 
                                                 <div class="modal-content animate" >
-                                                    <span class="" style="text-align: center ; font-size: 2em;"><strong>are you sure ??</strong> </span>
-                                                    <a href="/destroy/{{$doccument->code}}"  class="bb btn btn-danger">yes delete it </a>
-                                                    <a href="{{route('index.doc')}}" class="btn btn-success bb " >cancel</a>
+                                                    <span class="" style="text-align: center ; font-size: 2em;"><strong>supprimer ce document </strong> </span>
+                                                    <a href="/destroy/{{$doccument->code}}"  class="bb btn btn-danger">oui supprimer le  </a>
+                                                    <a href="{{route('index.doc')}}" class="btn btn-success bb " >anuller</a>
                                                 </div>
                                             </div>
                                             <script>
@@ -60,10 +60,10 @@
                                             </script>
                                     @endif
                                     @if($action == 'index')
-                                        <a href="/detailebook/{{$doccument->code}}" class="btn btn-primary w-100  ">See More</a>
+                                        <a href="/detailebook/{{$doccument->code}}" class="btn btn-primary w-100  ">Detaille</a>
                                     @endif
                                     @if($action == 'edit')
-                                        <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100  ">Edit this doc</a>
+                                        <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100  ">Modifier le Document</a>
                                     @endif
                             </div>
                         </div></div>

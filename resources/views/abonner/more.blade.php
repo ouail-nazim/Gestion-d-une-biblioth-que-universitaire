@@ -38,7 +38,7 @@
                     <i class="fa fa-star text-danger"></i>
                     <i class="fa fa-star text-danger"></i>
                         <br>
-                    <span class="badge badge-danger">Super fun</span>
+                    <span class="badge badge-danger">VIP</span>
                 @endif
             </div>
         </div>
@@ -46,45 +46,46 @@
         {{--info--}}
         <div class="row">
             <div class="col-md-3">
-               <strong> numéro de carte</strong>
+               <strong> Numéro de carte</strong>
             </div>
-            <br>
             {{$Abonner->num}}
         </div>
+        <br>
         <div class="row">
             <div class="col-md-3">
-               <strong> gender</strong>
+               <strong> Sexe</strong>
             </div>
-            <br>
             {{$Abonner->gender}}
         </div>
+        <br>
         <div class="row">
             <div class="col-md-3">
-               <strong> email</strong>
+               <strong> @Email</strong>
             </div>
-            <br>
             {{$Abonner->email}}
         </div>
+        <br>
         <div class="row">
             <div class="col-md-3">
-               <strong> telephone</strong>
+               <strong> Telephone</strong>
             </div>
-            <br>
             {{$Abonner->telephone}}
         </div>
         <br>
         {{--option--}}
         <div class="row">
-            <div class="col-md-3 more " >
-                <a href="/editAbonner2/{{$Abonner->num}}" class="btn btn-success">Edit Profile </a>
+            <div class="col-md-4 more "></div>
+            <div class="col-md-4 more " >
+                <a href="/editAbonner2/{{$Abonner->num}}" class="btn btn-success">Modifier le Profile </a>
             </div>
-            <div class="col-md-3 more">
-                <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger">Delet</button>
+            <div class="col-md-4 more">
+                <button onclick="document.getElementById('id01').style.display='block'"
+                        class="btn btn-danger">Suprimer l'abonné</button>
                 <div id="id01" class="modal">
                     <div class="modal-content animate" >
-                        <span class="" style="text-align: center ; font-size: 2em;"><strong>are you sure ??</strong> </span>
-                        <a href="/delete/{{$Abonner->id}}"  class="bb btn btn-danger">yes delete it </a>
-                        <button class="bb btn btn-success" id="can">cancel</button>
+                        <span class="" style="text-align: center ; font-size: 2em;"><strong>vous voulez supprimer cet abonneé ?</strong> </span>
+                        <a href="/delete/{{$Abonner->id}}"  class="bb btn btn-danger">oui supprimer  </a>
+                        <button class="bb btn btn-success" id="can">annuler</button>
 
                     </div>
                 </div>
@@ -103,35 +104,35 @@
                     }
                 </script>
             </div>
-            <div class="col-md-3 more">
-                @if($Abonner->pen == true)
-                    <a href="/Depinaliser/{{$Abonner->id}}" class="btn btn-primary"> Depinaliser</a>
-                @else
-                    <a href="/pinaliser/{{$Abonner->id}}" class="btn btn-warning">Penaliser</a>
-                @endif
+            {{--<div class="col-md-2 more">--}}
+                {{--@if($Abonner->pen == true)--}}
+                    {{--<a href="/Depinaliser/{{$Abonner->id}}" class="btn btn-primary"> Depinaliser</a>--}}
+                {{--@else--}}
+                    {{--<a href="/pinaliser/{{$Abonner->id}}" class="btn btn-warning">Penaliser</a>--}}
+                {{--@endif--}}
 
-            </div>
-            <div class="col-md-3 more">
-                @if($Abonner->pen == false)
-                    @if ($Abonner->privliger == 'simple')
-                        <a href="/privliger/{{$Abonner->id}}" class="btn btn-info">
-                            <strong> fun</strong>
-                        </a>
+            {{--</div>--}}
+            {{--<div class="col-md-2 more">--}}
+                {{--@if($Abonner->pen == false)--}}
+                    {{--@if ($Abonner->privliger == 'simple')--}}
+                        {{--<a href="/privliger/{{$Abonner->id}}" class="btn btn-info">--}}
+                            {{--<strong> fun</strong>--}}
+                        {{--</a>--}}
 
-                    @endif
-                    @if($Abonner->privliger == 'fan')
-                        <a href="/privliger/{{$Abonner->id}}" class="btn btn-info">
-                            <strong>super fun</strong>
-                        </a>
-                    @endif
+                    {{--@endif--}}
+                    {{--@if($Abonner->privliger == 'fan')--}}
+                        {{--<a href="/privliger/{{$Abonner->id}}" class="btn btn-info">--}}
+                            {{--<strong>super fun</strong>--}}
+                        {{--</a>--}}
+                    {{--@endif--}}
 
-                    @if($Abonner->privliger == 'superfan')
-                            <a href="#" class="btn btn-secondary  disabled" >max </a>
-                    @endif
-                @else
-                   <a href="#" class="btn btn-secondary  disabled" >privliger</a>
-                @endif
-            </div>
+                    {{--@if($Abonner->privliger == 'superfan')--}}
+                            {{--<a href="#" class="btn btn-secondary  disabled" >max </a>--}}
+                    {{--@endif--}}
+                {{--@else--}}
+                   {{--<a href="#" class="btn btn-secondary  disabled" >privliger</a>--}}
+                {{--@endif--}}
+            {{--</div>--}}
         </div>
         <br><br>
     </div>
@@ -144,7 +145,9 @@
         @if($Abonner->pen == true)
             <div class="row-md-12 point boite-alert alert alert-danger ">
                 <div class="row">
-                    <strong>depanaliser en :2017-12-3</strong>
+                    <strong>depanaliser en :2017-12-3 </strong>
+                    <a href="/Depinaliser/{{$Abonner->id}}" class="ml-4 link"> Depinaliser</a>
+
 
                 </div>
             </div>
@@ -155,7 +158,7 @@
                     <li class="">
                         <div class="row">
                             <div class="col-md-7 mr-2">
-                                Title :<strong>{{$doc=\App\Document::where('code','=',$emp->code_doc)->first()->titre}}</strong>
+                                Le titre :<strong>{{$doc=\App\Document::where('code','=',$emp->code_doc)->first()->titre}}</strong>
                                 <br>
                                 numéro d'exemplaire :<strong>{{$emp->num_exem}}</strong>
                                 <br>
@@ -187,25 +190,14 @@
                                             }
                                         </script>
                                     @endif
-
-
-
-
-
-
-
                                 </div>
-
                             </div>
                         </div>
                     </li>
                     <hr>
                 @endforeach
-
-
             </ul>
         </div>
-
     </div>
 </div>
 

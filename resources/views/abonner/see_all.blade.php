@@ -4,7 +4,7 @@
 
     <div class="alert ha res " align="left" role="alert">
        <span class="alert-link">
-           {{count($abonner)}} abonner is found
+            Le nombre totale des Abonneé trouvé est : {{count($abonner)}}
        </span>
     </div>
 
@@ -39,7 +39,7 @@
                                             <i class="fa fa-star text-danger"></i>
                                             <i class="fa fa-star text-danger"></i>
                                             <i class="fa fa-star text-danger"></i>
-                                            <span class="badge badge-danger">Super fun</span>
+                                            <span class="badge badge-danger">VIP</span>
                                         @endif
 
                                     <div class="card-title">nom  : {{$abo->nom}}</div>
@@ -57,18 +57,17 @@
                         <div class="col">
                             <div class="card cc alert-danger"  >
                                 @if($abo->gender =='homme')
-                                    <img src="storage/gander/homme.jpg"   height="100px" width="100%"  alt="...">
+                                    <img src="storage/gander/homme.jpg"  height="100px" width="100%"   alt="...">
 
                                 @else
-                                    <img src="storage/gander/femme.png"  height="150px" alt="...">
+                                    <img src="storage/gander/femme.png"  height="100px" width="100%" alt="...">
 
                                 @endif
                                 <div class="card-body">
-                                    <h5 class="card-title">Name:{{$abo->nom}}</h5>
-                                    <h5 class="card-title">last name:{{$abo->prenom}}</h5>
-                                    <h6 class="card-title">id: {{$abo->num}}</h6>
-                                    <a href="/more/{{$abo->id}}" class="btn btn-danger">See More</a>
-
+                                    <div class="card-title">nom  : {{$abo->nom}}</div>
+                                    <div class="card-title">prénom  : {{$abo->prenom}}</div>
+                                    <div class="card-title">numéro de cart : {{$abo->num}}</div>
+                                    <a href="/more/{{$abo->id}}" class="btn btn-danger">Detaile</a>
                                 </div>
                             </div></div>
 

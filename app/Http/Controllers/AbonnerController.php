@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Abonner;
+use App\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Emprunt;
@@ -58,8 +59,8 @@ class AbonnerController extends Controller
     public function store(Request $request){
         $request->validate([
             'num'=>'required|unique:abonners|numeric|max:999999999999999',
-            'nom'=>'required|alpha|max:20',
-            'prenom'=>'required|alpha|max:20',
+            'nom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
+            'prenom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
             'gender'=>'required',//|exists:abonners,gender
             'telephone'=>'required |numeric|max:10 ',
             'email' => 'required|email|unique:abonners',
@@ -123,8 +124,8 @@ class AbonnerController extends Controller
     public function update(Request $request,$id){
                 $request->validate([
                     'num'=>'required|numeric|max:999999999999999',
-                    'nom'=>'required|alpha|max:20',
-                    'prenom'=>'required|alpha|max:20',
+                    'nom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
+                    'prenom' => ['required','max:20','regex:/^[a-zA-ZÀ-ž_\s]*$/'],
                     'telephone'=>'required |numeric|max:10 ',
                     'email' => 'required|email',
                 ]);
@@ -202,6 +203,15 @@ class AbonnerController extends Controller
     public function getpenliser(){
         $abonner=Abonner::all();
         return view('liste_pret')->with(['abonner'=>$abonner]);
+    }
+    public function liste_reservation(){
+        $abonner=Abonner::all();
+        return view('liste_reservation')->with(['abonner'=>$abonner]);
+    }
+    public function supprimer_res($id){
+        $l=Reservation::findorfail($id);
+        $l->delete();
+        return redirect('/home');
     }
 
 

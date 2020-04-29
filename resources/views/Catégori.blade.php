@@ -43,17 +43,42 @@
             <div id="id03" class="modal">
                 <div class="modal-content animate" >
                     <span class="" style="text-align: center ; font-size: 2em;"><strong>Ajouter une catégori</strong> </span>
-                    <form method="post" action="/addcategori" class="needs-validation" >
+                    <form method="post" action="/addcategori" class="needs-validation" name="cat">
                         @csrf
+                        <input type="text" class="form-control bb" maxlength="20" autofocus
+                               name="name_cat" pattern="([^\s][A-z\s]+)" value="{{old('name_cat')}}" placeholder="le nom de categori" required>
+                        <SCRIPT LANGUAGE="JavaScript">
+                            document.forms.cat.name_cat.focus();
+                        </SCRIPT>
+                        <div class="invalid-feedback">Please provide a valid last name</div>
 
-                        <input type="text" maxlength="19" class="form-control bb"  name="name_cat" value="{{old('name_cat')}}" placeholder="le nom de categori" required>
-                        <div class="invalid-feedback">Please provide a valid value </div>
-                        <button class="bb btn btn-success"  type="submit">ajouter</button>
+
+                        <button class="bb btn btn-success"  type="submit">Ajouter</button>
 
                     </form>
-                    <button class="bb btn btn-danger" id="can2">cancel</button>
+                    <button class="bb btn btn-danger" id="can2">Annuler</button>
                 </div>
             </div>
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
             <script>
                 // Get the modal
                 var modal3 = document.getElementById('id03');
@@ -68,7 +93,6 @@
         <table class="table table-striped " id="myTable">
             <thead class="thead-dark">
             <tr>
-                <th>id de catégori </th>
                 <th>le nome de catégori</th>
                 <th>le nombre de livre dons ce catégori</th>
                 <th></th>
@@ -78,7 +102,6 @@
             @foreach($cat as $catégori)
 
                         <tr class="filterDiv @if ((count($catégori->documents))==0) vide  @endif">
-                            <td>{{$catégori->id}} </td>
                             <td>{{$catégori->name}} </td>
                             <td>{{count($catégori->documents)}}</td>
                             <td>
@@ -140,7 +163,7 @@
 
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
+                    td = tr[i].getElementsByTagName("td")[0];
                     if (td) {
                         txtValue = td.textContent || td.innerText;
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -155,25 +178,6 @@
         </script>
 
 
-        <!-- SCRIPT TAGS----------------------------------------------------------------- -->
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
+
+
 @endsection
