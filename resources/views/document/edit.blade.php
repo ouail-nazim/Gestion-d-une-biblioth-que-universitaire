@@ -169,19 +169,6 @@
                 <br>
                 <div class="form-row">
                     <div class="col-md-3">
-                        <strong> nombre d'exomplair </strong>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="number"   class="form-control" name="nmb_dex" value="{{($doc->nmb_dex)}}"  min="0" placeholder="nombre d'exomplair" required>
-                        <div class="invalid-feedback">entrer une valeur correct  </div>
-                        @error('nmb_dex')
-                        <div class="text-danger">{{ '!!!'. $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <br>
-                <div class="form-row">
-                    <div class="col-md-3">
                         <strong> emplacement </strong>
                     </div>
                     <div class="col-md-9">
@@ -330,20 +317,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
-                <br>
-                {{--nombre d'exomplair--}}
-                <div class="form-row">
-                    <div class="col-md-3">
-                        <strong> nombre d'exomplair </strong>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="number"   class="form-control" name="nmb_dex" value="{{($doc->nmb_dex)}}" min="0" placeholder="nombre d'exomplair" required>
-                        <div class="invalid-feedback">entrer une valeur correct  </div>
-                        @error('nmb_dex')
-                        <div class="text-danger">{{ '!!!'. $message }}</div>
-                        @enderror
                     </div>
                 </div>
                 <br>

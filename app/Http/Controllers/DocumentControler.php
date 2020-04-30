@@ -62,7 +62,8 @@ class DocumentControler extends Controller
     {
         $doc=Document::find($code);
         $nombre_ex=count($doc->exemplaire);
-        return view('document.showdoc')->with(['doc'=>$doc,'nombre_ex'=>$nombre_ex]);
+        $prété=count(Emprunt::where('code_doc','=',$code)->get());
+        return view('document.showdoc')->with(['doc'=>$doc,'nombre_ex'=>$nombre_ex,'prété'=>$prété]);
 
     }
     //nombre dexemplaire +1 AJouter in exe
@@ -119,6 +120,7 @@ class DocumentControler extends Controller
         return view('document.add1');
     }
     //save les information des documents
+    
     public function store(Request $request)
     {
         //virifier les inputs

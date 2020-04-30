@@ -45,7 +45,7 @@
                                     <div class="card-title">nom  : {{$abo->nom}}</div>
                                     <div class="card-title">prénom  : {{$abo->prenom}}</div>
                                     <div class="card-title">numéro de cart : {{$abo->num}}</div>
-                                    <a href="/more/{{$abo->id}}" class="btn btn-primary">Detaile</a>
+                                    <a href="/more/{{$abo->id}}" class="btn btn-primary">Détaillé</a>
 
 
 
@@ -67,7 +67,7 @@
                                     <div class="card-title">nom  : {{$abo->nom}}</div>
                                     <div class="card-title">prénom  : {{$abo->prenom}}</div>
                                     <div class="card-title">numéro de cart : {{$abo->num}}</div>
-                                    <a href="/more/{{$abo->id}}" class="btn btn-danger">Detaile</a>
+                                    <a href="/more/{{$abo->id}}" class="btn btn-danger">Détaillé</a>
                                 </div>
                             </div></div>
 

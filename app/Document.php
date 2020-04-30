@@ -18,8 +18,6 @@ class Document extends Model
     public function memoire(){
         return $this->hasOne('App\Memoire','code_doc');
     }
-
-
     public function auteur(){
         return $this->hasMany('App\Auteur','code_doc');
     }
@@ -29,7 +27,6 @@ class Document extends Model
     public function reservation(){
         return $this->hasMany('App\Reservation','code_doc');
     }
-
     public function categories(){
         return $this->belongsToMany(Categorie::class);
     }

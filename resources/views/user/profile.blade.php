@@ -141,7 +141,15 @@
             <img class="rounded-circle " width="150px" height="150px" src="/storage/gander/femme.png"  height="200px" class="card-img-top" alt="...">
 
         @endif
-            <a class="btn btn-dark"href="/userhome" style="margin-top: 20%"><i class="fa fa-home"></i> </a>
+            <a class="btn btn-dark"href="/userhome" style="margin-top: 20%"><i class="fa fa-home mr-1"></i> Accueil</a>
+            <a class="btn btn-dark" href="{{ route('logout') }}" style="margin-top: 20%"
+               onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out mr-1"></i> Déconnecter
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             <hr>
         <div style="text-align: center;">
             @if($Abonner->privliger == 'simple')
@@ -173,7 +181,8 @@
                 <hr>
                 @if((Auth::guard('abonner')->user()->id)==($Abonner->id))
                     <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
-                    <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">liste des livres preté</button>
+                    <button @if((count($Abonner->emprunt))!=0 ) onclick="document.getElementById('id02').style.display='block'" @endif
+                    class="@if((count($Abonner->emprunt))==0)ml-0 btn btn-dark disabled  @else  btn btn-primary @endif">liste des livres preté</button>
                     <button  @if((count($Abonner->reservation))!=0) onclick="document.getElementById('id03').style.display='block'" @endif
                         class="@if((count($Abonner->reservation))==0)ml-0 btn btn-dark disabled  @else btn btn-warning @endif">
                             le livre réserver
@@ -259,7 +268,7 @@
                                 <br>
                                 date de reservations :<strong>{{$reservation->date_reservations}}</strong>
                                 <br>
-                                la finde reservations :<strong>{{$reservation->date_fin_reservations}}</strong>
+                                la fin de reservations :<strong>{{$reservation->date_fin_reservations}}</strong>
                                 <br>
 
                         <a class="btn btn-danger" href="/anuller_reserve/{{$reservation->id}}" style="width:60%;align-self: center;">anuller la résarvation</a>

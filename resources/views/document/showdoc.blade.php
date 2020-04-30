@@ -180,32 +180,32 @@
                     </script>
                 </div>
                 <div class="col-md-3 more " >
-                    <a href="/edit/{{$doc->code}}" class="btn btn-info">Modifier le document</a>
+                    <a href="/edit/{{$doc->code}}" class="btn btn-success">Modifier le document</a>
                 </div>
             </div>
             <br><br>
         </div>
         <div class="col-md-3 ml-2 ">
-            <div class="row-md-12  boite-alert alert alert-dark ">
-                <div class="row">
-                    <strong class=""> Consulter exemplaire </strong>
-                </div>
-                <div class="row">
-                    <div class=""> entré le numéro d'exemplaire</div>
-                </div>
+            {{--<div class="row-md-12  boite-alert alert alert-dark ">--}}
+                {{--<div class="row">--}}
+                    {{--<strong class=""> Consulter exemplaire </strong>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class=""> entré le numéro d'exemplaire</div>--}}
+                {{--</div>--}}
 
-                <div class="row">
-                    <form  action="#" method="get" class="form-inline" role="search">
-                        {{csrf_field()}}
-                        <input class="form-control form-control-sm w-75" type="text"
-                               placeholder="{{($doc->code).'/...............'}}" aria-label="Search">
-                        <button class="btn  my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
+                {{--<div class="row">--}}
+                    {{--<form  action="#" method="get" class="form-inline" role="search">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<input class="form-control form-control-sm w-75" type="text"--}}
+                               {{--placeholder="{{($doc->code).'/...............'}}" aria-label="Search">--}}
+                        {{--<button class="btn  my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="row-md-12  boite-alert alert alert-info " style="height: 13%;">
                 <div class="row w-100 " >
-                    <strong><em>nombre d'exomplaire preter :20000000 </em></strong>
+                    <strong><em>nombre d'exomplaire preter :{{$prété}}</em></strong>
                     <br>
 
                 </div>
