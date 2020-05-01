@@ -17,6 +17,14 @@ class UserController extends Controller
 
     public function __construct(){
         $this->middleware('auth:abonner');
+        $abonners=Abonner::all();
+        foreach ($abonners as $abonner){
+            if ($abonner->date_depanaliser < Carbon::today()->toDateString() ){
+                $abonner->date_depanaliser =null;
+                $abonner->pen=false;
+                $abonner->update();
+            }
+        }
         $res=\App\Reservation::all();
         //suprimé les réesrvation qanud la date de fin arivver
         foreach ($res as $reservation){

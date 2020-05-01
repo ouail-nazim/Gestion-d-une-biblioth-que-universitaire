@@ -33,8 +33,8 @@
                                     <h6 class="card-title">Promotion : {{$doccument->memoire->promotion}} </h6>
                                 @endif
 
-                                <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 50px;" class="btn badge-info ">{{$doccument->nmb_dex}}</span></h6>
-                                    @if($action == 'supprimer')
+                                <h6 class="card-title">nmbr exmaplaire :  <span style="margin-left: 50px;background: #F56A6A;" class="btn" >{{$doccument->nmb_dex}}</span></h6>
+                                    @if($action == 'suprimer')
                                             <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger w-100 ">supprimer</button>
                                             <div id="id01" class="modal">
 
@@ -60,7 +60,7 @@
                                             </script>
                                     @endif
                                     @if($action == 'index')
-                                        <a href="/detailebook/{{$doccument->code}}" class="btn btn-primary w-100  ">Detaille</a>
+                                        <a href="/detailebook/{{$doccument->code}}" class="btn w-100  " style="background: #F56A6A;">Detaille</a>
                                     @endif
                                     @if($action == 'edit')
                                         <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100  ">Modifier le Document</a>

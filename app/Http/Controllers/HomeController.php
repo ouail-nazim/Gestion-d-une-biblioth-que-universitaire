@@ -23,6 +23,14 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $abonners=Abonner::all();
+        foreach ($abonners as $abonner){
+            if ($abonner->date_depanaliser < Carbon::today()->toDateString() ){
+                $abonner->date_depanaliser =null;
+                $abonner->pen=false;
+                $abonner->update();
+            }
+        }
         $total=Emprunt::all();
         $retarde=0;
         $death=0;
@@ -52,6 +60,7 @@ class HomeController extends Controller
 
     public function index()
     {
+
         $abonner=count(Abonner::all());
         $abonnerpen=count(Abonner::where('pen','=',true)->get());
         $abonnersimple=count(Abonner::where('privliger','=','simple')->get());

@@ -145,8 +145,8 @@
         @if($Abonner->pen == true)
             <div class="row-md-12 point boite-alert alert alert-danger ">
                 <div class="row">
-                    <strong>depanaliser en :2017-12-3 </strong>
-                    <a href="/Depinaliser/{{$Abonner->id}}" class="ml-4 link"> Depinaliser</a>
+                    <strong>depanaliser en {{$Abonner->date_depanaliser}} </strong>
+                    {{--<a href="/Depinaliser/{{$Abonner->id}}" class="ml-4 link"> Depinaliser</a>--}}
 
 
                 </div>

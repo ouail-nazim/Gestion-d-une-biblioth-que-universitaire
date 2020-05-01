@@ -25,6 +25,7 @@ class CreateAbonnersTable extends Migration
             $table->boolean('pen')->default(false);
             $table->integer('telephone')->unsigned();
             $table->enum('privliger',['simple','fan','superfan'])->default('simple');
+            $table->date('date_depanaliser')->nullable('true')->default(null);
             $table->timestamps();
         });
     }

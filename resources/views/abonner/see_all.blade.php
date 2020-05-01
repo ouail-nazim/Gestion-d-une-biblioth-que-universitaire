@@ -45,7 +45,7 @@
                                     <div class="card-title">nom  : {{$abo->nom}}</div>
                                     <div class="card-title">prénom  : {{$abo->prenom}}</div>
                                     <div class="card-title">numéro de cart : {{$abo->num}}</div>
-                                    <a href="/more/{{$abo->id}}" class="btn btn-primary">Détaillé</a>
+                                    <a href="/more/{{$abo->id}}" class="btn " style="background: #F56A6A;">Détaillé</a>
 
 
 
@@ -64,10 +64,11 @@
 
                                 @endif
                                 <div class="card-body">
+                                    <i class="fa fa-minus-circle mr-2"></i>cet abonné est pénalisé<i class="fa fa-minus-circle ml-2"></i>
                                     <div class="card-title">nom  : {{$abo->nom}}</div>
                                     <div class="card-title">prénom  : {{$abo->prenom}}</div>
                                     <div class="card-title">numéro de cart : {{$abo->num}}</div>
-                                    <a href="/more/{{$abo->id}}" class="btn btn-danger">Détaillé</a>
+                                    <a href="/more/{{$abo->id}}" class="btn btn-outline-danger">Détaillé</a>
                                 </div>
                             </div></div>
 

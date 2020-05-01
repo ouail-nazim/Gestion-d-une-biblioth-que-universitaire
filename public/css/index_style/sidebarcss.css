@@ -108,13 +108,13 @@
     }
     .dropdown-btn:hover{
         opacity: 1.7;
-        background: #4fa4d9;
+        background: #F56A6A;
         color: #1b1918;
         border-radius: 16px;
         font-size: large;
         font-weight:bolder;
         text-shadow: 4px 4px 4px rgba(255,222,255,0.5);
-        transition-delay: 3S;
+        /*transition-delay: 3S;*/
     }
     .active {
         background-color: silver;

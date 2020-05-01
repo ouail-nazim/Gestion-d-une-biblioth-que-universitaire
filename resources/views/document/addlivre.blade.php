@@ -14,8 +14,8 @@
                                             '</a>' +
                                             '<br>'+
                                             '<div class="form-row" style="margin-left: 16%">' +
-                                                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct </div></div>' +
-                                                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct  </div></div>' +
+                                                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" pattern="([^\s][A-z\s]+)" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct </div></div>' +
+                                                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" pattern="([^\s][A-z\s]+)" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">entrer une valeur correct  </div></div>' +
                                             '</div>' +
                                 '</div>' +
 
@@ -110,7 +110,7 @@
                                 </a>
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="nom[]"
+                                <input type="text" class="form-control"name="nom[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="nom de lauteaur de livre" required>
                                 <div class="invalid-feedback">entrer une valeur correct </div>
                                 @error('nom')
@@ -118,7 +118,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="prenom[]"
+                                <input type="text" class="form-control"name="prenom[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="prenom de lauteaur de livre" required>
                             <div class="invalid-feedback">entrer une valeur correct</div>
                                 @error('prenom')

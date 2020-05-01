@@ -138,7 +138,7 @@ class PretController extends Controller
     public function renouvler($id){
         $emprunt=Emprunt::find($id);
         $now = Carbon::today();
-        $date_retour=$now->addDays(15)->toDateString();
+        $date_retour=$now->addDays(7)->toDateString();
         $emprunt->date_retour=$date_retour;
         $emprunt->renouvler=true;
         $emprunt->save();
@@ -175,6 +175,7 @@ class PretController extends Controller
                if ($emprunt->date_retour < Carbon::today()->toDateString() )
                {
                    $abo->pen=true;
+                   $abo->date_depanaliser=Carbon::today()->addDays(7)->toDateString();
                    if ($abo->privliger == 'superfan'){$abo->point=20;$abo->privliger = 'fan';}
                    if ($abo->privliger == 'fan'){$abo->point=10;$abo->privliger = 'simple';}
                    if ($abo->privliger == 'simple'){$abo->point=0;}
@@ -194,6 +195,7 @@ class PretController extends Controller
                    if ($E1->etat >=$etat){
                        $E1->etat =$etat;
                        $abo->pen=true;
+                       $abo->date_depanaliser=Carbon::today()->addDays(7)->toDateString();
                        if ($abo->privliger == 'superfan'){$abo->point=20;$abo->privliger = 'fan';}
                        if ($abo->privliger == 'fan'){$abo->point=10;$abo->privliger = 'simple';}
                        if ($abo->privliger == 'simple'){$abo->point=0;}

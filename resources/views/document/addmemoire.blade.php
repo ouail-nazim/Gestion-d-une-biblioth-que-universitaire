@@ -17,8 +17,8 @@
                 '</a>' +
                 '<br>'+
                 '<div class="form-row" style="margin-left: 16%">' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="nom[]" pattern="([^\s][A-z\s]+)" placeholder="nom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom[]" pattern="([^\s][A-z\s]+)" placeholder="prenom de lauteaur de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
                 '</div>' +
                 '</div>' +
                 '</div>'; //New input field html
@@ -30,8 +30,8 @@
                 '</a>' +
                 '<br>'+
                 '<div class="form-row" style="margin-left: 16%">' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" placeholder="nom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
-                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" placeholder="prenom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="nom1[]" pattern="([^\s][A-z\s]+)" placeholder="nom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
+                '<div class="col-md-6 "><input type="text" class="form-control"name="prenom1[]" pattern="([^\s][A-z\s]+)" placeholder="prenom de lencadreure de livre" required><div class="invalid-feedback">Please provide a valid value </div></div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
@@ -128,12 +128,12 @@
                                 </a>
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="nom[]"
+                                <input type="text" class="form-control"name="nom[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="nom de lauteaur de livre" required>
                                 <div class="invalid-feedback">entrer une valeur correct </div>
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="prenom[]"
+                                <input type="text" class="form-control"name="prenom[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="prenom de lauteaur de livre" required>
                                 <div class="invalid-feedback">entrer une valeur correct  </div>
                             </div>
@@ -159,12 +159,12 @@
                                 </a>
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="nom1[]"
+                                <input type="text" class="form-control"name="nom1[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="nom de encadreure de livre" required>
                                 <div class="invalid-feedback">entrer une valeur correct  </div>
                             </div>
                             <div class="col-md-5 ">
-                                <input type="text" class="form-control"name="prenom1[]"
+                                <input type="text" class="form-control"name="prenom1[]" pattern="([^\s][A-z\s]+)"
                                        placeholder="prenom de encadreure de livre" required>
                                 <div class="invalid-feedback">entrer une valeur correct  </div>
                             </div>

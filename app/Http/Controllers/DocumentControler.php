@@ -120,7 +120,7 @@ class DocumentControler extends Controller
         return view('document.add1');
     }
     //save les information des documents
-    
+
     public function store(Request $request)
     {
         //virifier les inputs

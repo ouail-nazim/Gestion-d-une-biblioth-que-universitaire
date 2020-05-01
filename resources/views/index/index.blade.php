@@ -30,7 +30,7 @@
     <div class="row row-cols-1 row-cols-md-5">
         <div class="col mb-3">
             <div class="card  abonner mb-3" style="max-width: 18rem;">
-                <div class="card-header ">Abonner</div>
+                <div class="card-header ">Abonné</div>
                 <div class="card-body">
                     <h6 class="card-title">le nombre total des abonneés :</h6>
                     <p class="card-text "> {{$abonner}}</p>
@@ -39,40 +39,42 @@
         </div>
         <div class="col mb-3">
             <div class="card abonner mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonner Simple
+                <div class="card-header">Abonné Simple
+                    <i class="fa ml-5 fa-plus-large fa-star-half"></i>
                 </div>
                 <div class="card-body">
                     <h6 class="card-title">le nombre des abonneés simple :</h6>
-                    <p class="card-text "> {{$abonnersimple}}</p>
+                    <p class="card-text "  style="margin-top: -10%;"> {{$abonnersimple}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="card abonner mb-3 " style="max-width: 18rem;">
+                <div class="card-header">Abonné importante
+                    <i class="fa ml-3 fa-plus-large fa-star"></i><i class="fa fa-plus-large fa-star"></i>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">le nombre des abonneés importante</h6>
+                    <p class="card-text "  style="margin-top: -10%;"> {{$abonnerfan}}</p>
                 </div>
             </div>
         </div>
         <div class="col mb-3">
             <div class="card abonner mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonneés fan
-                    <i class="fa fa-plus-large mr-1 fa-star-half"></i>
+                <div class="card-header">Abonné  très importante
+                    <i class="fa fa-plus-large ml-1 fa-star"></i><i class="fa fa-plus-large  fa-star"></i><i class="fa fa-plus-large  fa-star"></i>
+                    <span class="badge badge-dark">VIP</span>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés fan</h6>
-                    <p class="card-text "> {{$abonnerfan}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-3">
-            <div class="card abonner mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonneés Super fan
-                    <i class="fa fa-plus-large mr-1 fa-star"></i>
-                </div>
-                <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés super fan</h6>
-                    <p class="card-text "> {{$abonnersuper}}</p>
+                    <h6 class="card-title">le nombre des abonneés  très importante</h6>
+                    <p class="card-text " style="margin-top: -10%;" > {{$abonnersuper}}</p>
                 </div>
             </div>
         </div>
         <div class="col mb-3">
 
             <div class="card aler mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonneés Pinaliser
+                <div class="card-header">Abonné Pinaliser
                     <i class="fa fa-plus-large mr-1 fa-minus-circle"></i>
                 </div>
                 <div class="card-body">
