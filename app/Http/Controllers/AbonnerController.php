@@ -79,7 +79,8 @@ class AbonnerController extends Controller
     //--------------------------------------------------------------
     //serche to abonner for delete him
     public function gotodeletAbonner(){
-        return view('abonner.search_for_delet');
+        $abonner=null;
+        return view('abonner.search_for_delet')->with(["abonner"=>$abonner]);
     }
     //finde the abooner and retern viwe for delete it
     public function deletAbonner(Request $request){
@@ -91,6 +92,10 @@ class AbonnerController extends Controller
             ->orWhere ('prenom','like',"%".$input."%")
             ->orwhere('num','=',$input)
             ->get();
+        if (count($abonner )==0 ){
+            $abonner='hhhh';
+            return view('abonner.search_for_delet')->with(["abonner"=>$abonner]);
+        }
         $tl=array('abonner'=>$abonner);
         return view('abonner.delet',$tl);
     }
@@ -103,7 +108,8 @@ class AbonnerController extends Controller
     //--------------------------------------------------------------
     //serche to abonner for edit his info
     public function gotoeditAbonner(){
-        return view('abonner.search_for_edit');
+        $abonner=null;
+        return view('abonner.search_for_edit')->with(["abonner"=>$abonner]);
     }
     //finde the abonner and returne a form withe his old value
     public function editAbonner(Request $request){
@@ -112,6 +118,11 @@ class AbonnerController extends Controller
         ]);
         $input=request('search');
         $abonner=Abonner::where('num','=',$input)->get();
+        if (count($abonner )==0 ){
+            $abonner='hhhh';
+            return view('abonner.search_for_edit')->with(["abonner"=>$abonner]);
+        }
+
         $tl=array('abonner'=>$abonner);
         return view('abonner.edit',$tl);
     }

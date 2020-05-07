@@ -112,10 +112,10 @@ class DocumentControler extends Controller
             return view('document.addmemoire');
         }
         if (request('action')=='suprimer'){
-            return view('document.searche',['action'=>'suprimer']);
+            return view('document.searche',['action'=>'suprimer',"doc"=>'jjj']);
         }
         if (request('action')=='edit'){
-            return view('document.searche',['action'=>'edit']);
+            return view('document.searche',['action'=>'edit',"doc"=>'jjj']);
         }
         return view('document.add1');
     }
@@ -243,6 +243,9 @@ class DocumentControler extends Controller
         $doc=Document::where('code','like',$input)
             ->orWhere('titre','like','%'.$input.'%')
             ->get();
+        if (count($doc )==0 ){
+            return view('document.searche')->with(["doc"=>'hhhh','action'=>'edit']);
+        }
         return view('home')->with(['doc'=>$doc,'action'=>'edit']);
     }
     public function edit($code)
@@ -337,6 +340,9 @@ class DocumentControler extends Controller
         $doc=Document::where('code','like',$input)
             ->orWhere('titre','like','%'.$input.'%')
             ->get();
+        if (count($doc )==0 ){
+            return view('document.searche')->with(["doc"=>'hhhh','action'=>'suprimer']);
+        }
         return view('home')->with(['doc'=>$doc,'action'=>'suprimer']);
     }
     public function destroy($code)

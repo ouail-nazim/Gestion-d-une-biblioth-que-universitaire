@@ -162,7 +162,7 @@ class PretController extends Controller
 
        $emprunt=Emprunt::find($atest);
        if($emprunt ==null){
-           $ar=array('l\'atestation demandé n\'exist pas' );
+           $ar=array('aucune réservation ' );
            return view('pret.retour_doc')->with(['msg'=> $ar]);
        }else{
            if ((($emprunt->num)==$numcart)

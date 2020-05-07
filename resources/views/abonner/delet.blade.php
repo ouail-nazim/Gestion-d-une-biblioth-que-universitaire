@@ -2,17 +2,9 @@
 
 @section('content1')
 
-
-
     <div class="col">
         <div class="container">
             <div class="row row-cols-3">
-                @if(count($abonner)==0)
-                   <strong> abonner n'exist pas</strong> <a href="/gotodeletAbonner"
-                                                            class="btn btn-secondary ml-lg-5 " >
-                        <i class="fa fa-share-square text-white mr-2"></i>retourner</a>
-                    <br>
-                @else
                     @foreach($abonner as $abo)
                         <div class="col">
                             <div class="card cc " style="width: 18rem;">
@@ -62,7 +54,6 @@
                                 </div>
                             </div></div>
                     @endforeach
-                @endif
             </div>
         </div>
     </div>

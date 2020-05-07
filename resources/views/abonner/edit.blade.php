@@ -2,12 +2,6 @@
 
 @section('content1')
 
-    @if(count($abonner)==0)
-        <strong> abonner n'exist pas</strong> <a href="/gotoeditAbonner" class="btn btn-secondary ml-lg-5 " >
-            <i class="fa fa-share-square text-white mr-2"></i>retourner </a>
-        <br>
-    @else
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <h1 align="center">formulaire est mal rempli</h1>
@@ -121,7 +115,6 @@
                     </script>
 
                 @endforeach
-    @endif
 
 
 @endsection

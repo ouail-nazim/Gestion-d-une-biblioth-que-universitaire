@@ -2,11 +2,42 @@
 
 @section('content1')
 
-    <div class="alert ha res " align="left" role="alert">
-       <span class="alert-link">
-            Le nombre totale des Abonneé trouvé est : {{count($abonner)}}
-       </span>
+    <div style=" padding: 20px;
+        margin-top: -4%;
+          background-color: #F56A6A;
+          color: white;
+          font-weight: bold;
+          opacity: 1;
+          transition: opacity 0.6s;
+          border-radius:4px;
+          ">
+          {{--<span class="closebtn " style=" margin-left: 15px;--}}
+          {{--color: white;--}}
+          {{--font-weight: bold;--}}
+          {{--float: right;--}}
+          {{--font-size: 22px;--}}
+          {{--line-height: 20px;--}}
+          {{--cursor: pointer;--}}
+          {{--transition: 0.3s;">&times;</span>--}}
+        @if((count($abonner))==0 )
+            <strong>Aucun abonné n’ai trouvé</strong>
+        @else
+            Le nombre totale des Abonneé trouvé est :<strong>{{count($abonner)}}</strong>
+        @endif
+
     </div>
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 600);
+            }
+        }
+    </script>
 
     <div class="col">
         <div class="container ">

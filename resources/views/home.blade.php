@@ -1,7 +1,6 @@
 @extends('index.dropdown')
 
 @section('content1')
-
     <div class="alert ha res "  role="alert">
        <span class="alert-link mb-lg-5">
            <span><i class="fa fa-tags-large mr-1 fa-tags"></i>Catégori</span>
@@ -13,6 +12,7 @@
            @endforeach
        </span>
     </div>
+
 
     <div class="col">
         <div class="container cont ">

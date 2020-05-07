@@ -129,17 +129,17 @@ class UserController extends Controller
                         return redirect("/profile/$id?msg=$msg");
                 }else{
                     //maché nafse el password
-                    $msg="ooops!!!inseré le meme nv mot de pass";
+                    $msg="inseré le meme nv mot de pass";
                     return redirect("/profile/$id?msg=$msg");
                 }
             }else{
                 //l'encien incorect
-                $msg="ooops!!!lencien mot de pass incorect";
+                $msg="l'encien mot de pass incorect";
                 return redirect("/profile/$id?msg=$msg");
             }
         }else{
             //maché nafse el user
-            $msg="ooops!!! impossible de changer le mot de pass d'un auter user";
+            $msg=" impossible de changer le mot de pass d'un auter user";
             return redirect("/profile/$id?msg=$msg");
         }
     }

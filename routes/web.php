@@ -61,7 +61,7 @@ Route::get('/searchAbonner','AbonnerController@searchAbonner');
 Route::get('/addAbonner','AbonnerController@create');
 Route::post('/addAbonner','AbonnerController@store');
 Route::get('/gotoeditAbonner','AbonnerController@gotoeditAbonner');
-Route::get('/editAbonner', 'AbonnerController@editAbonner')->name('del');
+Route::post('/editAbonner', 'AbonnerController@editAbonner')->name('del');
 Route::get('/editAbonner2/{id}', 'AbonnerController@editAbonner2')->name('del');
 Route::post('/edit/{id}', 'AbonnerController@update')->name('edting');
 Route::get('/gotodeletAbonner','AbonnerController@gotodeletAbonner');

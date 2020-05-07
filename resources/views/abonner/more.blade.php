@@ -177,7 +177,7 @@
                                         <button onclick="document.getElementById('id03').style.display='block'" class=" btn btn-dark" style="position:absolute; margin-left: -10px;">renouvler</button>
                                         <div id="id03" class="modal">
                                             <div class="modal-content animate" >
-                                                <span class="" style="text-align: center ; font-size: 2em;"><strong>ce document deja renouvle</strong> </span>
+                                                <span class="" style="text-align: center ; font-size: 2em;"><strong>Ce document a été déjà renouvelé</strong> </span>
                                                 <button class="bb btn btn-success" id="can2">OK</button>
                                             </div>
                                         </div>

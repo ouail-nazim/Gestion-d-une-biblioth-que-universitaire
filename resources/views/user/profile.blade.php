@@ -126,9 +126,39 @@
 </head>
 <body>
 @if((Config::get('msg'))!=null)
-    <script>
-        window.alert("{{Config::get('msg')}}");
-    </script>
+    <div style=" padding: 20px;
+    @if((Config::get('msg'))== "mot de pass a etait changer")
+            background-color: #0dd50a;
+    @else
+            background-color: #f44336;
+    @endif
+                  color: white;
+                  opacity: 1;
+                  transition: opacity 0.6s;
+                  border-radius:7px;
+                  margin-bottom: 15px;">
+        <span class="closebtn" style=" margin-left: 15px;
+                  color: white;
+                  font-weight: bold;
+                  float: right;
+                  font-size: 22px;
+                  line-height: 20px;
+                  cursor: pointer;
+                  transition: 0.3s;">&times;</span>
+        <strong>{{Config::get('msg')}}</strong>.
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+    </div>
 @endif
 
 <div class="content2">
@@ -204,7 +234,7 @@
                                 <input type="password" name="confirm_password" class="form-control " id="confirm_password"  onkeyup='check();' />
                             </label>
                             <br>
-                            <input type="submit" class="tt btn btn-dark" name="submit"  value="registration"  id="submit" disabled>
+                            <input type="submit" class="tt btn btn-dark" name="submit"  value="changer"  id="submit" disabled>
 
                         </form>
 
@@ -262,7 +292,7 @@
                 </div>
                 <div id="id03" class="modal">
                     <div class="modal-content animate" >
-                        <h3>le livre réserver</h3>
+                        <h3> livre réservé</h3>
                         @foreach( $Abonner->reservation as $reservation)
                                 Title :<strong>{{$reservation->document->titre}}</strong>
                                 <br>

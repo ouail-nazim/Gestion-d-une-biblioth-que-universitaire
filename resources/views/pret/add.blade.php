@@ -2,27 +2,68 @@
 @section('content1')
     @if($msg)
 
-        <div style="width: 80%;height: 50px;
-        background: -webkit-linear-gradient(to right, #c20817, #eb3636);
-        background: linear-gradient(to right, #c20817, #eb3636);
-        border-left: 4px #000 solid;
-        border-radius: 0px 20px 20px 0px;
-        padding-left: 30px;
-        padding-top: 5px;
-        font-family: bold;
-        color: white;
-        margin-left:100px;
-        ">
-          <h4>{{$msg[0]}}</h4>
+        <div style=" padding: 20px;
+          background-color: #f44336;
+          color: white;
+          opacity: 1;
+          transition: opacity 0.6s;
+          border-radius:7px;
+          margin-bottom: 15px;">
+          <span class="closebtn" style=" margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;">&times;</span>
+            <strong>ooops!</strong> {{$msg[0]}}.
         </div>
-        <br>
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
     @endif
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <h3 align="center">formulaire est mal rempli</h3>
+        <div style=" padding: 20px;
+          background-color: #f44336;
+          color: white;
+          opacity: 1;
+          transition: opacity 0.6s;
+          border-radius:7px;
+          margin-bottom: 15px;">
+          <span class="closebtn" style=" margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;">&times;</span>
+            <strong>ooops!</strong> formulaire est mal rempli.
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
+            <script>
+                var close = document.getElementsByClassName("closebtn");
+                var i;
+
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function(){
+                        var div = this.parentElement;
+                        div.style.opacity = "0";
+                        setTimeout(function(){ div.style.display = "none"; }, 600);
+                    }
+                }
+            </script>
         </div>
     @endif
 
