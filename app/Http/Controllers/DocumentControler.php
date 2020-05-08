@@ -100,16 +100,27 @@ class DocumentControler extends Controller
         ])->first();
         if (!empty($E1)){
             if(($E1->disponibilite)==false){
-                dd('jjj');
+                Config::set('echec','L\'exemplaire n\'est pas disponible (il est préter )');
+                $doc=Document::find($code);
+                $nombre_ex=count($doc->exemplaire);
+                $prété=count(Emprunt::where('code_doc','=',$code)->get());
+                return view('document.showdoc')->with(['doc'=>$doc,'nombre_ex'=>$nombre_ex,'prété'=>$prété]);
             }else{
                 $E1->delete();
                 $doc=Document::where('code','=',$code)->first();
                 $doc->nmb_dex=($doc->nmb_dex)-1;
                 $doc->update();
+                return redirect("/detailebook/$code");
             }
 
+        }else{
+            Config::set('echec','L\'exemplaire demender n\'exist pas ');
+            $doc=Document::find($code);
+            $nombre_ex=count($doc->exemplaire);
+            $prété=count(Emprunt::where('code_doc','=',$code)->get());
+            return view('document.showdoc')->with(['doc'=>$doc,'nombre_ex'=>$nombre_ex,'prété'=>$prété]);
         }
-        return redirect("/detailebook/$code");
+
     }
     //--------------------------------------------------------------
     //go to ajouter document soit livre ou mémoire

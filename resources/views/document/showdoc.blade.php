@@ -31,8 +31,9 @@
 
 @endsection
 
+
 @section('content1')
-    @if(false)
+    @if(Config::get('echec')!=null)
         <div style=" padding: 20px;
           background-color: #f44336;
           color: white;
@@ -48,7 +49,7 @@
           line-height: 20px;
           cursor: pointer;
           transition: 0.3s;">&times;</span>
-            <strong>ooops!</strong> l rechercher  n'exist pas.
+            <strong>{{Config::get('echec')}}</strong>
         </div>
         <script>
             var close = document.getElementsByClassName("closebtn");
@@ -62,8 +63,8 @@
                 }
             }
         </script>
-    @endif
 
+    @endif
     <div class="row">
         <div class="col-md-8  pro boite ">
 
