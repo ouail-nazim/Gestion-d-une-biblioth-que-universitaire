@@ -14,6 +14,7 @@ use App\Memoire;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Config;
+use Illuminate\Support\Facades\DB;
 
 class DocumentControler extends Controller
 {
@@ -69,14 +70,19 @@ class DocumentControler extends Controller
     //nombre dexemplaire +1 AJouter in exe
     public function explus($code)
     {
+        $exemplaires = Exemplaire::where("code_doc","=",$code)
+            ->orderBy('identif', 'desc')
+            ->first()
+            ->identif;
+        $a=$exemplaires+1;
         $doc=Document::find($code);
-        $i=count($doc->exemplaire)+1;
 
         $exem=new Exemplaire();
-        $exem->identif=$i;
+        $exem->identif=$a;
         $exem->code_doc=$doc->code;
         $exem->save();
 
+        $i=count($doc->exemplaire);
         $doc->nmb_dex=$i;
         $doc->update();
         return redirect("/detailebook/$doc->code");
@@ -93,10 +99,15 @@ class DocumentControler extends Controller
             ['code_doc', '=', $code],
         ])->first();
         if (!empty($E1)){
-        $E1->delete();
-        $doc=Document::where('code','=',$code)->first();
-        $doc->nmb_dex=($doc->nmb_dex)-1;
-        $doc->update();
+            if(($E1->disponibilite)==false){
+                dd('jjj');
+            }else{
+                $E1->delete();
+                $doc=Document::where('code','=',$code)->first();
+                $doc->nmb_dex=($doc->nmb_dex)-1;
+                $doc->update();
+            }
+
         }
         return redirect("/detailebook/$code");
     }

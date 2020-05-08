@@ -32,7 +32,7 @@
 @section('content1')
 
     <div class="row">
-        <div class="col-md-7"> <input type="text" class="form-control" maxlength="20" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." >
+        <div class="col-md-7"> <input type="text" class="form-control" maxlength="20" id="myInput" onkeyup="myFunction()" placeholder="Entré le non d'abonné" >
         </div>
         <div class="col-md-5">
             <button class="btn btn-secondary " style="width: 45%" onclick="filterSelection('all')"> tout</button>

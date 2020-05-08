@@ -1,8 +1,7 @@
 @extends('index.dropdown')
 
 @section('content1')
-
-    @if($abonner=='hhhh')
+    @if($abonner=='hhhh'||$abonner=='impossible de supprimer ce abonné ,par ce que il est  préter des livre ')
         <div style=" padding: 20px;
           background-color: #f44336;
           color: white;
@@ -18,7 +17,11 @@
           line-height: 20px;
           cursor: pointer;
           transition: 0.3s;">&times;</span>
+            @if($abonner=='impossible de supprimer ce abonné ,par ce que il est  préter des livre ')
+                <strong>impossible de supprimer ce abonné ,par ce que il est  préter des livres </strong>
+            @else
             <strong>ooops!</strong> l'abonner rechercher  n'exist pas.
+            @endif
         </div>
         <script>
             var close = document.getElementsByClassName("closebtn");
@@ -33,6 +36,7 @@
             }
         </script>
     @endif
+
 
     <form  class="needs-validation" name="frm" novalidate action="{{url("/deletAbonner")}}" method="get"  role="search">
         {{csrf_field()}}
@@ -51,7 +55,7 @@
                     <input class="form-control" type="text" name="search" maxlength="15"
                            placeholder="rechercher un abonner" aria-label="Search" required>
                     @error('search')
-                    <div class="text-danger">{{ '!!!'. $message }}</div>
+                    <div class="text-danger">{{  $message }}</div>
                     @enderror
                     <SCRIPT LANGUAGE="JavaScript">
                         document.forms.frm.nom.focus();

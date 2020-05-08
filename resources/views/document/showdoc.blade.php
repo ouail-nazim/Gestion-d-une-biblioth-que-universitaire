@@ -1,6 +1,68 @@
 @extends('index.dropdown')
+@section('head')
+    <style type="text/css">
+        #etat{
+            display: none;
+        }
+        #myInput {
+            margin-left: 2%;
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            margin-bottom: 12px; /* Add some space below the input */
+        }
+        #myTable{
+            width: 100%;
+        }
+        td{
+            border-bottom: 1px solid black;
+        }
+        .retarde{
+            background: #9fc1f0;
+            background: -webkit-linear-gradient(to right, #ff7a32, #ff7367);
+            background: linear-gradient(to right, #ff7a32, #ff7367);
+        }
+        .filterDiv {
+            display: none;
+        }
+        .show {
+            display:table-row; ;
+        }
+    </style>
+
+@endsection
 
 @section('content1')
+    @if(false)
+        <div style=" padding: 20px;
+          background-color: #f44336;
+          color: white;
+          opacity: 1;
+          transition: opacity 0.6s;
+          border-radius:7px;
+          margin-bottom: 15px;">
+          <span class="closebtn" style=" margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;">&times;</span>
+            <strong>ooops!</strong> l rechercher  n'exist pas.
+        </div>
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+    @endif
 
     <div class="row">
         <div class="col-md-8  pro boite ">
@@ -127,7 +189,7 @@
                 @endforeach
                 </ul>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 @if(($doc->livre)!= null)
 
                         <div class="col-md-4">
@@ -149,7 +211,7 @@
 
             </div>
 
-            <div class="row flex-row-reverse">
+            <div class="row flex-row-reverse ">
 
                 <div class="col-md-3 more">
                     <button onclick="document.getElementById('id01').style.display='block'"
@@ -182,27 +244,14 @@
                 <div class="col-md-3 more " >
                     <a href="/edit/{{$doc->code}}" class="btn btn-success">Modifier le document</a>
                 </div>
+                <div class="col-md-5 more "  >
+                    <button class="btn btn-info"  onclick="document.getElementById('etat').style.display='block'">
+                        Consulter les Exemplaire</button>
+                </div>
             </div>
             <br><br>
         </div>
         <div class="col-md-3 ml-2 ">
-            {{--<div class="row-md-12  boite-alert alert alert-dark ">--}}
-                {{--<div class="row">--}}
-                    {{--<strong class=""> Consulter exemplaire </strong>--}}
-                {{--</div>--}}
-                {{--<div class="row">--}}
-                    {{--<div class=""> entré le numéro d'exemplaire</div>--}}
-                {{--</div>--}}
-
-                {{--<div class="row">--}}
-                    {{--<form  action="#" method="get" class="form-inline" role="search">--}}
-                        {{--{{csrf_field()}}--}}
-                        {{--<input class="form-control form-control-sm w-75" type="text"--}}
-                               {{--placeholder="{{($doc->code).'/...............'}}" aria-label="Search">--}}
-                        {{--<button class="btn  my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</div>--}}
             <div class="row-md-12  boite-alert alert alert-info " style="height: 13%;">
                 <div class="row w-100 " >
                     <strong><em>nombre d'exomplaire preter :{{$prété}}</em></strong>
@@ -235,7 +284,91 @@
         </div>
 
     </div>
+    <div id="etat" class="row pro m-4 p-3 boite" >
 
+        <div class="row">
+            <input type="text" class="form-control w-75" maxlength="20" id="myInput" onkeyup="myFunction()" placeholder="Entré l'identif d'Exemplaire ..... " >
+            <button type="button"
+                    onclick="document.getElementById('etat').style.display='none'"
+                    class="btn badge-danger"
+                    style="border-radius: 50%;
+                            margin-left: auto;
+                           margin-right: 3%;
+                          color: #f3faff;
+                          font-weight: bolder;
+                          float: right;
+                          font-size: 20px;
+                          cursor: pointer;margin-bottom: 2%;">&times;</button>
+        </div>
+           <table class="table table-striped " id="myTable" >
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">disponibilite</th>
+                    <th scope="col">etat</th>
+                    <th scope="col">date d'ajoute aux bibliothèque</th>
+                </tr>
+                </thead>
+                <tbody class="bg-light bod">
+                @foreach($doc->exemplaire as $exemplaire)
+                    <tr>
+                        <td scope="row">{{$exemplaire->identif}}</td>
+                        <td>
+                            @if(($exemplaire->disponibilite))
+                                disponible
+                            @else
+                                non disponible
+                            @endif
+                        </td>
+                        <td>
+                            <?php
+                            switch ($exemplaire->etat) {
+                                case 100 : echo "<span style='background: #C352F3;border-radius: 10%;width:auto ;' >NEUF</span>";  break;
+                                case 90 :  echo "<span style='background: #0309F1;border-radius: 10%;width:auto ;' >Parfait</span>";  break;
+                                case 80 :  echo "<span style='background: #29A1FE;border-radius: 10%;width:auto ;' >Tres bon état</span>";   break;
+                                case 70 :  echo "<span style='background: #3AFEEA;border-radius: 10%;width:auto ;' >Bon état</span>";  break;
+                                case 60 :  echo "<span style='background: #32FE00;border-radius: 10%;width:auto ;' >Assez bon etat</span>";  break;
+                                case 50 :  echo "<span style='background: #B9FE00;border-radius: 10%;width:auto ;' >etat satisfaisant</span>";  break;
+                                case 40 :  echo "<span style='background: #FEF600;border-radius: 10%;width:auto ;' >état passable</span>";  break;
+                                case 30 :  echo "<span style='background: #FE7700;border-radius: 10%;width:auto ;' >mauvais état </span>";   break;
+                                case 20 :  echo "<span style='background: #FE0400;border-radius: 10%;width:auto ;' >déchiré </span>";   break;
+                            }
+                            ?>
+                        </td>
+                        <td>{{$exemplaire->created_at->toDateString()}}</td>
+
+                    </tr>
+                @endforeach
+
+
+                </tbody>
+            </table>
+            <script type="text/javascript">
+                function myFunction() {
+                    // Declare variables
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+
+                    // Loop through all table rows, and hide those who don't match the search query
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+
+            </script>
+
+        </div>
 
 
 @endsection

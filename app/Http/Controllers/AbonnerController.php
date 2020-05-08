@@ -96,6 +96,13 @@ class AbonnerController extends Controller
             $abonner='hhhh';
             return view('abonner.search_for_delet')->with(["abonner"=>$abonner]);
         }
+        foreach ($abonner as $abo){
+            if(count($abo->emprunt)!= null){
+                $abonner='impossible de supprimer ce abonné ,par ce que il est  préter des livre ';
+                return view('abonner.search_for_delet')->with(["abonner"=>$abonner]);
+            }
+        }
+
         $tl=array('abonner'=>$abonner);
         return view('abonner.delet',$tl);
     }
