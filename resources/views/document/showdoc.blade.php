@@ -307,7 +307,7 @@
                     <th scope="col">id</th>
                     <th scope="col">disponibilite</th>
                     <th scope="col">etat</th>
-                    <th scope="col">date d'ajoute aux bibliothèque</th>
+                    {{--<th scope="col">date d'ajoute aux bibliothèque</th>--}}
                 </tr>
                 </thead>
                 <tbody class="bg-light bod">
@@ -336,7 +336,7 @@
                             }
                             ?>
                         </td>
-                        <td>{{$exemplaire->created_at->toDateString()}}</td>
+                        {{--<td>{{$exemplaire->created_at->toDateString()}}</td>--}}
 
                     </tr>
                 @endforeach
