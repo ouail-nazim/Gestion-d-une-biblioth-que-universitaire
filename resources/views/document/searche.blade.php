@@ -69,7 +69,7 @@
         {{csrf_field()}}
         <fieldset>
             <legend ALIGN="center">
-                <strong>suprimer document avec leur code </strong>
+                <strong>suprimer document </strong>
             </legend>
             <!------------------------------------------------------------------- -->
             <br><br>
@@ -92,7 +92,7 @@
             <!------------------------------------------------------------------- -->
             <br>
             <div id="bt">
-                <button class="btn btn-primary" type="submit">Sraeche <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
+                <button class="btn btn-primary" type="submit">Rechercher <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
             </div>
             <!------------------------------------------------------------------- -->
 
@@ -127,7 +127,7 @@
             <!------------------------------------------------------------------- -->
             <br>
             <div id="bt">
-                <button class="btn btn-primary" type="submit">Sraeche <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
+                <button class="btn btn-primary" type="submit">Rechercher <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
             </div>
             <!------------------------------------------------------------------- -->
 

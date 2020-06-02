@@ -40,7 +40,7 @@
             {{csrf_field()}}
             <fieldset>
                 <legend ALIGN="center">
-                    <strong>Modifier l'Abonner  " R°: {{$abo->num}}"  </strong>
+                    <strong>Modifier l'Abonner  " N°: {{$abo->num}}"  </strong>
                 </legend>
                 <br>
                 <div class="form-row">

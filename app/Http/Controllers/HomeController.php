@@ -9,6 +9,7 @@ use App\Emprunt;
 use App\Exemplaire;
 use App\Livre;
 use App\Memoire;
+use App\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Config;
@@ -58,9 +59,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index()
-    {
-
+    public function index(){
         $abonner=count(Abonner::all());
         $abonnerpen=count(Abonner::where('pen','=',true)->get());
         $abonnersimple=count(Abonner::where('privliger','=','simple')->get());
@@ -70,9 +69,8 @@ class HomeController extends Controller
         $livre=count(Livre::all());
         $mem=count(Memoire::all());
         $exem=count(Exemplaire::all());
-        //Exemplaire::where('disponibilite','=',false)->get()
-        $total=Emprunt::all();
-        $exempret=count($total);
+        $exempret=count(Emprunt::all());
+        $reservation=count(Reservation::all());
         $cat=count(Categorie::all());
 
         return view('index.index')->with(
@@ -88,6 +86,7 @@ class HomeController extends Controller
                "exem"=>$exem,
                "exempret"=>$exempret,
                "cat"=>$cat,
+               "reservation"=>$reservation
            ]
         );
     }

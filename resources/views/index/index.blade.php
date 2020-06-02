@@ -133,6 +133,19 @@
         </div>
         <div class="col mb-3">
 
+            <div class="card exemplaire mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    Reservation
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">le nombre total des reservation :</h6>
+                    <p class="card-text "> {{$reservation}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3">
+
             <div class="card cat mb-3" style="max-width: 18rem;">
                 <div class="card-header">Categorie</div>
                 <div class="card-body">
