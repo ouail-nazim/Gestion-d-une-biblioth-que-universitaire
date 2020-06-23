@@ -66,7 +66,7 @@
 
 
 <div class="sidenav">
-    <a href="/home" class="llogo"><img src="/storage/app/logo5.png" width="100%" class="mb-2 "></a>
+    <a href="/home" class="llogo"><img src="/images/logo5.png" width="100%" class="mb-2 "></a>
     <button class="dropdown-btn1 ">
         <i class="fa fa-cogs mr-1"></i>
         <span class="">{{ Auth::guard('web')->user()->name}}</span>

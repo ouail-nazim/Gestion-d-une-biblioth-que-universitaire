@@ -178,5 +178,6 @@
                 });
             }, false);
         })();
+        
     </script>
 @endsection

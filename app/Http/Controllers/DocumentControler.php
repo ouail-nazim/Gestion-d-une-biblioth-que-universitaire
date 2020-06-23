@@ -279,7 +279,6 @@ class DocumentControler extends Controller
         //virifier les inputs
         $this->validate($request,[
             'titre'=>'required|max:30',
-            'nmb_dex'=>'required|numeric|min:0',
             'nom'=>'required|max:20',
             'prenom'=>'required|max:20',
             'emplacment'=>'required|max:30',
@@ -289,7 +288,6 @@ class DocumentControler extends Controller
         $doc1=Document::findorfail($code);
         $doc1->titre=request('titre');
         $doc1->annee=request('annee');
-        $doc1->nmb_dex=request('nmb_dex');
         $doc1->emplacment=request('emplacment');
         $doc1->save();
 

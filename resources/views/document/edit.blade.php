@@ -90,7 +90,7 @@
           line-height: 20px;
           cursor: pointer;
           transition: 0.3s;">&times;</span>
-            <strong>ooops!</strong> formulaire est mal rempli.
+            <strong>ooops!</strong> formulaire est mal rempli.{{$errors}}
             <script>
                 var close = document.getElementsByClassName("closebtn");
                 var i;
