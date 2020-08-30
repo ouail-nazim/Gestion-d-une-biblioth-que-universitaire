@@ -3,7 +3,7 @@
 		<title>IQRA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <link rel="shortcut icon" href="/images/univ.png" type="image/x-icon"/>
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
@@ -232,6 +232,7 @@
 				</div>
 			</footer>
 		<!-- Scripts -->
+    <script src="http://unpkg.com/turbolinks"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>

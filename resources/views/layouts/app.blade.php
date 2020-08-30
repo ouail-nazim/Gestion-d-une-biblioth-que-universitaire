@@ -13,6 +13,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="shortcut icon" href="/images/univ.png" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
@@ -95,5 +96,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="http://unpkg.com/turbolinks"></script>
 </body>
 </html>
