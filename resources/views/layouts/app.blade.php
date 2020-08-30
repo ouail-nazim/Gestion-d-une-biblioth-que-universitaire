@@ -36,7 +36,7 @@
                         <ul class="navbar-nav mr-auto ">
                             <form  action="{{url("/searchAbonner")}}" method="get" class="form-inline" role="search">
                                 <label for="search1" class="fa fa-user-large mr-3 text-light fa-user"></label>
-                                <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="find Abonner" aria-label="Search">
+                                <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="Rechercher un abonné" aria-label="Search">
                                 {{--<button class="btn btn--success " type="submit">Go</button>--}}
                                 <button class="btn text-light searchaa" type="submit"><i class="fa fa-search-large mr-1 text-outline-light fa-search"></i> </button>
 
@@ -44,7 +44,7 @@
                             <span class="mr-4"></span>
                             <form  action="{{url("/searchdoc")}}" method="get" class="form-inline" role="search">
                                 <label for="search2" class="fa fa-book-large mr-3 text-light fa-book"></label>
-                                <input class="form-control searchaa w-90 " type="text" id="search2" name="search" maxlength="20" required placeholder="rechercher un livre" aria-label="Search">
+                                <input class="form-control searchaa w-90 " type="text" id="search2" name="search" maxlength="20" required placeholder="Rechercher sur un document" aria-label="Search">
                                 <button class="btn text-light searchaa " type="submit"><i class="fa fa-search-large mr-1 text-outline-light fa-search"></i> </button>
 
                             </form>

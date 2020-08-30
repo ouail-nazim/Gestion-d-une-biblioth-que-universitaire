@@ -50,23 +50,23 @@
         </div>
         <div class="col mb-3">
             <div class="card abonner mb-3 " style="max-width: 18rem;">
-                <div class="card-header">Abonné importante
-                    <i class="fa ml-3 fa-plus-large fa-star"></i><i class="fa fa-plus-large fa-star"></i>
+                <div class="card-header">Abonné important
+                    <i class="fa ml-4 fa-plus-large fa-star"></i><i class="fa fa-plus-large fa-star"></i>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés importante</h6>
+                    <h6 class="card-title">le nombre des abonneés important </h6>
                     <p class="card-text "  style="margin-top: -10%;"> {{$abonnerfan}}</p>
                 </div>
             </div>
         </div>
         <div class="col mb-3">
             <div class="card abonner mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonné  très importante
+                <div class="card-header">Abonné  très important
                     <i class="fa fa-plus-large ml-1 fa-star"></i><i class="fa fa-plus-large  fa-star"></i><i class="fa fa-plus-large  fa-star"></i>
                     <span class="badge badge-dark">VIP</span>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés  très importante</h6>
+                    <h6 class="card-title">le nombre des abonneés  très important</h6>
                     <p class="card-text " style="margin-top: -10%;" > {{$abonnersuper}}</p>
                 </div>
             </div>
@@ -74,11 +74,11 @@
         <div class="col mb-3">
 
             <div class="card aler mb-3" style="max-width: 18rem;">
-                <div class="card-header">Abonné Pinaliser
+                <div class="card-header">Abonné pénalisé
                     <i class="fa fa-plus-large mr-1 fa-minus-circle"></i>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre des abonneés pinaliser :</h6>
+                    <h6 class="card-title">le nombre des abonneés pénalisé :</h6>
                     <p class="card-text "> {{$abonnerpen}}</p>
                 </div>
             </div>
@@ -87,7 +87,7 @@
             <div class="card document mb-3" style="max-width: 18rem;">
                 <div class="card-header">Document</div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des document :</h6>
+                    <h6 class="card-title">le nombre total des documents :</h6>
                     <p class="card-text "> {{$document}}</p>
                 </div>
             </div>
@@ -96,7 +96,7 @@
             <div class="card livre mb-3" style="max-width: 18rem;">
                 <div class="card-header">Livre</div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des livre :</h6>
+                    <h6 class="card-title">le nombre total des livres :</h6>
                     <p class="card-text "> {{$livre}}</p>
                 </div>
             </div>
@@ -105,7 +105,7 @@
             <div class="card mem mb-3" style="max-width: 18rem;">
                 <div class="card-header">Mémoire</div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des mémoire :</h6>
+                    <h6 class="card-title">le nombre total des mémoires :</h6>
                     <p class="card-text "> {{$mem}}</p>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     Exemplaire
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des exemplaire :</h6>
+                    <h6 class="card-title">le nombre total des exemplaires :</h6>
                     <p class="card-text "> {{$exem}}</p>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="card aler mb-3" style="max-width: 18rem;">
                 <div class="card-header">Exemplaire Prété</div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des exemplaire prete :</h6>
+                    <h6 class="card-title">le nombre total des exemplaires prete :</h6>
                     <p class="card-text "> {{$exempret}}</p>
                 </div>
             </div>
@@ -143,13 +143,12 @@
                 </div>
             </div>
         </div>
-
         <div class="col mb-3">
 
             <div class="card cat mb-3" style="max-width: 18rem;">
-                <div class="card-header">Categorie</div>
+                <div class="card-header">Catégorie</div>
                 <div class="card-body">
-                    <h6 class="card-title">le nombre total des categorie :</h6>
+                    <h6 class="card-title">le nombre total des catégories :</h6>
                     <p class="card-text "> {{$cat}}</p>
                 </div>
             </div>

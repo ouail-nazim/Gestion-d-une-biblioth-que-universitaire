@@ -25,12 +25,12 @@
 			<header id="header" class="alt">
 				<div class="logo"><a href="/">IQRA <span>spreading knowledge</span></a></div>
 				<a href="#one">Mes Document</a>
-				<a href="#fil">Filtré</a>
+				<a href="#fil">Filtrer</a>
 					@auth()
 
 					<a href="/logoutuser">Déconnecter</a>
 					@else
-						<a href="/UserLogin">Connecter</a>
+						<a href="/UserLogin">Se connecter</a>
 					@endauth
 					<a href="#menu">Menu</a>
 
@@ -62,7 +62,7 @@
 					<img src="images/bg.jpg" alt="" />
 					<div class="inner">
 						<header>
-							<p>Réservé votre livre maintenant et gratuitement<a href="#one"> ici</a></p>
+							<p>Réservez votre document maintenant et gratuitement ici<a href="#one"> ici</a></p>
 							<h2>IQRA</h2>
 							<h5>spreading knowledge</h5>
 							@auth()
@@ -115,7 +115,7 @@
 				<div class="col-md-5">
 					<div class=" row">
 						<div class="col-md-3">
-							<label for="inputState" style="font-size: 16px;font-family: 'Courier New', 'monospace'">Categorie:</label>
+							<label for="inputState" style="font-size: 16px;font-family: 'Courier New', 'monospace'">Catégorie:</label>
 						</div>
 						<div class="col-md-9">
 							<select id="inputState"  name="cat" class="form-control">
@@ -128,7 +128,7 @@
 					</div>
 				</div>
 				<div class="col-md-2">
-					<input type="submit" name=""  class="form-control  btn costum " value="filtré">
+					<input type="submit" name=""  class="form-control  btn costum " value="Filtrer">
 
 				</div>
 			</form>

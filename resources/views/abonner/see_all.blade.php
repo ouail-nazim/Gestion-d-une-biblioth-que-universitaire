@@ -49,10 +49,10 @@
                         <div class="col">
                             <div class="card cc "  >
                                 @if($abo->gender =='homme')
-                                    <img src="storage/gander/homme.jpg"  height="100px" width="100%"   alt="...">
+                                    <img src="/images/user/homme.svg" height="100px" width="100%" alt="...">
 
                                 @else
-                                    <img src="storage/gander/femme.png"  height="100px" width="100%" alt="...">
+                                    <img src="/images/user/famme.svg"  height="100px" width="100%" alt="...">
 
                                 @endif
 

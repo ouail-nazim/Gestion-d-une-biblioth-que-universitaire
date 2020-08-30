@@ -70,7 +70,7 @@
             <button class="btn"  onclick="document.getElementById('id03').style.display='block'" ><img src="add.png" width="35px"  /></button>
             <div id="id03" class="modal">
                 <div class="modal-content animate" >
-                    <span class="" style="text-align: center ; font-size: 2em;"><strong>Ajouter une catégori</strong> </span>
+                    <span class="" style="text-align: center ; font-size: 2em;"><strong>Ajouter une catégorie</strong> </span>
                     <form method="post" action="/addcategori" class="needs-validation" name="cat">
                         @csrf
                         <input type="text" class="form-control bb" maxlength="20" autofocus
@@ -121,8 +121,8 @@
         <table class="table table-striped " id="myTable">
             <thead class="thead-dark">
             <tr>
-                <th>le nome de catégori</th>
-                <th>le nombre de livre dons ce catégori</th>
+                <th>Nom de la catégorie</th>
+                <th>Nombre de documents dans cette catégorie</th>
                 <th></th>
             </tr>
             </thead>
@@ -135,7 +135,7 @@
                             <td>
                                 <a class=" mr-2 btn btn-dark @if ((count($catégori->documents))==0) ml-0 disabled @endif"
                                    href="/indexdoc?cate={{$catégori->id}}">
-                                    les document de categori
+                                    Documents de cette catégorie
                                 </a>
                             </td>
                         </tr>

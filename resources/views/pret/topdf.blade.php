@@ -69,7 +69,7 @@
             l'information et de la Communication
         </div>
         <div class="col-md-4 head ">
-            <img src="/lo.png" height="80%" width="80%">
+            <img src="images/univ.png" height="80%" width="80%">
         </div>
         <div class="col-md-4 right">
                         جامعة قسنطينة 2 عبد الحميد مهري

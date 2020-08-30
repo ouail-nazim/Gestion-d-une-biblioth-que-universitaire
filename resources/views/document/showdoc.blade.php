@@ -122,7 +122,7 @@
             @endif
             <div class="row">
                 <div class="col-md-4">
-                    <strong> nombre d'exomplaire</strong>
+                    <strong> Nombre d'exemplaires</strong>
                 </div>
                 <br>
                 <span class="btn badge-dark text-white ">{{($nombre_ex)}}</span>
@@ -182,7 +182,7 @@
             <br >
             <div class="row">
                 <div class="col-md-3">
-                    <strong> l'auteur de livre</strong>
+                    <strong> L'auteur de livre</strong>
                 </div>
                 <ul style="margin-left: 2%">
                 @foreach($doc->auteur as $auteurs )
@@ -194,7 +194,7 @@
                 @if(($doc->livre)!= null)
 
                         <div class="col-md-4">
-                            <strong>  l'editeur de livre</strong>
+                            <strong>  L'editeur de livre</strong>
                         </div>
                         <strong> {{$doc->livre->edition}}</strong>
                     <br >
@@ -216,7 +216,7 @@
 
                 <div class="col-md-3 more">
                     <button onclick="document.getElementById('id01').style.display='block'"
-                            class="btn btn-danger">supprimer</button>
+                            class="btn btn-danger">Supprimer</button>
                     <div id="id01" class="modal">
                         <div class="modal-content animate" >
                             <span class="" style="text-align: center ; font-size: 2em;">
@@ -255,7 +255,7 @@
         <div class="col-md-3 ml-2 ">
             <div class="row-md-12  boite-alert alert alert-info " style="height: 13%;">
                 <div class="row w-100 " >
-                    <strong><em>nombre d'exomplaire preter :{{$prété}}</em></strong>
+                    <strong><em>Nombre d'exemplaires prêtés :{{$prété}}</em></strong>
                     <br>
 
                 </div>

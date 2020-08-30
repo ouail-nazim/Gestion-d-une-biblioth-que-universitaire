@@ -212,10 +212,10 @@
                 @if((Auth::guard('abonner')->user()->id)==($Abonner->id))
                     <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">changer le mot de pass</button>
                     <button @if((count($Abonner->emprunt))!=0 ) onclick="document.getElementById('id02').style.display='block'" @endif
-                    class="@if((count($Abonner->emprunt))==0)ml-0 btn btn-dark disabled  @else  btn btn-primary @endif">liste des livres preté</button>
+                    class="@if((count($Abonner->emprunt))==0)ml-0 btn btn-dark disabled  @else  btn btn-primary @endif">Liste des documents prêtés</button>
                     <button  @if((count($Abonner->reservation))!=0) onclick="document.getElementById('id03').style.display='block'" @endif
                         class="@if((count($Abonner->reservation))==0)ml-0 btn btn-dark disabled  @else btn btn-warning @endif">
-                            le livre réserver
+                        Document réservé
                     </button>
                 @endif
                 <div id="id01" class="modal">
@@ -263,7 +263,7 @@
                             }
                         </script>
 
-                        <button class="bb btn btn-danger" id="can">cancel</button>
+                        <button class="bb btn btn-danger" id="can">Annuler</button>
 
                     </div>
                 </div>
@@ -292,7 +292,7 @@
                 </div>
                 <div id="id03" class="modal">
                     <div class="modal-content animate" >
-                        <h3> livre réservé</h3>
+                        <h3> Document réservé</h3>
                         @foreach( $Abonner->reservation as $reservation)
                                 Title :<strong>{{$reservation->document->titre}}</strong>
                                 <br>

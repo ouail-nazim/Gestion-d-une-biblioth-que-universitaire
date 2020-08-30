@@ -27,7 +27,13 @@ class PretController extends Controller
     }
     public function creat_add(){
         $ar=array('vous avez inseré ');
-        return view('pret.add')->with(['msg'=> null]);
+        return view('pret.add')->with(['msg'=> null,
+            'numcart'=>null,
+            'codedoc'=>null,
+            'numexem'=>null,
+            'title'=>null,
+            'nom'=>null,
+            'prenom'=>null]);
     }
     public function savepret(Request $request){
         $request->validate([
@@ -58,7 +64,10 @@ class PretController extends Controller
         // specifier le nombre des livre otoriser a labonner et la duré d'après son privlige
         if ($abo == null){
             $ar=array("l'abonner nexist pas ");
-            return view('pret.add')->with(['msg'=> $ar]);
+            return view('pret.add')->with(['msg'=> $ar,
+                'codedoc'=>$codedoc,
+                'numexem'=>$numexem,
+                'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
         }
 
         if ($abo->privliger == 'superfan'){$otoris=4;$duré=10;}
@@ -102,37 +111,47 @@ class PretController extends Controller
             else{
                 if(($E1 ==null)){
                     $ar=array("l'exemplaire demender n'existe pas");
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if(($doc ==null)){
                     $ar=array("le document demender n'existe pas");
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if(($abo->nom)!=$nom){
                     $ar=array('le nom d\'abonner incorrect');
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if(($abo->prenom)!=$prenom){
                     $ar=array('le prénom d\'abonner incorrect');
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title,'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if(($abo->pen)== true){
-                    $ar=array('ce abonner est penalisez ');
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    $ar=array('Cet abonné est pénalisé ');
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if((($doc->titre)!=$title)){
                     $ar=array('le titre de document incorrect');
-                    return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem, 'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
                 if((($E1->disponibilite)== false)){
                       $ar=array('ce exemplaire n\'est pas disponible' );
-                      return view('pret.add')->with(['msg'=> $ar]);
+                    return view('pret.add')->with(['msg'=> $ar,
+                        'codedoc'=>$codedoc, 'numexem'=>$numexem,'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
                 }
             }
         }
         else{
             $ar=array('vous avez dépassé le nombre max de document autorisé');
-            return view('pret.add')->with(['msg'=> $ar]);
+            return view('pret.add')->with(['msg'=> $ar,
+                'codedoc'=>$codedoc,
+                'numexem'=>$numexem,
+                'numcart'=>$numcart, 'title'=>$title, 'nom'=>$nom, 'prenom'=>$prenom]);
         }
     }
     public function renouvler($id){
@@ -146,7 +165,12 @@ class PretController extends Controller
 
     }
     public function creat_back(){
-        return view('pret.retour_doc')->with(['msg'=> null]);
+        return view('pret.retour_doc')->with(['msg'=> null,
+            'atest'=> null ,
+            'num'=> null ,
+            'code_doc'=> null ,
+            'num_exem'=> null ,
+            ]);
     }
     public function save_back(Request $request){
         $request->validate([
@@ -163,7 +187,11 @@ class PretController extends Controller
        $emprunt=Emprunt::find($atest);
        if($emprunt ==null){
            $ar=array('aucune réservation ' );
-           return view('pret.retour_doc')->with(['msg'=> $ar]);
+           return view('pret.retour_doc')->with(['msg'=> $ar,
+               'atest'=> $atest ,
+               'num'=> $numcart ,
+               'code_doc'=> $codedoc ,
+               'num_exem'=> $numexem ,]);
        }else{
            if ((($emprunt->num)==$numcart)
                &&(($emprunt->code_doc)==$codedoc)
@@ -202,7 +230,11 @@ class PretController extends Controller
                    }
                    else{
                        $ar=array('imposible de amilioré l\'etat de document' );
-                       return view('pret.retour_doc')->with(['msg'=> $ar]);
+                       return view('pret.retour_doc')->with(['msg'=> $ar,
+                           'atest'=> $atest ,
+                           'num'=> $numcart ,
+                           'code_doc'=> $codedoc ,
+                           'num_exem'=> $numexem ,]);
                    }
                }
 
@@ -212,7 +244,11 @@ class PretController extends Controller
                return redirect('/home');
            }else{
                $ar=array('remplir le formulaire avec des valeur correct' );
-               return view('pret.retour_doc')->with(['msg'=> $ar]);
+               return view('pret.retour_doc')->with(['msg'=> $ar,
+                   'atest'=> $atest ,
+                   'num'=> $numcart ,
+                   'code_doc'=> $codedoc ,
+                   'num_exem'=> $numexem ,]);return view('pret.retour_doc')->with(['msg'=> $ar]);
            }
        }
     }
@@ -258,7 +294,7 @@ class PretController extends Controller
         $output='
                     <div>
                         <div class="head" style="text-align: center;">
-                          
+
                             <h4>La République Algérienne Démocratique et Populaire</h4>
                             <h4>Ministère de l\'Enseignement supérieur et de la Recherche scientifique</h4>
                             <br>
@@ -271,14 +307,14 @@ class PretController extends Controller
                                 <br>
                                 l\'information et de la Communication
                             </div>
-                            
+
                         </div>
                         <div class="row" style="text-align: center;margin-top: 10%">
                              <h3 > attestation de prêt num="'.$id.'"</h3>
-                    
+
                         </div>
                         <div class="row" >
-                    
+
                             <p>
                                 le chef de bibliothèque de Faculté des nouvelles technologies de l\'information et de la Communication
                                 <br>atteste que l\'etudient(e):
@@ -294,7 +330,7 @@ class PretController extends Controller
                                 <br><strong>l\'exemplaire numéro :</strong>'.$num_exem.', dons letat :'.$etat.'
                                 <br><br> en '.$date_emprunt.'  ,et il doit le retourner en '.$date_retour.'
                             </p>
-                    
+
                         </div>
         '
         ;

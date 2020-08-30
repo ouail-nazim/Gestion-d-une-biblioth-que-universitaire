@@ -85,10 +85,13 @@
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-8 mb-3">
                         <label for="validationCustom01">Numéro de l'attestation</label>
-                        <input type="number" min="0" class="form-control" name="atest" id="validationCustom01" required>
-                        <div class="valid-feedback">
+                        <input type="number" min="0" class="form-control" name="atest" value="{{$atest}}" id="validationCustom01" required>
+                        <div class="invalid-feedback">
                             entré un numéro
                         </div>
+                        @error('atest')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-2 mb-3"></div>
                 </div>
@@ -96,17 +99,23 @@
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">Le matricule d'etudient</label>
-                        <input type="text" class="form-control" maxlength="10" name="num" id="validationCustom01" required>
-                        <div class="valid-feedback">
+                        <input type="text" class="form-control" maxlength="10" name="num" value="{{$num}}" id="validationCustom01" required>
+                        <div class="invalid-feedback">
                             entré un nom
                         </div>
+                        @error('num')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">LE code de document</label>
-                        <input type="text" class="form-control" maxlength="15" name="code_doc" id="validationCustom01" required>
-                        <div class="valid-feedback">
-                            entré un prenom
+                        <input type="text" class="form-control" maxlength="15" name="code_doc" value="{{$code_doc}}" id="validationCustom01" required>
+                        <div class="invalid-feedback">
+                            entré le code de document
                         </div>
+                        @error('code_doc')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="col-md-2 mb-3"></div>
@@ -115,10 +124,13 @@
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">LE numéro d'exemplaire </label>
-                        <input type="number" min="0"  class="form-control"  name="num_exem" id="validationCustom01" required>
-                        <div class="valid-feedback">
-                            entré un prenom
+                        <input type="number" min="0"  class="form-control"  name="num_exem" value="{{$num_exem}}" id="validationCustom01" required>
+                        <div class="invalid-feedback">
+                            entré numéro d'exemplaire
                         </div>
+                        @error('num_exem')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip04">L'Etat de l'exemplaire</label>
@@ -146,7 +158,7 @@
         </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4 "><button class="btn btn-success w-100" type="submit">retournée le document  </button></div>
+            <div class="col-md-4 "><button class="btn btn-success w-100" type="submit">Retourner le document </button></div>
             <div class="col-md-4"></div>
         </div>
 

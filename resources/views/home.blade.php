@@ -60,7 +60,7 @@
                                             </script>
                                     @endif
                                     @if($action == 'index')
-                                        <a href="/detailebook/{{$doccument->code}}" class="btn w-100  " style="background: #F56A6A;">Detaille</a>
+                                        <a href="/detailebook/{{$doccument->code}}" class="btn w-100  " style="background: #F56A6A;">Détails</a>
                                     @endif
                                     @if($action == 'edit')
                                         <a href="/edit/{{$doccument->code}}" class="btn btn-success w-100  ">Modifier le Document</a>

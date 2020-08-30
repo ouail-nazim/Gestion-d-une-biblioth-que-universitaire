@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-5">
             <button class="btn btn-secondary " style="width: 45%" onclick="filterSelection('all')"> tout</button>
-            <button class="btn retarde ml-3 " style="width: 45%" onclick="filterSelection('retarde')"> EN retarde</button>
+            <button class="btn retarde ml-3 " style="width: 45%" onclick="filterSelection('retarde')"> En retard </button>
         </div>
     </div>
     <div class="container">
@@ -46,9 +46,9 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Email</th>
-                <th>telephone</th>
-                <th>le titre de livre</th>
-                <th>date_retour</th>
+                <th>Telephone</th>
+                <th>Titre du document</th>
+                <th>Date_retour</th>
             </tr>
             </thead>
             <tbody class="bg-light bod">

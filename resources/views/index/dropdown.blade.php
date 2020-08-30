@@ -36,7 +36,7 @@
             <div class=" w-40">
                 <form  action="{{url("/searchAbonner")}}" method="get" class="form-inline" role="search">
                     <label for="search1" class="fa fa-user-large  mr-3 text-dark fa-user"></label>
-                    <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="recherche un Abonner" aria-label="Search">
+                    <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="Rechercher un abonné ..." aria-label="Search">
                     {{--<button class="btn btn--success " type="submit">Go</button>--}}
                     <button class="btn text-dark searchaa" type="submit"><i class="fa fa-search-large mr-1 text-outline-light fa-search"></i> </button>
 
@@ -45,7 +45,7 @@
             <div class="col w-50">
                 <form  action="{{url("/searchdoc")}}" method="get" class="form-inline" role="search">
                     <label for="search1" class="fa fa-book mr-3 text-dark "></label>
-                    <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="recherche un Document" aria-label="Search">
+                    <input class="form-control searchaa w-90 " type="text" id="search1" name="search" maxlength="20"  required  placeholder="Recherche un Document ..." aria-label="Search">
                     {{--<button class="btn btn--success " type="submit">Go</button>--}}
                     <button class="btn text-dark searchaa" type="submit"><i class="fa fa-search-large mr-1 text-outline-light fa-search"></i> </button>
 
@@ -83,13 +83,13 @@
     </div>
     <a href="/home"><i class="fa fa-home-large mr-3 fa fa-home "></i>Accueil</a>
     <a href="/indexdoc"><i class="fa fa-home-large mr-3 fa fa-book "></i>Document</a>
-    <a href="/See_all" ><i class="fa fa-user-large mr-3 fa fa-user "></i>Client</a>
+    <a href="/See_all" ><i class="fa fa-user-large mr-3 fa fa-user "></i>Abonné</a>
     <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Abonnés</button>
     <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/addAbonner" class="nav-link font-italic ">
               <i class="fa fa-plus-large mr-1 fa-plus"></i>
-                Ajouter abonné
+              Ajouter un abonné
           </a>
       </li>
       <li class="nav-item ">
@@ -117,7 +117,7 @@
           {{--</a>--}}
       {{--</li>--}}
   </div>
-    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer Document</button>
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer documents</button>
     <div class="dropdown-container">
       <li class="nav-item ">
           <a href="/create" class="nav-link  font-italic ">
@@ -138,7 +138,7 @@
           </a>
       </li>
   </div>
-    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer prêt</button>
+    <button class="dropdown-btn"><i class="fa fa-caret-down mr-5"></i>Gérer prêts</button>
     <div class="dropdown-container">
         <li class="nav-item ">
             <a href="/creatadd" class="nav-link  font-italic ">
@@ -204,4 +204,4 @@ for (i = 0; i < dropdown1.length; i++) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
-</html> 
+</html>
