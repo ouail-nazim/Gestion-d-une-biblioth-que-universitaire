@@ -40,7 +40,8 @@
 			<nav id="menu">
 				<ul class="links">
 					@auth()
-					<li style="text-align: center;"><img src="lo.png" style="border-radius: 50%;" alt="" width="150px" height="150px" />
+					<li style="text-align: center;">
+								<img src="/images/univ.png" style="border-radius: 50%;" alt="" width="150px" height="150px" >
 						<br>
 						<h5 style="color: white;">{{ Auth::guard('abonner')->user()->nom}}_{{Auth::guard('abonner')->user()->prenom}} </h5>
 						<h5 style="color: white;">{{ Auth::guard('abonner')->user()->email}} </h5>
@@ -119,7 +120,7 @@
 						</div>
 						<div class="col-md-9">
 							<select id="inputState"  name="cat" class="form-control">
-								<option  value="{{0}}">ALL</option>
+								<option  value="{{0}}">TOUT</option>
 								@foreach($cat as $categori)
 									<option  value="{{$categori->id}}">{{$categori->name}}</option>
 								@endforeach
@@ -153,7 +154,7 @@
 							</div>
 							<div class="col-md-9">
 								<select id="inputState"  name="cat" class="form-control">
-									<option  value="{{0}}">ALL</option>
+									<option  value="{{0}}">TOUT</option>
 									@foreach($cat as $categori)
 										<option  value="{{$categori->id}}">{{$categori->name}}</option>
 									@endforeach

@@ -60,7 +60,7 @@
             <!------------------------------------------------------------------- -->
             <br>
             <div id="bt">
-                <button class="btn btn-primary" type="submit">Sraeche <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
+                <button class="btn btn-primary" type="submit">Rechercher <i class="fa fa-search-large mr-1 text-white fa-search"></i> </button>
             </div>
             <!------------------------------------------------------------------- -->
 
