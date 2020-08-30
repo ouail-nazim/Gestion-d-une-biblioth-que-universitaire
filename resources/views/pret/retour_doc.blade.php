@@ -99,7 +99,7 @@
                     <div class="col-md-2 mb-3"></div>
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">Le matricule d'etudient</label>
-                        <input type="text" class="form-control" maxlength="10" name="num" value="{{$num}}" id="validationCustom01" required>
+                        <input type="text" class="form-control" maxlength="15" name="num" value="{{$num}}" id="validationCustom01" required>
                         <div class="invalid-feedback">
                             entré un nom
                         </div>
